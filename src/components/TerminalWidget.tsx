@@ -1,55 +1,62 @@
 import React, { useState, useRef, useEffect } from 'react';
-import { Terminal, CornerDownLeft, Sparkles } from 'lucide-react';
+import { Terminal, CornerDownLeft } from 'lucide-react';
 import { portfolioData } from '../data/portfolioData';
+import { useLanguage } from '../context/LanguageContext';
 
 interface HistoryItem {
   command: string;
-  output: string | React.ReactNode;
+  output: React.ReactNode;
 }
 
 export const TerminalWidget: React.FC = () => {
+  const { t } = useLanguage();
   const [input, setInput] = useState('');
-  const [history, setHistory] = useState<HistoryItem[]>([
-    {
-      command: 'welcome',
-      output: (
-        <div className="space-y-1 text-slate-300">
-          <p className="text-emerald-400 font-semibold">✦ Sistema inicializado com sucesso!</p>
-          <p>
-            Bem-vindo ao terminal interativo de <span className="text-cyan-300 font-semibold">{portfolioData.personal.name}</span>.
-          </p>
-          <p className="text-slate-400 text-xs">
-            Digite <span className="text-amber-300 font-bold">help</span> ou clique nas sugestões abaixo para explorar.
-          </p>
-        </div>
-      ),
-    },
-  ]);
-
-  const terminalEndRef = useRef<HTMLDivElement>(null);
+  const [history, setHistory] = useState<HistoryItem[]>([]);
+  const [showWelcome, setShowWelcome] = useState(true);
+  const terminalBodyRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    terminalEndRef.current?.scrollIntoView({ behavior: 'smooth' });
+    if (terminalBodyRef.current) {
+      terminalBodyRef.current.scrollTop = terminalBodyRef.current.scrollHeight;
+    }
   }, [history]);
 
   const handleCommand = (cmd: string) => {
     const cleanCmd = cmd.trim().toLowerCase();
     if (!cleanCmd) return;
 
-    let output: string | React.ReactNode = '';
+    let output: React.ReactNode = '';
 
     switch (cleanCmd) {
       case 'help':
         output = (
-          <div className="space-y-1 text-xs sm:text-sm">
-            <p className="text-cyan-300 font-semibold mb-1">Comandos disponíveis:</p>
-            <div className="grid grid-cols-2 gap-x-4 gap-y-1 text-slate-300">
-              <div><span className="text-amber-300 font-mono">about</span> : Sobre mim & Faculdade</div>
-              <div><span className="text-amber-300 font-mono">skills</span> : Habilidades técnicas</div>
-              <div><span className="text-amber-300 font-mono">projects</span> : Lista de projetos</div>
-              <div><span className="text-amber-300 font-mono">certs</span> : Certificações</div>
-              <div><span className="text-amber-300 font-mono">contact</span> : Informações de contato</div>
-              <div><span className="text-amber-300 font-mono">clear</span> : Limpar a tela</div>
+          <div className="space-y-1.5 text-xs">
+            <p className="text-[var(--text-primary)] font-semibold">{t.terminal.helpTitle}</p>
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-x-4 gap-y-1 text-[var(--text-secondary)]">
+              <div>
+                <span className="text-[var(--text-primary)] font-semibold">about</span> —{' '}
+                {t.terminal.helpAbout}
+              </div>
+              <div>
+                <span className="text-[var(--text-primary)] font-semibold">skills</span> —{' '}
+                {t.terminal.helpSkills}
+              </div>
+              <div>
+                <span className="text-[var(--text-primary)] font-semibold">projects</span> —{' '}
+                {t.terminal.helpProjects}
+              </div>
+              <div>
+                <span className="text-[var(--text-primary)] font-semibold">certs</span> —{' '}
+                {t.terminal.helpCerts}
+              </div>
+              <div>
+                <span className="text-[var(--text-primary)] font-semibold">contact</span> —{' '}
+                {t.terminal.helpContact}
+              </div>
+              <div>
+                <span className="text-[var(--text-primary)] font-semibold">clear</span> —{' '}
+                {t.terminal.helpClear}
+              </div>
             </div>
           </div>
         );
@@ -58,12 +65,24 @@ export const TerminalWidget: React.FC = () => {
       case 'about':
       case 'cat about.txt':
         output = (
-          <div className="space-y-1 text-xs sm:text-sm text-slate-300">
-            <p><span className="text-blue-400 font-semibold">Nome:</span> {portfolioData.personal.name}</p>
-            <p><span className="text-blue-400 font-semibold">Curso:</span> {portfolioData.personal.degree}</p>
-            <p><span className="text-blue-400 font-semibold">Instituição:</span> {portfolioData.personal.institution}</p>
-            <p><span className="text-blue-400 font-semibold">Previsão:</span> {portfolioData.personal.graduationYear}</p>
-            <p className="text-slate-400 mt-2 text-xs leading-relaxed">{portfolioData.about.overview}</p>
+          <div className="space-y-1 text-xs text-[var(--text-secondary)]">
+            <p>
+              <span className="text-[var(--text-primary)] font-semibold">NAME:</span>{' '}
+              {portfolioData.personal.name}
+            </p>
+            <p>
+              <span className="text-[var(--text-primary)] font-semibold">DEGREE:</span>{' '}
+              {t.about.education.degree}
+            </p>
+            <p>
+              <span className="text-[var(--text-primary)] font-semibold">INSTITUTION:</span>{' '}
+              {t.about.education.institution}
+            </p>
+            <p>
+              <span className="text-[var(--text-primary)] font-semibold">PERIOD:</span>{' '}
+              {t.about.education.period}
+            </p>
+            <p className="text-[var(--text-muted)] pt-1 leading-relaxed">{t.about.lead}</p>
           </div>
         );
         break;
@@ -71,11 +90,25 @@ export const TerminalWidget: React.FC = () => {
       case 'skills':
       case 'ls skills':
         output = (
-          <div className="space-y-2 text-xs sm:text-sm text-slate-300">
-            <p className="text-cyan-300 font-medium">Stack Técnica:</p>
-            <p><span className="text-emerald-400 font-mono">Linguagens:</span> {portfolioData.skills.linguagens.map(l => l.name).join(', ')}</p>
-            <p><span className="text-blue-400 font-mono">Frameworks:</span> {portfolioData.skills.frameworks.map(f => f.name).join(', ')}</p>
-            <p><span className="text-purple-400 font-mono">Ferramentas:</span> {portfolioData.skills.ferramentas.map(t => t.name).join(', ')}</p>
+          <div className="space-y-1.5 text-xs text-[var(--text-secondary)]">
+            <p>
+              <span className="text-[var(--text-primary)] font-semibold">
+                {t.skills.categories.languages.title}:
+              </span>{' '}
+              {t.skills.categories.languages.items.map((i) => i.name).join(' · ')}
+            </p>
+            <p>
+              <span className="text-[var(--text-primary)] font-semibold">
+                {t.skills.categories.frameworks.title}:
+              </span>{' '}
+              {t.skills.categories.frameworks.items.map((i) => i.name).join(' · ')}
+            </p>
+            <p>
+              <span className="text-[var(--text-primary)] font-semibold">
+                {t.skills.categories.tools.title}:
+              </span>{' '}
+              {t.skills.categories.tools.items.map((i) => i.name).join(' · ')}
+            </p>
           </div>
         );
         break;
@@ -83,12 +116,16 @@ export const TerminalWidget: React.FC = () => {
       case 'projects':
       case 'ls projects':
         output = (
-          <div className="space-y-1.5 text-xs sm:text-sm text-slate-300">
-            <p className="text-cyan-300 font-medium">Projetos em Destaque:</p>
-            {portfolioData.projects.map((p, idx) => (
-              <div key={p.id} className="flex flex-col sm:flex-row sm:items-center justify-between py-0.5 border-b border-slate-800/40">
-                <span className="text-slate-200 font-medium">{idx + 1}. {p.title}</span>
-                <span className="text-xs text-blue-400 font-mono">[{p.category}]</span>
+          <div className="space-y-1.5 text-xs text-[var(--text-secondary)]">
+            {t.projects.items.map((p) => (
+              <div
+                key={p.id}
+                className="flex flex-col sm:flex-row sm:items-center justify-between py-1 border-b border-[var(--border-subtle)]/60"
+              >
+                <span className="text-[var(--text-primary)] font-medium">
+                  {p.index}. {p.title}
+                </span>
+                <span className="text-[11px] text-[var(--text-muted)]">[{p.categoryDisplay}]</span>
               </div>
             ))}
           </div>
@@ -98,11 +135,13 @@ export const TerminalWidget: React.FC = () => {
       case 'certs':
       case 'cat certs.json':
         output = (
-          <div className="space-y-1.5 text-xs sm:text-sm text-slate-300">
-            <p className="text-cyan-300 font-medium">Certificações Reconhecidas:</p>
-            {portfolioData.certifications.map((c) => (
+          <div className="space-y-1 text-xs text-[var(--text-secondary)]">
+            {t.skills.certifications.items.map((c) => (
               <div key={c.id} className="py-0.5">
-                <span className="text-emerald-300 font-mono">✓</span> {c.title} — <span className="text-slate-400 text-xs">({c.issuer})</span>
+                <span className="text-[var(--text-primary)] font-semibold">✓ {c.title}</span> —{' '}
+                <span className="text-[var(--text-muted)]">
+                  {c.issuer} ({c.issueDate}) · ID: {c.credentialId}
+                </span>
               </div>
             ))}
           </div>
@@ -111,25 +150,31 @@ export const TerminalWidget: React.FC = () => {
 
       case 'contact':
         output = (
-          <div className="space-y-1 text-xs sm:text-sm text-slate-300">
-            <p><span className="text-blue-400">E-mail:</span> {portfolioData.personal.email}</p>
-            <p><span className="text-blue-400">GitHub:</span> {portfolioData.personal.github}</p>
-            <p><span className="text-blue-400">LinkedIn:</span> {portfolioData.personal.linkedin}</p>
+          <div className="space-y-1 text-xs text-[var(--text-secondary)]">
+            <p>
+              <span className="text-[var(--text-primary)] font-semibold">EMAIL:</span>{' '}
+              {portfolioData.personal.email}
+            </p>
+            <p>
+              <span className="text-[var(--text-primary)] font-semibold">GITHUB:</span>{' '}
+              {portfolioData.personal.github}
+            </p>
+            <p>
+              <span className="text-[var(--text-primary)] font-semibold">LINKEDIN:</span>{' '}
+              {portfolioData.personal.linkedin}
+            </p>
           </div>
         );
         break;
 
       case 'clear':
+        setShowWelcome(false);
         setHistory([]);
         setInput('');
         return;
 
       default:
-        output = (
-          <p className="text-rose-400 text-xs sm:text-sm">
-            Comando não reconhecido: "{cmd}". Digite <span className="text-amber-300 font-mono">help</span> para a lista de comandos válidos.
-          </p>
-        );
+        output = <p className="text-[var(--text-secondary)] text-xs">{t.terminal.unknownCmd}</p>;
     }
 
     setHistory((prev) => [...prev, { command: cmd, output }]);
@@ -142,75 +187,98 @@ export const TerminalWidget: React.FC = () => {
   };
 
   const quickActions = [
-    { label: 'cat about.txt', cmd: 'about' },
-    { label: 'ls skills', cmd: 'skills' },
-    { label: 'ls projects', cmd: 'projects' },
-    { label: 'cat certs.json', cmd: 'certs' },
+    { label: 'about', cmd: 'about' },
+    { label: 'projects', cmd: 'projects' },
+    { label: 'skills', cmd: 'skills' },
+    { label: 'certs', cmd: 'certs' },
+    { label: 'clear', cmd: 'clear' },
   ];
 
   return (
-    <div className="w-full rounded-2xl bg-[#0b0f19]/90 border border-slate-800/80 shadow-2xl overflow-hidden backdrop-blur-xl">
-      {/* Terminal Title Bar */}
-      <div className="bg-[#0f1422] px-4 py-2.5 border-b border-slate-800 flex items-center justify-between">
+    <div className="w-full rounded-2xl bg-[var(--bg-surface)] border border-[var(--border-subtle)] overflow-hidden flex flex-col h-[390px]">
+      {/* Terminal Top Bar */}
+      <div className="px-4 py-3 bg-[var(--bg-elevated)]/70 border-b border-[var(--border-subtle)] flex items-center justify-between">
         <div className="flex items-center gap-2">
-          <div className="w-3 h-3 rounded-full bg-rose-500/80" />
-          <div className="w-3 h-3 rounded-full bg-amber-500/80" />
-          <div className="w-3 h-3 rounded-full bg-emerald-500/80" />
-          <span className="ml-2 text-xs font-mono text-slate-400 flex items-center gap-1.5">
-            <Terminal className="w-3.5 h-3.5 text-blue-400" />
-            lucas@portfolio:~
+          <span className="w-2.5 h-2.5 rounded-full bg-[var(--text-muted)]/60" />
+          <span className="w-2.5 h-2.5 rounded-full bg-[var(--text-muted)]/40" />
+          <span className="w-2.5 h-2.5 rounded-full bg-[var(--text-muted)]/25" />
+          <span className="ml-2 text-[11px] font-mono-tech text-[var(--text-secondary)] flex items-center gap-1.5">
+            <Terminal className="w-3.5 h-3.5 text-[var(--text-primary)]" />
+            lucas@imt-cs:~
           </span>
         </div>
-        <span className="text-[11px] font-mono text-slate-500 hidden sm:inline">bash / zsh v5.9</span>
+        <span className="text-[10px] font-mono-tech text-[var(--text-muted)] uppercase tracking-wider">
+          Interactive Shell
+        </span>
       </div>
 
-      {/* Terminal Body */}
-      <div className="p-4 font-mono text-xs sm:text-sm max-h-72 sm:max-h-80 overflow-y-auto space-y-3">
-        {history.map((item, index) => (
-          <div key={index} className="space-y-1">
-            <div className="flex items-center gap-2 text-slate-400">
-              <span className="text-emerald-400 font-semibold">$</span>
-              <span className="text-slate-200">{item.command}</span>
+      {/* Terminal Output */}
+      <div
+        ref={terminalBodyRef}
+        className="flex-1 p-4 font-mono-tech text-xs overflow-y-auto space-y-3"
+      >
+        {showWelcome && (
+          <div className="space-y-1.5">
+            <div className="flex items-center gap-2 text-[var(--text-muted)]">
+              <span className="text-[var(--text-primary)] font-bold">❯</span>
+              <span className="text-[var(--text-primary)]">init --session</span>
             </div>
-            <div className="pl-4 border-l border-slate-800/80">{item.output}</div>
+            <div className="pl-3.5 border-l border-[var(--border-subtle)] space-y-1 text-[var(--text-secondary)]">
+              <p className="text-[var(--text-primary)] font-semibold">{t.terminal.welcomeTitle}</p>
+              <p>{t.terminal.welcomeBody}</p>
+              <p className="text-[var(--text-muted)] text-[11px]">{t.terminal.welcomeHint}</p>
+            </div>
+          </div>
+        )}
+
+        {history.map((item, index) => (
+          <div key={index} className="space-y-1.5">
+            <div className="flex items-center gap-2 text-[var(--text-muted)]">
+              <span className="text-[var(--text-primary)] font-bold">❯</span>
+              <span className="text-[var(--text-primary)]">{item.command}</span>
+            </div>
+            <div className="pl-3.5 border-l border-[var(--border-subtle)]">{item.output}</div>
           </div>
         ))}
-        <div ref={terminalEndRef} />
       </div>
 
-      {/* Quick suggestions chips */}
-      <div className="px-4 py-2 bg-[#090d16] border-t border-slate-800/50 flex flex-wrap items-center gap-2">
-        <span className="text-[11px] font-mono text-slate-500 flex items-center gap-1">
-          <Sparkles className="w-3 h-3 text-amber-400" />
-          atalhos:
+      {/* Quick Command Pills */}
+      <div className="px-4 py-2 bg-[var(--bg-subtle)] border-t border-[var(--border-subtle)] flex flex-wrap items-center gap-1.5">
+        <span className="text-[10px] font-mono-tech text-[var(--text-muted)] uppercase mr-1">
+          {t.terminal.shortcutsLabel}
         </span>
         {quickActions.map((action) => (
           <button
             key={action.label}
+            type="button"
             onClick={() => handleCommand(action.cmd)}
-            className="px-2 py-1 rounded bg-slate-800/70 hover:bg-slate-700 text-slate-300 hover:text-white text-xs font-mono transition-colors"
+            className="px-2.5 py-0.5 rounded-full bg-[var(--bg-elevated)] hover:bg-[var(--accent-bg)] text-[var(--text-secondary)] hover:text-[var(--accent-text)] border border-[var(--border-subtle)] text-[11px] font-mono-tech transition-colors cursor-pointer"
           >
             {action.label}
           </button>
         ))}
       </div>
 
-      {/* Interactive Command Input */}
-      <form onSubmit={handleSubmit} className="p-2 sm:p-3 bg-[#080b13] border-t border-slate-800 flex items-center gap-2">
-        <span className="text-emerald-400 font-mono font-bold pl-2">$</span>
+      {/* Command Input */}
+      <form
+        onSubmit={handleSubmit}
+        className="p-2.5 bg-[var(--bg-surface)] border-t border-[var(--border-subtle)] flex items-center gap-2"
+      >
+        <span className="text-[var(--text-primary)] font-mono-tech font-bold pl-2 text-xs">❯</span>
         <input
           type="text"
           value={input}
           onChange={(e) => setInput(e.target.value)}
-          placeholder="Digite um comando (ex: help, projects, certs)..."
-          className="flex-1 bg-transparent text-slate-100 placeholder:text-slate-600 font-mono text-xs sm:text-sm focus:outline-none"
+          placeholder={t.terminal.placeholder}
+          aria-label={t.terminal.placeholder}
+          className="flex-1 bg-transparent text-[var(--text-primary)] placeholder:text-[var(--text-muted)] font-mono-tech text-xs focus:outline-none"
         />
         <button
           type="submit"
-          className="p-1.5 rounded-lg bg-blue-600/80 hover:bg-blue-600 text-white transition-colors"
-          title="Executar comando"
+          aria-label="Run command"
+          className="p-1.5 rounded-lg bg-[var(--accent-bg)] text-[var(--accent-text)] hover:opacity-85 transition-opacity cursor-pointer"
         >
-          <CornerDownLeft className="w-4 h-4" />
+          <CornerDownLeft className="w-3.5 h-3.5" />
         </button>
       </form>
     </div>

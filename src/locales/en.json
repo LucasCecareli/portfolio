@@ -1,0 +1,450 @@
+{
+  "meta": {
+    "title": "Lucas Ribeiro — Software Engineering & Computer Science",
+    "description": "Portfolio of Lucas Ribeiro — Computer Science student at Instituto Mauá de Tecnologia & Software Engineer. Interactive case studies, system architecture, and verified credentials."
+  },
+  "nav": {
+    "home": "Home",
+    "about": "About",
+    "projects": "Projects",
+    "skills": "Skills",
+    "certifications": "Certifications",
+    "resume": "Resume",
+    "contact": "Contact",
+    "hireMe": "Let's Talk",
+    "available": "Available for Opportunities",
+    "switchThemeToLight": "Switch to light mode",
+    "switchThemeToDark": "Switch to dark mode",
+    "switchLang": "Switch language",
+    "openMenu": "Open navigation menu",
+    "closeMenu": "Close navigation menu",
+    "backToHome": "Back to Home",
+    "backToProjects": "Back to Projects"
+  },
+  "hero": {
+    "statusBadge": "AVAILABLE FOR INTERNSHIP & SOFTWARE ENGINEERING",
+    "institutionBadge": "B.Sc. in Computer Science · Instituto Mauá de Tecnologia",
+    "greeting": "LUCAS RIBEIRO",
+    "headlineLine1": "Software",
+    "headlineLine2": "Architecture &",
+    "headlineLine3": "Web Engineering.",
+    "subtitle": "Building efficient, scalable solutions with modern design. Focused on software architecture, distributed systems, data structures, and modern web technologies.",
+    "ctaProjects": "Explore Projects",
+    "ctaContact": "Get in Touch",
+    "ctaResume": "Resume / CV",
+    "scrollIndicator": "SCROLL DOWN",
+    "cardTabIdentity": "TECHNICAL PASS",
+    "cardTabTerminal": "CLI TERMINAL",
+    "idCard": {
+      "headerLabel": "ACADEMIC & TECHNICAL IDENTITY",
+      "code": "IMT — BCS · 2027",
+      "role": "Computer Science & Software Engineer",
+      "institution": "Instituto Mauá de Tecnologia",
+      "location": "São Paulo, Brazil",
+      "focusLabel": "ENGINEERING FOCUS",
+      "focusItems": [
+        "Software Architecture",
+        "Distributed Systems",
+        "Algorithms & Data Structures",
+        "Full-Stack Applications"
+      ],
+      "photoPlaceholderNote": "AUTHORIAL MONOGRAM ARTIFACT · READY FOR B&W PORTRAIT",
+      "interactiveHint": "Move cursor to inspect · Click to switch view"
+    }
+  },
+  "bridge": {
+    "eyebrow": "01 / METHODOLOGY & ENGINEERING",
+    "titleLeft": "THEORY",
+    "titleMiddle": "ARCHITECTURE",
+    "titleRight": "PRODUCTION",
+    "statement": "I translate rigorous Computer Science fundamentals — algorithmic complexity, concurrency, and data modeling — into clean software architectures and precision-crafted digital interfaces.",
+    "steps": [
+      {
+        "index": "01",
+        "label": "FOUNDATION",
+        "title": "Modeling & Complexity",
+        "detail": "Data structures, graph theory, balanced trees, and asymptotic Big-O analysis."
+      },
+      {
+        "index": "02",
+        "label": "SYSTEM",
+        "title": "Clean Architecture & Concurrency",
+        "detail": "SOLID principles, asynchronous microservices, WebSockets, message queues, and Docker containers."
+      },
+      {
+        "index": "03",
+        "label": "EXECUTION",
+        "title": "Interfaces & Performance",
+        "detail": "Reactive TypeScript and React applications crafted for clarity, responsiveness, and speed."
+      }
+    ]
+  },
+  "projects": {
+    "eyebrow": "02 / SELECTED WORK & CASE STUDIES",
+    "title": "Projects & Systems",
+    "subtitle": "Systems engineered from the ground up applying clean architecture, concurrent computing, algorithmic visualization, and natural language processing.",
+    "filterAll": "All",
+    "viewCaseStudy": "Case Study",
+    "viewRepository": "GitHub Repository",
+    "viewLiveDemo": "Live Demo",
+    "cursorLabel": "VIEW CASE ↗",
+    "metricsLabel": "Verified Metric",
+    "technologiesLabel": "Tech Stack",
+    "yearLabel": "Year",
+    "categoryLabel": "Domain",
+    "caseStudy": {
+      "backButton": "Back to Projects",
+      "overviewTitle": "Overview",
+      "problemTitle": "Context & Problem",
+      "objectiveTitle": "Technical Objective",
+      "solutionTitle": "Architecture & Solution",
+      "processTitle": "Engineering Process",
+      "featuresTitle": "Implemented Capabilities",
+      "resultsTitle": "Results & Metrics",
+      "nextProject": "Next Project",
+      "prevProject": "Previous Project",
+      "linksHeading": "Project Access"
+    },
+    "items": [
+      {
+        "id": "proj-1",
+        "index": "01",
+        "year": "2025",
+        "title": "Algorithmic Visualizer 3D",
+        "category": "Sistemas / C++",
+        "categoryDisplay": "Algorithms & Systems",
+        "description": "Interactive platform for real-time visualization of sorting algorithms, graph traversal (Dijkstra, A*), and search trees.",
+        "longDescription": "Developed to consolidate core Computer Science studies. Demonstrates step-by-step execution states, compares time and space Big-O complexities, and allows testing with custom datasets.",
+        "technologies": ["TypeScript", "Canvas API", "Algoritmos", "Web Workers"],
+        "metrics": "Step-by-step complexity visualization",
+        "githubUrl": "https://github.com/exemplo/algo-visualizer",
+        "liveUrl": "https://algo-visualizer-demo.vercel.app",
+        "featured": true,
+        "image": "https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&w=1200&q=85",
+        "problem": "Studying graph traversal and tree algorithms abstractly often lacks real-time visual inspection of internal memory states, exploration frontiers, and asymptotic cost.",
+        "objective": "Engineer an interactive browser-based graphics engine capable of executing and stepping through classic algorithms without blocking the main UI thread.",
+        "solution": "Decoupled architecture leveraging Web Workers for computing algorithmic state transitions and the HTML5 Canvas API for smooth 60fps rendering.",
+        "process": [
+          "Modeled core data structures (weighted graphs, search trees, and arrays) in strict TypeScript.",
+          "Implemented deterministic state snapshot generators to support stepping forward, pausing, and speed control.",
+          "Offloaded heavy algorithmic computation into Web Workers to keep the UI responsive under dense inputs."
+        ],
+        "features": [
+          "Step-by-step pathfinding visualization (Dijkstra and A*).",
+          "Dynamic inspection of sorting algorithms and binary search trees.",
+          "Real-time comparison of time and space Big-O complexity.",
+          "Custom dataset and graph topology input controls."
+        ]
+      },
+      {
+        "id": "proj-2",
+        "index": "02",
+        "year": "2025",
+        "title": "DevNexus — Collaborative Code Platform",
+        "category": "Full-Stack",
+        "categoryDisplay": "Full-Stack & Real-Time",
+        "description": "Full-stack application featuring secure authentication, a real-time collaborative code editor, and snippet sharing among developers.",
+        "longDescription": "Distributed system powered by WebSockets for collaborative editing synchronization, MongoDB persistence, and in-memory caching for frequent query optimization.",
+        "technologies": ["React", "Node.js", "WebSockets", "MongoDB", "Tailwind CSS"],
+        "metrics": "Real-time sync latency < 50ms",
+        "githubUrl": "https://github.com/exemplo/dev-nexus",
+        "liveUrl": "https://devnexus-demo.vercel.app",
+        "featured": true,
+        "image": "https://images.unsplash.com/photo-1555066931-4365d14bab8c?auto=format&fit=crop&w=1200&q=85",
+        "problem": "Remote code reviews and pair-programming sessions require instantaneous state synchronization across multiple connected clients without write conflicts.",
+        "objective": "Build a low-latency collaborative full-stack environment with document persistence and secure session management.",
+        "solution": "Bidirectional WebSocket communication in Node.js paired with MongoDB document storage and an in-memory caching layer for high-frequency reads.",
+        "process": [
+          "Designed a lightweight WebSocket event protocol for streaming edit deltas and active participant states.",
+          "Modeled MongoDB schemas for snippet versioning and access permissions.",
+          "Crafted a responsive React and Tailwind CSS workspace with live connection telemetry."
+        ],
+        "features": [
+          "Real-time collaborative code editing powered by WebSockets.",
+          "Secure user authentication and session management.",
+          "Technical snippet sharing and categorization.",
+          "In-memory caching layer for fast recurring query resolution."
+        ]
+      },
+      {
+        "id": "proj-3",
+        "index": "03",
+        "year": "2025",
+        "title": "Distributed API Gateway & Task Manager",
+        "category": "Backend",
+        "categoryDisplay": "Backend & Distributed Systems",
+        "description": "High-performance FastAPI microservice with asynchronous task queues, intelligent rate limiting, and system health monitoring.",
+        "longDescription": "Focused on software engineering and backend architecture: concurrent processing with Celery, JWT authentication, automated Swagger documentation, and Docker containerization.",
+        "technologies": ["Python", "FastAPI", "Docker", "Redis", "PostgreSQL"],
+        "metrics": "1,200 req/s throughput in load tests",
+        "githubUrl": "https://github.com/exemplo/distributed-task-api",
+        "liveUrl": "https://task-api.onrender.com/docs",
+        "featured": true,
+        "image": "https://images.unsplash.com/photo-1526374965328-7f61d4dc18c5?auto=format&fit=crop&w=1200&q=85",
+        "problem": "Traditional synchronous APIs suffer severe latency spikes when handling traffic bursts or compute-intensive background operations.",
+        "objective": "Design a resilient backend architecture that decouples request ingestion from heavy execution through distributed queues.",
+        "solution": "Python/FastAPI service using Redis as both a message broker and rate-limiting store, Celery workers for concurrent execution, PostgreSQL for ACID persistence, and Docker for orchestration.",
+        "process": [
+          "Built asynchronous FastAPI endpoints with strict schema validation and automated OpenAPI/Swagger specs.",
+          "Implemented Redis-backed rate limiting and dispatched long-running jobs to Celery worker pools.",
+          "Containerized the full stack (API, Celery Workers, Redis, and PostgreSQL) using Docker."
+        ],
+        "features": [
+          "Concurrent background task execution with Celery and Redis.",
+          "Intelligent rate limiting and JWT-based authentication.",
+          "System health check endpoints and interactive Swagger documentation.",
+          "Fully containerized Docker setup with transactional PostgreSQL storage."
+        ]
+      },
+      {
+        "id": "proj-4",
+        "index": "04",
+        "year": "2025",
+        "title": "Sentiment Classifier & NLP Pipeline",
+        "category": "IA / Dados",
+        "categoryDisplay": "AI & Natural Language Processing",
+        "description": "Natural Language Processing pipeline with model fine-tuning for sentiment analysis and automated user feedback classification.",
+        "longDescription": "End-to-end implementation covering text preprocessing, tokenization, embedding extraction, and high-availability inference endpoint deployment.",
+        "technologies": ["Python", "PyTorch", "Hugging Face", "FastAPI", "Docker"],
+        "metrics": "93.4% validation dataset accuracy",
+        "githubUrl": "https://github.com/exemplo/nlp-sentiment-ai",
+        "liveUrl": "https://nlp-demo.streamlit.app",
+        "featured": false,
+        "image": "https://images.unsplash.com/photo-1507146426996-ef05306b995a?auto=format&fit=crop&w=1200&q=85",
+        "problem": "Manually evaluating large volumes of user feedback is slow and inconsistent, requiring models capable of capturing subtle semantic context.",
+        "objective": "Build an end-to-end Natural Language Processing pipeline — from corpus preprocessing and model fine-tuning to production inference serving.",
+        "solution": "Fine-tuned Transformer model using PyTorch and Hugging Face, paired with a standardized tokenization pipeline and served via a containerized FastAPI endpoint.",
+        "process": [
+          "Executed corpus cleaning, text normalization, tokenization, and embedding extraction.",
+          "Fine-tuned and evaluated the PyTorch model across validation splits.",
+          "Packaged the trained model behind a FastAPI REST inference service inside Docker."
+        ],
+        "features": [
+          "Automated text preprocessing and tokenization pipeline.",
+          "Semantic embedding extraction and sentiment classification with PyTorch & Hugging Face.",
+          "Low-latency REST inference endpoint served via FastAPI.",
+          "Interactive web interface for live sentence evaluation."
+        ]
+      }
+    ]
+  },
+  "about": {
+    "eyebrow": "03 / PROFILE & ACADEMIC BACKGROUND",
+    "title": "Engineering Grounded in Computer Science.",
+    "lead": "I am passionate about solving complex problems with clean code and efficient algorithms. My Computer Science journey combines strong theoretical foundations with hands-on development of high-performance full-stack applications.",
+    "quote": "\"Computer science is no more about computers than astronomy is about telescopes.\"",
+    "quoteAuthor": "— Edsger W. Dijkstra",
+    "education": {
+      "label": "ACADEMIC EDUCATION",
+      "period": "2023 — Present (Expected: 2027)",
+      "degree": "Bachelor of Science in Computer Science",
+      "institution": "Instituto Mauá de Tecnologia (IMT)",
+      "location": "São Paulo, Brazil",
+      "description": "Comprehensive degree focused on computer science fundamentals, software engineering, and complex systems.",
+      "highlights": [
+        "Strong academic performance across core computing courses",
+        "Active participation in programming marathons and hackathons",
+        "Hands-on integrative engineering projects with partner organizations"
+      ]
+    },
+    "pillarsTitle": "Computer Science Core Pillars",
+    "pillarsSubtitle": "The theoretical foundations that inform every architectural and implementation decision.",
+    "pillars": [
+      {
+        "index": "01",
+        "title": "Data Structures & Algorithms",
+        "description": "Graphs (Dijkstra, BFS/DFS), balanced trees (AVL, Red-Black), hash tables, and asymptotic Big-O complexity analysis."
+      },
+      {
+        "index": "02",
+        "title": "Operating Systems & Concurrency",
+        "description": "Memory management (Virtual Memory, Paging), processes, threads, mutexes, semaphores, and deadlock prevention."
+      },
+      {
+        "index": "03",
+        "title": "Computer Networks & Protocols",
+        "description": "OSI/TCP-IP layers, routing, WebSockets, HTTP/2 & 3, RESTful APIs, gRPC, and client-server communication."
+      },
+      {
+        "index": "04",
+        "title": "Databases & Data Modeling",
+        "description": "Relational normalization (PostgreSQL/MySQL), document modeling (MongoDB), ACID transactions, indexing, and query optimization."
+      },
+      {
+        "index": "05",
+        "title": "Software Architecture & Clean Code",
+        "description": "SOLID principles, separation of concerns (Clean Architecture), Design Patterns, and automated testing."
+      },
+      {
+        "index": "06",
+        "title": "DevOps & Containers",
+        "description": "Containerization with Docker, CI/CD pipeline automation, isolated Linux environments, and cloud deployment."
+      }
+    ],
+    "metrics": [
+      { "value": "04", "label": "FEATURED SYSTEMS", "sub": "Full-Stack, Backend, AI & Systems" },
+      { "value": "04", "label": "OFFICIAL CERTIFICATIONS", "sub": "AWS, Harvard CS50, Meta & DeepLearning.AI" },
+      { "value": "05", "label": "CORE LANGUAGES", "sub": "TypeScript, Python, C/C++, Java & SQL" }
+    ]
+  },
+  "skills": {
+    "eyebrow": "04 / TECHNICAL CAPABILITIES & CREDENTIALS",
+    "title": "Stack & Certifications",
+    "subtitle": "Technologies organized by engineering domain alongside verifiable technical credentials.",
+    "categories": {
+      "languages": {
+        "index": "01",
+        "title": "Programming Languages",
+        "items": [
+          { "name": "TypeScript / JavaScript", "meta": "Advanced" },
+          { "name": "Python", "meta": "Advanced" },
+          { "name": "C / C++", "meta": "Intermediate (Academic)" },
+          { "name": "Java", "meta": "Intermediate" },
+          { "name": "SQL", "meta": "Advanced" }
+        ]
+      },
+      "frameworks": {
+        "index": "02",
+        "title": "Frameworks & Web Ecosystem",
+        "items": [
+          { "name": "React / Next.js", "meta": "Frontend" },
+          { "name": "Node.js / Express", "meta": "Backend" },
+          { "name": "FastAPI / Flask", "meta": "Backend" },
+          { "name": "Tailwind CSS", "meta": "Frontend" }
+        ]
+      },
+      "tools": {
+        "index": "03",
+        "title": "Infrastructure, DevOps & Data",
+        "items": [
+          { "name": "Git & GitHub", "meta": "Version Control" },
+          { "name": "Docker", "meta": "Containers" },
+          { "name": "Linux / Bash", "meta": "Environment" },
+          { "name": "MongoDB & PostgreSQL", "meta": "Databases" },
+          { "name": "Vercel & Cloudflare", "meta": "Deploy & Cloud" }
+        ]
+      }
+    },
+    "certifications": {
+      "eyebrow": "VERIFIED CREDENTIALS",
+      "title": "Certifications & Courses",
+      "subtitle": "Formal validation of international technical competencies with authenticity IDs and direct verification links.",
+      "verifyLabel": "Verify Credential",
+      "idLabel": "ID",
+      "items": [
+        {
+          "id": "cert-1",
+          "index": "01",
+          "title": "AWS Certified Cloud Practitioner",
+          "issuer": "Amazon Web Services",
+          "issueDate": "2025",
+          "credentialUrl": "https://aws.amazon.com/verification",
+          "credentialId": "AWS-CLF-00129",
+          "skills": ["Cloud Computing", "AWS Architecture", "Security", "Storage & S3"]
+        },
+        {
+          "id": "cert-2",
+          "index": "02",
+          "title": "CS50's Introduction to Computer Science",
+          "issuer": "Harvard University (edX)",
+          "issueDate": "2024",
+          "credentialUrl": "https://cs50.harvard.edu/certificates",
+          "credentialId": "CS50X-HC-98214",
+          "skills": ["C", "Python", "Algorithms", "Memory Management", "SQL"]
+        },
+        {
+          "id": "cert-3",
+          "index": "03",
+          "title": "Meta Front-End Developer Professional",
+          "issuer": "Meta / Coursera",
+          "issueDate": "2024",
+          "credentialUrl": "https://coursera.org/verify/professional-cert",
+          "credentialId": "META-FED-83741",
+          "skills": ["React.js", "JavaScript ES6+", "UI/UX Design", "Unit Testing"]
+        },
+        {
+          "id": "cert-4",
+          "index": "04",
+          "title": "Python for Data Science & Machine Learning",
+          "issuer": "DeepLearning.AI / Coursera",
+          "issueDate": "2025",
+          "credentialUrl": "https://coursera.org/verify",
+          "credentialId": "DL-PY-49120",
+          "skills": ["Pandas", "NumPy", "Scikit-Learn", "Data Visualization"]
+        }
+      ]
+    }
+  },
+  "contact": {
+    "eyebrow": "05 / CONTACT & CONNECTION",
+    "monumentalLine1": "LET'S",
+    "monumentalLine2": "WORK",
+    "monumentalLine3": "TOGETHER.",
+    "lead": "Looking for the next problem worth solving.",
+    "description": "Open to opportunities in Software Engineering, Full-Stack Development, Backend Architecture, and challenging technical projects in São Paulo or remote.",
+    "downloadResume": "DOWNLOAD RESUME",
+    "sendMessageCta": "SEND ME A MESSAGE",
+    "copyEmail": "Copy Email",
+    "copiedEmail": "Email Copied!",
+    "channels": {
+      "emailLabel": "EMAIL",
+      "githubLabel": "GITHUB",
+      "linkedinLabel": "LINKEDIN"
+    },
+    "form": {
+      "title": "Direct Message",
+      "subtitle": "Fill out the fields below to start a conversation via your email client.",
+      "nameLabel": "Your Name / Company",
+      "namePlaceholder": "e.g., Jane Doe (Tech Lead)",
+      "emailLabel": "Your Email",
+      "emailPlaceholder": "name@company.com",
+      "messageLabel": "Message or Opportunity",
+      "messagePlaceholder": "Hi Lucas! We would love to connect regarding a Software Engineering opportunity...",
+      "submit": "Send Message",
+      "close": "Close",
+      "successMessage": "Your email client has been opened with the message ready to send."
+    },
+    "closingBanner": "Let's build something useful."
+  },
+  "resume": {
+    "eyebrow": "OFFICIAL DOCUMENT / CV",
+    "title": "Resume & Trajectory",
+    "subtitle": "Structured overview of academic education at Instituto Mauá de Tecnologia, technical projects, and verified certifications.",
+    "downloadPdf": "Print / Save as PDF",
+    "downloadedPdf": "Preparing Print...",
+    "printVersion": "Print Version",
+    "summaryTitle": "Academic & Professional Summary",
+    "educationTitle": "Academic Education",
+    "skillsTitle": "Technical Competencies",
+    "projectsTitle": "Selected Projects",
+    "certificationsTitle": "Verified Certifications",
+    "verifiedBadge": "Verified"
+  },
+  "terminal": {
+    "welcomeTitle": "✦ Interactive session initialized.",
+    "welcomeBody": "Explore Lucas Ribeiro's technical profile via command line.",
+    "welcomeHint": "Type 'help' or click a quick command below.",
+    "shortcutsLabel": "commands:",
+    "placeholder": "Type a command (help, about, skills, projects, certs, contact, clear)...",
+    "helpTitle": "Available commands:",
+    "helpAbout": "Mauá education & overview",
+    "helpSkills": "Languages, frameworks & tools",
+    "helpProjects": "Projects & case studies",
+    "helpCerts": "Official certifications & IDs",
+    "helpContact": "Direct contact channels",
+    "helpClear": "Clear terminal history",
+    "unknownCmd": "Command not recognized. Type 'help' to see valid commands."
+  },
+  "footer": {
+    "navigationHeading": "NAVIGATION",
+    "focusHeading": "WHAT I BUILD",
+    "focusItems": [
+      "Software Engineering",
+      "Full-Stack Web Applications",
+      "Distributed Systems & APIs",
+      "Data Structures & AI"
+    ],
+    "builtWith": "Designed & engineered by Lucas Ribeiro",
+    "backToTop": "Back to top"
+  }
+}

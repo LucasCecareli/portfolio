@@ -1,7 +1,8 @@
 import React, { useState } from 'react';
 import { portfolioData } from '../data/portfolioData';
+import { useLanguage } from '../context/LanguageContext';
+import { Link } from '../router';
 import {
-  FileText,
   Download,
   Printer,
   GraduationCap,
@@ -10,30 +11,32 @@ import {
   Award,
   Mail,
   MapPin,
-  ExternalLink,
-  Check
+  ArrowUpRight,
+  ArrowLeft,
+  Check,
+  FolderGit2,
 } from 'lucide-react';
 import { motion } from 'framer-motion';
 import confetti from 'canvas-confetti';
 
 export const Resume: React.FC = () => {
+  const { t } = useLanguage();
   const [downloaded, setDownloaded] = useState(false);
 
   const handleDownloadPDF = () => {
     setDownloaded(true);
     try {
       confetti({
-        particleCount: 60,
-        spread: 70,
+        particleCount: 40,
+        spread: 60,
         origin: { y: 0.6 },
+        colors: ['#F5F5F5', '#A1A1AA', '#292929'],
       });
     } catch {
       // ignore
     }
-
-    // Trigger window.print() or file download
     window.print();
-    setTimeout(() => setDownloaded(false), 4000);
+    window.setTimeout(() => setDownloaded(false), 3500);
   };
 
   return (
@@ -42,180 +45,261 @@ export const Resume: React.FC = () => {
       animate={{ opacity: 1, y: 0 }}
       exit={{ opacity: 0, y: -12 }}
       transition={{ duration: 0.35 }}
-      className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 pt-32 pb-24 space-y-12"
+      className="min-h-screen pt-28 pb-24 bg-[var(--bg-primary)]"
     >
-      {/* Header */}
-      <div className="text-center max-w-3xl mx-auto space-y-4">
-        <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-indigo-500/10 border border-indigo-500/20 text-indigo-400 text-xs font-mono uppercase tracking-wider">
-          <FileText className="w-3.5 h-3.5" />
-          <span>Documento Oficial</span>
-        </div>
-        <h1 className="text-4xl sm:text-5xl font-extrabold text-white tracking-tight">
-          Currículo & Trajetória
-        </h1>
-        <p className="text-slate-400 text-base sm:text-lg leading-relaxed">
-          Visão condensada da formação acadêmica, habilidades técnicas e conquistas para recrutadores e tech leads.
-        </p>
-
-        {/* Action Buttons: Central, Visible & Functional */}
-        <div className="flex flex-wrap items-center justify-center gap-4 pt-4">
-          <button
-            onClick={handleDownloadPDF}
-            className="inline-flex items-center gap-2.5 px-6 py-3.5 rounded-2xl bg-blue-600 hover:bg-blue-500 text-white font-semibold text-sm shadow-xl shadow-blue-500/30 transition-all hover:scale-105 active:scale-95 cursor-pointer"
+      <div className="editorial-container max-w-5xl space-y-12">
+        {/* Top Back Navigation & Action Bar */}
+        <div className="flex flex-wrap items-center justify-between gap-4 border-b border-[var(--border-subtle)] pb-5 no-print">
+          <Link
+            to="/"
+            sectionId="home"
+            className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-[var(--bg-surface)] hover:bg-[var(--bg-elevated)] border border-[var(--border-subtle)] font-mono-tech text-xs uppercase tracking-wider text-[var(--text-primary)] transition-colors"
           >
-            {downloaded ? (
-              <>
-                <Check className="w-4 h-4 text-emerald-300" />
-                <span>Salvo / Imprimindo...</span>
-              </>
-            ) : (
-              <>
-                <Download className="w-4 h-4" />
-                <span>Baixar Currículo em PDF</span>
-              </>
-            )}
-          </button>
+            <ArrowLeft className="w-3.5 h-3.5" />
+            <span data-i18n="resume-back">{t.nav.backToHome}</span>
+          </Link>
 
-          <button
-            onClick={() => window.print()}
-            className="inline-flex items-center gap-2 px-5 py-3.5 rounded-2xl bg-slate-800 hover:bg-slate-700 text-slate-200 border border-slate-700 font-medium text-sm transition-all hover:scale-105 active:scale-95 cursor-pointer"
-          >
-            <Printer className="w-4 h-4 text-slate-400" />
-            <span>Versão para Impressão</span>
-          </button>
-        </div>
-      </div>
-
-      {/* Structured CV Document Container */}
-      <div className="rounded-3xl bg-[#0c101c] border border-slate-800 p-8 sm:p-12 space-y-12 shadow-2xl relative">
-        
-        {/* CV Top Header */}
-        <div className="border-b border-slate-800 pb-8 flex flex-col md:flex-row md:items-center justify-between gap-6">
-          <div className="space-y-2">
-            <h2 className="text-3xl font-extrabold text-white">
-              {portfolioData.personal.name}
-            </h2>
-            <p className="text-blue-400 font-mono text-sm sm:text-base">
-              {portfolioData.personal.role}
-            </p>
-            <div className="flex flex-wrap items-center gap-4 text-xs font-mono text-slate-400 pt-1">
-              <span className="flex items-center gap-1.5">
-                <MapPin className="w-3.5 h-3.5 text-slate-500" />
-                {portfolioData.personal.location}
-              </span>
-              <span className="flex items-center gap-1.5">
-                <Mail className="w-3.5 h-3.5 text-slate-500" />
-                {portfolioData.personal.email}
-              </span>
-            </div>
-          </div>
-
-          <div className="flex flex-col sm:flex-row gap-2.5 text-xs font-mono">
-            <a
-              href={portfolioData.personal.github}
-              target="_blank"
-              rel="noreferrer"
-              className="px-3.5 py-2 rounded-xl bg-slate-900 border border-slate-800 text-slate-300 hover:text-white hover:border-slate-700 transition-colors flex items-center justify-between gap-2"
+          <div className="flex flex-wrap items-center gap-3">
+            <button
+              type="button"
+              onClick={handleDownloadPDF}
+              className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-[var(--accent-bg)] text-[var(--accent-text)] font-mono-tech text-xs font-semibold uppercase tracking-wider hover:opacity-90 transition-opacity cursor-pointer"
             >
-              <span>GitHub</span>
-              <ExternalLink className="w-3.5 h-3.5 text-slate-500" />
-            </a>
-            <a
-              href={portfolioData.personal.linkedin}
-              target="_blank"
-              rel="noreferrer"
-              className="px-3.5 py-2 rounded-xl bg-slate-900 border border-slate-800 text-slate-300 hover:text-white hover:border-slate-700 transition-colors flex items-center justify-between gap-2"
+              {downloaded ? (
+                <>
+                  <Check className="w-3.5 h-3.5" />
+                  <span>{t.resume.downloadedPdf}</span>
+                </>
+              ) : (
+                <>
+                  <Download className="w-3.5 h-3.5" />
+                  <span data-i18n="resume-dl-btn">{t.resume.downloadPdf}</span>
+                </>
+              )}
+            </button>
+
+            <button
+              type="button"
+              onClick={() => window.print()}
+              className="inline-flex items-center gap-2 px-4 py-2.5 rounded-full bg-[var(--bg-surface)] hover:bg-[var(--bg-elevated)] text-[var(--text-primary)] border border-[var(--border-subtle)] font-mono-tech text-xs uppercase tracking-wider transition-colors cursor-pointer"
             >
-              <span>LinkedIn</span>
-              <ExternalLink className="w-3.5 h-3.5 text-slate-500" />
-            </a>
+              <Printer className="w-3.5 h-3.5" />
+              <span data-i18n="resume-print-btn">{t.resume.printVersion}</span>
+            </button>
           </div>
         </div>
 
-        {/* Resumo Profissional */}
-        <div className="space-y-3">
-          <h3 className="text-xs font-mono uppercase tracking-wider text-blue-400 flex items-center gap-2">
-            <Briefcase className="w-4 h-4" />
-            <span>Resumo Profissional & Acadêmico</span>
-          </h3>
-          <p className="text-slate-300 text-sm sm:text-base leading-relaxed">
-            {portfolioData.about.overview}
+        {/* Header */}
+        <div className="space-y-3 no-print">
+          <span
+            data-i18n="resume-eyebrow"
+            className="font-mono-tech text-xs uppercase tracking-[0.2em] text-[var(--text-muted)]"
+          >
+            {t.resume.eyebrow}
+          </span>
+          <h1
+            data-i18n="resume-title"
+            className="text-section-title text-[var(--text-primary)]"
+          >
+            {t.resume.title}
+          </h1>
+          <p
+            data-i18n="resume-subtitle"
+            className="text-editorial-lead text-[var(--text-secondary)] max-w-2xl"
+          >
+            {t.resume.subtitle}
           </p>
         </div>
 
-        {/* Formação Acadêmica */}
-        <div className="space-y-4">
-          <h3 className="text-xs font-mono uppercase tracking-wider text-blue-400 flex items-center gap-2">
-            <GraduationCap className="w-4 h-4" />
-            <span>Formação Acadêmica</span>
-          </h3>
-
-          <div className="p-6 rounded-2xl bg-slate-900/60 border border-slate-800/80 space-y-3">
-            <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-1">
-              <h4 className="text-base font-bold text-white">{portfolioData.personal.degree}</h4>
-              <span className="text-xs font-mono text-blue-400">{portfolioData.personal.graduationYear}</span>
-            </div>
-            <p className="text-sm font-medium text-slate-400">{portfolioData.personal.institution}</p>
-            <div className="pt-2 text-xs text-slate-300 space-y-1">
-              <p>• Foco em fundamentos da computação: Algoritmos Avançados, Estruturas de Dados, Sistemas Concorrentes, Redes e Teoria dos Grafos.</p>
-              <p>• Resolução de desafios de programação e projetos integradores com tecnologias modernas.</p>
-            </div>
-          </div>
-        </div>
-
-        {/* Habilidades Técnicas */}
-        <div className="space-y-4">
-          <h3 className="text-xs font-mono uppercase tracking-wider text-blue-400 flex items-center gap-2">
-            <Code2 className="w-4 h-4" />
-            <span>Competências & Tecnologias</span>
-          </h3>
-
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-4 text-xs font-mono">
-            <div className="p-4 rounded-xl bg-slate-900/40 border border-slate-800 space-y-2">
-              <span className="text-blue-400 font-bold block">Linguagens:</span>
-              <p className="text-slate-300">
-                {portfolioData.skills.linguagens.map((l) => l.name).join(', ')}
+        {/* Structured CV Document Sheet */}
+        <div
+          className="rounded-3xl bg-[var(--bg-surface)] border border-[var(--border-subtle)] p-8 sm:p-12 space-y-10"
+          style={{ boxShadow: 'var(--shadow-card)' }}
+        >
+          {/* CV Header */}
+          <div className="border-b border-[var(--border-subtle)] pb-8 flex flex-col md:flex-row md:items-center justify-between gap-6">
+            <div className="space-y-2">
+              <h2 className="font-display font-extrabold text-3xl text-[var(--text-primary)]">
+                {portfolioData.personal.name}
+              </h2>
+              <p
+                data-i18n="resume-role"
+                className="font-mono-tech text-sm text-[var(--text-secondary)]"
+              >
+                {t.hero.idCard.role}
               </p>
-            </div>
-            <div className="p-4 rounded-xl bg-slate-900/40 border border-slate-800 space-y-2">
-              <span className="text-indigo-400 font-bold block">Frameworks:</span>
-              <p className="text-slate-300">
-                {portfolioData.skills.frameworks.map((f) => f.name).join(', ')}
-              </p>
-            </div>
-            <div className="p-4 rounded-xl bg-slate-900/40 border border-slate-800 space-y-2">
-              <span className="text-cyan-400 font-bold block">DevOps & Dados:</span>
-              <p className="text-slate-300">
-                {portfolioData.skills.ferramentas.map((t) => t.name).join(', ')}
-              </p>
-            </div>
-          </div>
-        </div>
-
-        {/* Certificações Oficiais */}
-        <div className="space-y-4">
-          <h3 className="text-xs font-mono uppercase tracking-wider text-blue-400 flex items-center gap-2">
-            <Award className="w-4 h-4" />
-            <span>Certificações em Destaque</span>
-          </h3>
-
-          <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 text-xs">
-            {portfolioData.certifications.map((cert) => (
-              <div key={cert.id} className="p-3.5 rounded-xl bg-slate-900/40 border border-slate-800 flex items-start justify-between gap-3">
-                <div>
-                  <h4 className="font-bold text-white">{cert.title}</h4>
-                  <span className="text-slate-400">{cert.issuer} ({cert.issueDate})</span>
-                </div>
-                {cert.credentialId && (
-                  <span className="text-[11px] font-mono text-emerald-400 bg-emerald-950/60 px-2 py-0.5 rounded border border-emerald-500/20">
-                    Verificado
-                  </span>
-                )}
+              <div className="flex flex-wrap items-center gap-4 text-xs font-mono-tech text-[var(--text-muted)] pt-1">
+                <span className="flex items-center gap-1.5">
+                  <MapPin className="w-3.5 h-3.5" />
+                  {t.about.education.location}
+                </span>
+                <span className="flex items-center gap-1.5">
+                  <Mail className="w-3.5 h-3.5" />
+                  {portfolioData.personal.email}
+                </span>
               </div>
-            ))}
+            </div>
+
+            <div className="flex flex-wrap gap-2.5 text-xs font-mono-tech">
+              <a
+                href={portfolioData.personal.github}
+                target="_blank"
+                rel="noreferrer"
+                className="px-4 py-2 rounded-full bg-[var(--bg-primary)] border border-[var(--border-subtle)] hover:border-[var(--border-strong)] text-[var(--text-primary)] flex items-center gap-2 transition-colors"
+              >
+                <span>GitHub</span>
+                <ArrowUpRight className="w-3.5 h-3.5" />
+              </a>
+              <a
+                href={portfolioData.personal.linkedin}
+                target="_blank"
+                rel="noreferrer"
+                className="px-4 py-2 rounded-full bg-[var(--bg-primary)] border border-[var(--border-subtle)] hover:border-[var(--border-strong)] text-[var(--text-primary)] flex items-center gap-2 transition-colors"
+              >
+                <span>LinkedIn</span>
+                <ArrowUpRight className="w-3.5 h-3.5" />
+              </a>
+            </div>
+          </div>
+
+          {/* Academic & Professional Summary */}
+          <div className="space-y-3">
+            <h3 className="font-mono-tech text-xs uppercase tracking-widest text-[var(--text-muted)] flex items-center gap-2">
+              <Briefcase className="w-4 h-4 text-[var(--text-primary)]" />
+              <span data-i18n="resume-sum-title">{t.resume.summaryTitle}</span>
+            </h3>
+            <p
+              data-i18n="resume-sum-body"
+              className="text-sm sm:text-base text-[var(--text-secondary)] leading-relaxed"
+            >
+              {t.about.lead}
+            </p>
+          </div>
+
+          {/* Education */}
+          <div className="space-y-4">
+            <h3 className="font-mono-tech text-xs uppercase tracking-widest text-[var(--text-muted)] flex items-center gap-2">
+              <GraduationCap className="w-4 h-4 text-[var(--text-primary)]" />
+              <span data-i18n="resume-edu-title">{t.resume.educationTitle}</span>
+            </h3>
+
+            <div className="p-6 rounded-2xl bg-[var(--bg-primary)] border border-[var(--border-subtle)] space-y-3">
+              <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-1">
+                <h4
+                  data-i18n="resume-edu-deg"
+                  className="font-display font-bold text-lg text-[var(--text-primary)]"
+                >
+                  {t.about.education.degree}
+                </h4>
+                <span className="font-mono-tech text-xs text-[var(--text-muted)]">
+                  {t.about.education.period}
+                </span>
+              </div>
+              <p className="font-mono-tech text-xs text-[var(--text-secondary)]">
+                {t.about.education.institution}
+              </p>
+              <ul className="pt-2 space-y-1.5 text-xs sm:text-sm text-[var(--text-secondary)]">
+                {t.about.education.highlights.map((hl, i) => (
+                  <li key={i}>• {hl}</li>
+                ))}
+              </ul>
+            </div>
+          </div>
+
+          {/* Selected Projects */}
+          <div className="space-y-4">
+            <h3 className="font-mono-tech text-xs uppercase tracking-widest text-[var(--text-muted)] flex items-center gap-2">
+              <FolderGit2 className="w-4 h-4 text-[var(--text-primary)]" />
+              <span data-i18n="resume-proj-title">{t.resume.projectsTitle}</span>
+            </h3>
+
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+              {t.projects.items.map((proj) => (
+                <div
+                  key={proj.id}
+                  className="p-5 rounded-2xl bg-[var(--bg-primary)] border border-[var(--border-subtle)] space-y-2"
+                >
+                  <div className="flex items-center justify-between">
+                    <h4 className="font-display font-bold text-base text-[var(--text-primary)]">
+                      {proj.title}
+                    </h4>
+                    <span className="font-mono-tech text-[11px] text-[var(--text-muted)]">
+                      {proj.year}
+                    </span>
+                  </div>
+                  <p className="text-xs text-[var(--text-secondary)] leading-relaxed">
+                    {proj.description}
+                  </p>
+                  <p className="font-mono-tech text-[11px] text-[var(--text-primary)] pt-1">
+                    {proj.technologies.join(' · ')}
+                  </p>
+                </div>
+              ))}
+            </div>
+          </div>
+
+          {/* Technical Skills */}
+          <div className="space-y-4">
+            <h3 className="font-mono-tech text-xs uppercase tracking-widest text-[var(--text-muted)] flex items-center gap-2">
+              <Code2 className="w-4 h-4 text-[var(--text-primary)]" />
+              <span data-i18n="resume-skills-title">{t.resume.skillsTitle}</span>
+            </h3>
+
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-4 font-mono-tech text-xs">
+              <div className="p-4 rounded-2xl bg-[var(--bg-primary)] border border-[var(--border-subtle)] space-y-2">
+                <span className="text-[var(--text-primary)] font-bold block">
+                  {t.skills.categories.languages.title}:
+                </span>
+                <p className="text-[var(--text-secondary)]">
+                  {t.skills.categories.languages.items.map((l) => l.name).join(', ')}
+                </p>
+              </div>
+              <div className="p-4 rounded-2xl bg-[var(--bg-primary)] border border-[var(--border-subtle)] space-y-2">
+                <span className="text-[var(--text-primary)] font-bold block">
+                  {t.skills.categories.frameworks.title}:
+                </span>
+                <p className="text-[var(--text-secondary)]">
+                  {t.skills.categories.frameworks.items.map((f) => f.name).join(', ')}
+                </p>
+              </div>
+              <div className="p-4 rounded-2xl bg-[var(--bg-primary)] border border-[var(--border-subtle)] space-y-2">
+                <span className="text-[var(--text-primary)] font-bold block">
+                  {t.skills.categories.tools.title}:
+                </span>
+                <p className="text-[var(--text-secondary)]">
+                  {t.skills.categories.tools.items.map((tool) => tool.name).join(', ')}
+                </p>
+              </div>
+            </div>
+          </div>
+
+          {/* Verified Certifications */}
+          <div className="space-y-4">
+            <h3 className="font-mono-tech text-xs uppercase tracking-widest text-[var(--text-muted)] flex items-center gap-2">
+              <Award className="w-4 h-4 text-[var(--text-primary)]" />
+              <span data-i18n="resume-certs-title">{t.resume.certificationsTitle}</span>
+            </h3>
+
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 text-xs">
+              {t.skills.certifications.items.map((cert) => (
+                <div
+                  key={cert.id}
+                  className="p-4 rounded-2xl bg-[var(--bg-primary)] border border-[var(--border-subtle)] flex items-start justify-between gap-3"
+                >
+                  <div>
+                    <h4 className="font-bold text-[var(--text-primary)]">{cert.title}</h4>
+                    <span className="text-[var(--text-secondary)] font-mono-tech text-[11px]">
+                      {cert.issuer} ({cert.issueDate}) · {cert.credentialId}
+                    </span>
+                  </div>
+                  <span className="font-mono-tech text-[10px] px-2.5 py-0.5 rounded-full bg-[var(--bg-elevated)] border border-[var(--border-subtle)] text-[var(--text-primary)] shrink-0">
+                    {t.resume.verifiedBadge}
+                  </span>
+                </div>
+              ))}
+            </div>
           </div>
         </div>
-
       </div>
     </motion.div>
   );

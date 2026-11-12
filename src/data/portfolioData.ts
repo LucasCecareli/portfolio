@@ -45,6 +45,8 @@ export const portfolioData = {
     github: "https://github.com",
     linkedin: "https://linkedin.com",
     availableForHire: true,
+    // Para exibir sua foto no Crachá Editorial da Hero Section, basta colocar o caminho aqui (ex: "/foto-lucas.jpg")
+    photoUrl: "",
   },
 
   about: {

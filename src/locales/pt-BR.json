@@ -1,0 +1,450 @@
+{
+  "meta": {
+    "title": "Lucas Ribeiro — Engenharia de Software & Ciência da Computação",
+    "description": "Portfólio de Lucas Ribeiro — Estudante de Ciência da Computação no Instituto Mauá de Tecnologia e Software Engineer. Estudos de caso, arquitetura de sistemas e credenciais verificadas."
+  },
+  "nav": {
+    "home": "Início",
+    "about": "Sobre",
+    "projects": "Projetos",
+    "skills": "Skills",
+    "certifications": "Certificações",
+    "resume": "Currículo",
+    "contact": "Contato",
+    "hireMe": "Vamos Conversar",
+    "available": "Disponível para Oportunidades",
+    "switchThemeToLight": "Ativar tema claro",
+    "switchThemeToDark": "Ativar tema escuro",
+    "switchLang": "Alternar idioma",
+    "openMenu": "Abrir menu de navegação",
+    "closeMenu": "Fechar menu de navegação",
+    "backToHome": "Voltar ao Início",
+    "backToProjects": "Voltar para Projetos"
+  },
+  "hero": {
+    "statusBadge": "DISPONÍVEL PARA ESTÁGIO & ENGENHARIA DE SOFTWARE",
+    "institutionBadge": "Bacharelado em Ciência da Computação · Instituto Mauá de Tecnologia",
+    "greeting": "LUCAS RIBEIRO",
+    "headlineLine1": "Arquitetura",
+    "headlineLine2": "de Software &",
+    "headlineLine3": "Engenharia Web.",
+    "subtitle": "Desenvolvendo soluções eficientes, escaláveis e com design moderno. Focado em arquitetura de software, sistemas distribuídos, estruturas de dados e tecnologias web modernas.",
+    "ctaProjects": "Explorar Projetos",
+    "ctaContact": "Entrar em Contato",
+    "ctaResume": "Currículo / CV",
+    "scrollIndicator": "ROLE PARA EXPLORAR",
+    "cardTabIdentity": "CREDENCIAL TÉCNICA",
+    "cardTabTerminal": "TERMINAL CLI",
+    "idCard": {
+      "headerLabel": "IDENTIDADE ACADÊMICA & TÉCNICA",
+      "code": "IMT — BCC · 2027",
+      "role": "Ciência da Computação & Software Engineer",
+      "institution": "Instituto Mauá de Tecnologia",
+      "location": "São Paulo, Brasil",
+      "focusLabel": "FOCO DE ENGENHARIA",
+      "focusItems": [
+        "Arquitetura de Software",
+        "Sistemas Distribuídos",
+        "Algoritmos & Estruturas",
+        "Aplicações Full-Stack"
+      ],
+      "photoPlaceholderNote": "ARTEFATO MONOGRAMÁTICO AUTORAL · PRONTO PARA RETRATO P&B",
+      "interactiveHint": "Mova o cursor para inspecionar · Clique para alternar visão"
+    }
+  },
+  "bridge": {
+    "eyebrow": "01 / METODOLOGIA & ENGENHARIA",
+    "titleLeft": "TEORIA",
+    "titleMiddle": "ARQUITETURA",
+    "titleRight": "PRODUÇÃO",
+    "statement": "Traduzo fundamentos rigorosos da Ciência da Computação — complexidade algorítmica, concorrência e modelagem de dados — em arquiteturas limpas e interfaces digitais de alta precisão.",
+    "steps": [
+      {
+        "index": "01",
+        "label": "FUNDAMENTO",
+        "title": "Modelagem & Complexidade",
+        "detail": "Estruturas de dados, grafos, árvores balanceadas e análise assintótica Big-O."
+      },
+      {
+        "index": "02",
+        "label": "SISTEMA",
+        "title": "Arquitetura Limpa & Concorrência",
+        "detail": "Princípios SOLID, microsserviços assíncronos, WebSockets, filas e containers Docker."
+      },
+      {
+        "index": "03",
+        "label": "EXECUÇÃO",
+        "title": "Interfaces & Performance",
+        "detail": "Aplicações reativas em TypeScript e React com foco em usabilidade, clareza e velocidade."
+      }
+    ]
+  },
+  "projects": {
+    "eyebrow": "02 / OBRAS SELECIONADAS & CASE STUDIES",
+    "title": "Projetos & Sistemas",
+    "subtitle": "Sistemas desenvolvidos aplicando arquitetura limpa, computação concorrente, visualização algorítmica e processamento de linguagem natural.",
+    "filterAll": "Todos",
+    "viewCaseStudy": "Estudo de Caso",
+    "viewRepository": "Repositório GitHub",
+    "viewLiveDemo": "Live Demo",
+    "cursorLabel": "VER CASE ↗",
+    "metricsLabel": "Métrica Verificada",
+    "technologiesLabel": "Stack Utilizada",
+    "yearLabel": "Ano",
+    "categoryLabel": "Domínio",
+    "caseStudy": {
+      "backButton": "Voltar aos Projetos",
+      "overviewTitle": "Visão Geral",
+      "problemTitle": "Contexto & Problema",
+      "objectiveTitle": "Objetivo Técnico",
+      "solutionTitle": "Arquitetura & Solução",
+      "processTitle": "Processo de Engenharia",
+      "featuresTitle": "Funcionalidades Implementadas",
+      "resultsTitle": "Resultados & Métricas",
+      "nextProject": "Próximo Projeto",
+      "prevProject": "Projeto Anterior",
+      "linksHeading": "Acesso ao Projeto"
+    },
+    "items": [
+      {
+        "id": "proj-1",
+        "index": "01",
+        "year": "2025",
+        "title": "Algorithmic Visualizer 3D",
+        "category": "Sistemas / C++",
+        "categoryDisplay": "Algoritmos & Sistemas",
+        "description": "Plataforma interativa para visualização em tempo real de algoritmos de ordenação, grafos (Dijkstra, A*) e árvores de busca.",
+        "longDescription": "Projeto desenvolvido para consolidar os estudos de Ciência da Computação. Demonstra passos de execução, compara complexidades Big-O de tempo e espaço e permite ao usuário testar dados customizados.",
+        "technologies": ["TypeScript", "Canvas API", "Algoritmos", "Web Workers"],
+        "metrics": "Complexidade visualizada passo a passo",
+        "githubUrl": "https://github.com/exemplo/algo-visualizer",
+        "liveUrl": "https://algo-visualizer-demo.vercel.app",
+        "featured": true,
+        "image": "https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&w=1200&q=85",
+        "problem": "O estudo abstrato de estruturas de dados e algoritmos em grafos e árvores frequentemente carece de inspeção visual em tempo real do estado interno da memória, fronteiras de exploração e custo assintótico.",
+        "objective": "Construir um motor gráfico interativo no navegador capaz de executar e pausar algoritmos clássicos passo a passo sem bloquear a thread principal de renderização.",
+        "solution": "Arquitetura desacoplada utilizando Web Workers para o cálculo das transições de estados algorítmicos e Canvas API para renderização fluida a 60fps.",
+        "process": [
+          "Modelagem das estruturas de dados (grafos ponderados, árvores de busca e vetores) em TypeScript estrito.",
+          "Implementação de geradores de estados (step-by-step snapshots) para permitir avanço, pausa e controle de velocidade.",
+          "Isolamento do processamento pesado em Web Workers para manter a interface responsiva mesmo com entradas densas."
+        ],
+        "features": [
+          "Visualização passo a passo de algoritmos de caminho mínimo (Dijkstra e A*).",
+          "Inspeção dinâmica de algoritmos de ordenação e árvores de busca.",
+          "Comparativo em tempo real de complexidade Big-O de tempo e espaço.",
+          "Entrada de conjuntos de dados e topologias customizadas pelo usuário."
+        ]
+      },
+      {
+        "id": "proj-2",
+        "index": "02",
+        "year": "2025",
+        "title": "DevNexus — Plataforma Colaborativa de Código",
+        "category": "Full-Stack",
+        "categoryDisplay": "Full-Stack & Tempo Real",
+        "description": "Aplicação full-stack com autenticação segura, editor de código em tempo real e compartilhamento de snippets entre desenvolvedores.",
+        "longDescription": "Sistema distribuído com WebSockets para sincronização de edições colaborativas, persistência em MongoDB e cache em memória para otimização de consultas frequentes.",
+        "technologies": ["React", "Node.js", "WebSockets", "MongoDB", "Tailwind CSS"],
+        "metrics": "Sincronização em tempo real < 50ms",
+        "githubUrl": "https://github.com/exemplo/dev-nexus",
+        "liveUrl": "https://devnexus-demo.vercel.app",
+        "featured": true,
+        "image": "https://images.unsplash.com/photo-1555066931-4365d14bab8c?auto=format&fit=crop&w=1200&q=85",
+        "problem": "Revisões de código e sessões de pair programming exigem sincronização instantânea de estado entre múltiplos clientes conectados simultaneamente sem conflitos de escrita.",
+        "objective": "Desenvolver um ambiente colaborativo full-stack com baixa latência de rede, persistência documental e gerenciamento seguro de sessões.",
+        "solution": "Comunicação bidirecional via WebSockets em Node.js aliada a persistência em MongoDB e camada de cache em memória para leituras de alta frequência.",
+        "process": [
+          "Definição do protocolo de eventos WebSocket para transmissão enxuta de deltas de edição e presença de cursores.",
+          "Modelagem documental no MongoDB para versionamento de snippets e permissões de acesso.",
+          "Construção da interface reativa em React e Tailwind CSS com feedback imediato de conexão."
+        ],
+        "features": [
+          "Edição colaborativa de código em tempo real via WebSockets.",
+          "Autenticação segura e controle de sessões de usuários.",
+          "Compartilhamento e organização de snippets técnicos.",
+          "Cache em memória para otimização de consultas recorrentes."
+        ]
+      },
+      {
+        "id": "proj-3",
+        "index": "03",
+        "year": "2025",
+        "title": "API Gateway & Task Manager Distribuído",
+        "category": "Backend",
+        "categoryDisplay": "Engenharia Backend & Sistemas",
+        "description": "Microsserviço de alto desempenho em FastAPI com filas assíncronas, rate limiting inteligente e monitoramento de saúde do sistema.",
+        "longDescription": "Focado em conceitos de engenharia de software e backend: processamento concorrente com Celery, autenticação JWT, documentação Swagger automática e containerização Docker.",
+        "technologies": ["Python", "FastAPI", "Docker", "Redis", "PostgreSQL"],
+        "metrics": "Throughput de 1.200 req/s em testes de carga",
+        "githubUrl": "https://github.com/exemplo/distributed-task-api",
+        "liveUrl": "https://task-api.onrender.com/docs",
+        "featured": true,
+        "image": "https://images.unsplash.com/photo-1526374965328-7f61d4dc18c5?auto=format&fit=crop&w=1200&q=85",
+        "problem": "APIs síncronas tradicionais sofrem degradação severa de latência quando submetidas a picos de tráfego ou tarefas de processamento intensivo.",
+        "objective": "Projetar um backend resiliente e escalável que desacople o recebimento de requisições da execução pesada por meio de filas distribuídas.",
+        "solution": "Arquitetura em Python/FastAPI utilizando Redis como message broker e camada de rate limiting, workers Celery para processamento concorrente, PostgreSQL para persistência transacional e Docker para orquestração.",
+        "process": [
+          "Desenvolvimento dos endpoints assíncronos em FastAPI com validação estrita e documentação OpenAPI/Swagger.",
+          "Implementação de rate limiting no Redis e delegação de jobs assíncronos para workers Celery.",
+          "Containerização completa do ambiente (API, Worker, Redis e PostgreSQL) com Docker."
+        ],
+        "features": [
+          "Processamento assíncrono e concorrente de tarefas em background com Celery e Redis.",
+          "Rate limiting inteligente e autenticação baseada em tokens JWT.",
+          "Monitoramento de saúde (health checks) e documentação interativa Swagger.",
+          "Ambiente 100% containerizado com Docker e persistência ACID em PostgreSQL."
+        ]
+      },
+      {
+        "id": "proj-4",
+        "index": "04",
+        "year": "2025",
+        "title": "Classificador de Sentimentos & NLP",
+        "category": "IA / Dados",
+        "categoryDisplay": "Inteligência Artificial & NLP",
+        "description": "Pipeline de Processamento de Linguagem Natural com fine-tuning de modelo para análise de sentimentos e feedback de usuários.",
+        "longDescription": "Implementação de pré-processamento de texto, tokenização, extração de embeddings e deployment com endpoint de inferência em alta disponibilidade.",
+        "technologies": ["Python", "PyTorch", "Hugging Face", "FastAPI", "Docker"],
+        "metrics": "Acurácia de 93.4% no dataset de validação",
+        "githubUrl": "https://github.com/exemplo/nlp-sentiment-ai",
+        "liveUrl": "https://nlp-demo.streamlit.app",
+        "featured": false,
+        "image": "https://images.unsplash.com/photo-1507146426996-ef05306b995a?auto=format&fit=crop&w=1200&q=85",
+        "problem": "A análise manual de grandes volumes de feedback textual é lenta e sujeita a inconsistências, exigindo modelos capazes de capturar nuances semânticas do texto.",
+        "objective": "Estruturar um pipeline ponta a ponta de Processamento de Linguagem Natural — do pré-processamento e fine-tuning à disponibilização via API de inferência.",
+        "solution": "Fine-tuning de arquitetura baseada em Transformers (PyTorch / Hugging Face) com pipeline de tokenização padronizado e serviço de inferência empacotado em FastAPI e Docker.",
+        "process": [
+          "Limpeza de corpus textual, normalização, tokenização e extração de embeddings.",
+          "Treinamento e validação do modelo em PyTorch com acompanhamento rigoroso de métricas de precisão e recall.",
+          "Exposição do modelo treinado através de endpoint REST em FastAPI containerizado."
+        ],
+        "features": [
+          "Pipeline automatizado de pré-processamento textual e tokenização.",
+          "Extração de embeddings e classificação semântica com PyTorch e Hugging Face.",
+          "Endpoint de inferência de baixa latência servido via FastAPI.",
+          "Demonstração interativa para teste de sentenças em tempo real."
+        ]
+      }
+    ]
+  },
+  "about": {
+    "eyebrow": "03 / PERFIL & FORMAÇÃO ACADÊMICA",
+    "title": "Engenharia com Base Científica.",
+    "lead": "Sou apaixonado por resolver problemas complexos com código limpo e algoritmos eficientes. Minha jornada na Ciência da Computação combina forte base teórica com o desenvolvimento prático de aplicações full-stack de alto desempenho.",
+    "quote": "\"Computação não é sobre computadores, assim como a astronomia não é sobre telescópios.\"",
+    "quoteAuthor": "— Edsger W. Dijkstra",
+    "education": {
+      "label": "FORMAÇÃO ACADÊMICA",
+      "period": "2023 — Presente (Previsão: 2027)",
+      "degree": "Bacharelado em Ciência da Computação",
+      "institution": "Instituto Mauá de Tecnologia (IMT)",
+      "location": "São Paulo, Brasil",
+      "description": "Formação integral focada em fundamentos de computação, engenharia de software e sistemas complexos.",
+      "highlights": [
+        "Média de rendimento acadêmico destacada",
+        "Participação em maratonas de programação e hackathons",
+        "Projetos práticos integrados com empresas parceiras"
+      ]
+    },
+    "pillarsTitle": "Fundamentos da Ciência da Computação",
+    "pillarsSubtitle": "Os alicerces teóricos que sustentam cada decisão de arquitetura e implementação.",
+    "pillars": [
+      {
+        "index": "01",
+        "title": "Estruturas de Dados & Algoritmos",
+        "description": "Grafos (Dijkstra, BFS/DFS), Árvores balanceadas (AVL, Red-Black), tabelas hash e análise de complexidade assintótica Big-O."
+      },
+      {
+        "index": "02",
+        "title": "Sistemas Operacionais & Concorrência",
+        "description": "Gerenciamento de memória (Virtual Memory, Paging), processos, threads, mutexes, semáforos e prevenção de deadlocks."
+      },
+      {
+        "index": "03",
+        "title": "Redes de Computadores & Protocolos",
+        "description": "Camadas OSI/TCP-IP, roteamento, WebSockets, HTTP/2 e 3, RESTful APIs, gRPC e comunicação cliente-servidor."
+      },
+      {
+        "index": "04",
+        "title": "Bancos de Dados & Modelagem",
+        "description": "Normalização relacional (PostgreSQL/MySQL), modelagem documental (MongoDB), transações ACID, índices e queries eficientes."
+      },
+      {
+        "index": "05",
+        "title": "Arquitetura de Software & Clean Code",
+        "description": "Princípios SOLID, separação de responsabilidades (Clean Architecture), Design Patterns e cobertura de testes."
+      },
+      {
+        "index": "06",
+        "title": "DevOps & Containers",
+        "description": "Containerização com Docker, automação de pipelines CI/CD, ambientes isolados no Linux e deploy em nuvem."
+      }
+    ],
+    "metrics": [
+      { "value": "04", "label": "PROJETOS EM DESTAQUE", "sub": "Full-Stack, Backend, IA & Sistemas" },
+      { "value": "04", "label": "CERTIFICAÇÕES OFICIAIS", "sub": "AWS, Harvard CS50, Meta & DeepLearning.AI" },
+      { "value": "05", "label": "LINGUAGENS CORE", "sub": "TypeScript, Python, C/C++, Java & SQL" }
+    ]
+  },
+  "skills": {
+    "eyebrow": "04 / CAPACIDADES TÉCNICAS & CREDENCIAIS",
+    "title": "Stack & Certificações",
+    "subtitle": "Tecnologias organizadas por domínio de atuação e credenciais técnicas verificáveis.",
+    "categories": {
+      "languages": {
+        "index": "01",
+        "title": "Linguagens de Programação",
+        "items": [
+          { "name": "TypeScript / JavaScript", "meta": "Avançado" },
+          { "name": "Python", "meta": "Avançado" },
+          { "name": "C / C++", "meta": "Intermediário (Acadêmico)" },
+          { "name": "Java", "meta": "Intermediário" },
+          { "name": "SQL", "meta": "Avançado" }
+        ]
+      },
+      "frameworks": {
+        "index": "02",
+        "title": "Frameworks & Ecossistema Web",
+        "items": [
+          { "name": "React / Next.js", "meta": "Frontend" },
+          { "name": "Node.js / Express", "meta": "Backend" },
+          { "name": "FastAPI / Flask", "meta": "Backend" },
+          { "name": "Tailwind CSS", "meta": "Frontend" }
+        ]
+      },
+      "tools": {
+        "index": "03",
+        "title": "Infraestrutura, DevOps & Dados",
+        "items": [
+          { "name": "Git & GitHub", "meta": "Versionamento" },
+          { "name": "Docker", "meta": "Containers" },
+          { "name": "Linux / Bash", "meta": "Ambiente" },
+          { "name": "MongoDB & PostgreSQL", "meta": "Databases" },
+          { "name": "Vercel & Cloudflare", "meta": "Deploy & Cloud" }
+        ]
+      }
+    },
+    "certifications": {
+      "eyebrow": "CREDENCIAIS VERIFICADAS",
+      "title": "Certificações & Cursos",
+      "subtitle": "Validação formal de competências técnicas internacionais com código de autenticidade (ID) e link oficial.",
+      "verifyLabel": "Verificar Credencial",
+      "idLabel": "ID",
+      "items": [
+        {
+          "id": "cert-1",
+          "index": "01",
+          "title": "AWS Certified Cloud Practitioner",
+          "issuer": "Amazon Web Services",
+          "issueDate": "2025",
+          "credentialUrl": "https://aws.amazon.com/verification",
+          "credentialId": "AWS-CLF-00129",
+          "skills": ["Cloud Computing", "AWS Architecture", "Segurança", "Storage & S3"]
+        },
+        {
+          "id": "cert-2",
+          "index": "02",
+          "title": "CS50's Introduction to Computer Science",
+          "issuer": "Harvard University (edX)",
+          "issueDate": "2024",
+          "credentialUrl": "https://cs50.harvard.edu/certificates",
+          "credentialId": "CS50X-HC-98214",
+          "skills": ["C", "Python", "Algoritmos", "Gerenciamento de Memória", "SQL"]
+        },
+        {
+          "id": "cert-3",
+          "index": "03",
+          "title": "Meta Front-End Developer Professional",
+          "issuer": "Meta / Coursera",
+          "issueDate": "2024",
+          "credentialUrl": "https://coursera.org/verify/professional-cert",
+          "credentialId": "META-FED-83741",
+          "skills": ["React.js", "JavaScript ES6+", "UI/UX Design", "Testes Unitários"]
+        },
+        {
+          "id": "cert-4",
+          "index": "04",
+          "title": "Python for Data Science & Machine Learning",
+          "issuer": "DeepLearning.AI / Coursera",
+          "issueDate": "2025",
+          "credentialUrl": "https://coursera.org/verify",
+          "credentialId": "DL-PY-49120",
+          "skills": ["Pandas", "NumPy", "Scikit-Learn", "Visualização de Dados"]
+        }
+      ]
+    }
+  },
+  "contact": {
+    "eyebrow": "05 / CONTATO & CONEXÃO",
+    "monumentalLine1": "VAMOS",
+    "monumentalLine2": "TRABALHAR",
+    "monumentalLine3": "JUNTOS.",
+    "lead": "Em busca do próximo desafio que valha a pena resolver.",
+    "description": "Disponível para oportunidades de estágio em Engenharia de Software, Desenvolvimento Full-Stack, Backend e projetos técnicos desafiadores em São Paulo ou remoto.",
+    "downloadResume": "BAIXAR CURRÍCULO",
+    "sendMessageCta": "ENVIAR UMA MENSAGEM",
+    "copyEmail": "Copiar E-mail",
+    "copiedEmail": "E-mail Copiado!",
+    "channels": {
+      "emailLabel": "E-MAIL",
+      "githubLabel": "GITHUB",
+      "linkedinLabel": "LINKEDIN"
+    },
+    "form": {
+      "title": "Mensagem Direta",
+      "subtitle": "Preencha os campos abaixo para iniciar a conversa via cliente de e-mail.",
+      "nameLabel": "Seu Nome / Empresa",
+      "namePlaceholder": "Ex: Ana Silva (Tech Lead)",
+      "emailLabel": "Seu E-mail",
+      "emailPlaceholder": "nome@empresa.com",
+      "messageLabel": "Mensagem ou Oportunidade",
+      "messagePlaceholder": "Olá Lucas! Gostaríamos de conversar sobre uma oportunidade em Engenharia de Software...",
+      "submit": "Enviar Mensagem",
+      "close": "Fechar",
+      "successMessage": "Seu cliente de e-mail foi aberto com a mensagem pronta para envio."
+    },
+    "closingBanner": "Vamos construir algo útil."
+  },
+  "resume": {
+    "eyebrow": "DOCUMENTO OFICIAL / CV",
+    "title": "Currículo & Trajetória",
+    "subtitle": "Síntese estruturada da formação acadêmica no Instituto Mauá de Tecnologia, projetos técnicos e certificações.",
+    "downloadPdf": "Imprimir / Salvar em PDF",
+    "downloadedPdf": "Preparando Impressão...",
+    "printVersion": "Versão para Impressão",
+    "summaryTitle": "Resumo Acadêmico & Profissional",
+    "educationTitle": "Formação Acadêmica",
+    "skillsTitle": "Competências Técnicas",
+    "projectsTitle": "Projetos Selecionados",
+    "certificationsTitle": "Certificações Verificadas",
+    "verifiedBadge": "Verificado"
+  },
+  "terminal": {
+    "welcomeTitle": "✦ Sessão interativa inicializada.",
+    "welcomeBody": "Explore os dados técnicos de Lucas Ribeiro via linha de comando.",
+    "welcomeHint": "Digite 'help' ou clique em um comando rápido abaixo.",
+    "shortcutsLabel": "comandos:",
+    "placeholder": "Digite um comando (help, about, skills, projects, certs, contact, clear)...",
+    "helpTitle": "Comandos disponíveis:",
+    "helpAbout": "Formação na Mauá & visão geral",
+    "helpSkills": "Linguagens, frameworks e ferramentas",
+    "helpProjects": "Projetos e estudos de caso",
+    "helpCerts": "Certificações oficiais e IDs",
+    "helpContact": "Canais diretos de contato",
+    "helpClear": "Limpar histórico do terminal",
+    "unknownCmd": "Comando não reconhecido. Digite 'help' para ver a lista."
+  },
+  "footer": {
+    "navigationHeading": "NAVEGAÇÃO",
+    "focusHeading": "ÁREAS DE ATUAÇÃO",
+    "focusItems": [
+      "Engenharia de Software",
+      "Aplicações Web Full-Stack",
+      "Sistemas Distribuídos & APIs",
+      "Estruturas de Dados & IA"
+    ],
+    "builtWith": "Projetado & desenvolvido por Lucas Ribeiro",
+    "backToTop": "Voltar ao topo"
+  }
+}

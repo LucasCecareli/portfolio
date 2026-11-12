@@ -1,42 +1,287 @@
 @import "tailwindcss";
 
+/* ==========================================================================
+   1. DESIGN TOKENS — MONOCHROMATIC DUAL-THEME SYSTEM
+   ========================================================================== */
+:root,
+[data-theme="dark"] {
+  --bg-primary: #090909;
+  --bg-surface: #141414;
+  --bg-elevated: #1c1c1c;
+  --bg-subtle: #111111;
+  --bg-glass: rgba(14, 14, 14, 0.76);
+  --bg-glass-heavy: rgba(12, 12, 12, 0.92);
+
+  --text-primary: #f5f5f5;
+  --text-secondary: #a1a1aa;
+  --text-muted: #6e6e77;
+  --text-inverse: #090909;
+
+  --border-subtle: #292929;
+  --border-strong: #3f3f46;
+  --border-focus: #f5f5f5;
+
+  --accent-bg: #f5f5f5;
+  --accent-text: #090909;
+  --accent-hover: #e4e4e7;
+
+  --grid-line: rgba(255, 255, 255, 0.03);
+  --outline-stroke: rgba(245, 245, 245, 0.08);
+  --outline-stroke-strong: rgba(245, 245, 245, 0.16);
+  --spotlight-color: rgba(245, 245, 245, 0.055);
+  --shadow-card: 0 20px 50px -12px rgba(0, 0, 0, 0.7);
+  --shadow-pill: 0 12px 32px -4px rgba(0, 0, 0, 0.65);
+
+  --ease-cinematic: cubic-bezier(0.76, 0, 0.24, 1);
+  --ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
+  --ease-smooth: cubic-bezier(0.22, 1, 0.36, 1);
+
+  --font-display: 'Syne', 'Inter', system-ui, -apple-system, sans-serif;
+  --font-sans: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+  --font-mono: 'JetBrains Mono', ui-monospace, SFMono-Regular, Menlo, monospace;
+
+  color-scheme: dark;
+}
+
+[data-theme="light"] {
+  --bg-primary: #f8f8f6;
+  --bg-surface: #ffffff;
+  --bg-elevated: #efefed;
+  --bg-subtle: #f2f2ef;
+  --bg-glass: rgba(248, 248, 246, 0.82);
+  --bg-glass-heavy: rgba(255, 255, 255, 0.95);
+
+  --text-primary: #141414;
+  --text-secondary: #626262;
+  --text-muted: #8a8a86;
+  --text-inverse: #f8f8f6;
+
+  --border-subtle: #ddddda;
+  --border-strong: #b8b8b2;
+  --border-focus: #141414;
+
+  --accent-bg: #141414;
+  --accent-text: #f8f8f6;
+  --accent-hover: #292929;
+
+  --grid-line: rgba(20, 20, 20, 0.042);
+  --outline-stroke: rgba(20, 20, 20, 0.085);
+  --outline-stroke-strong: rgba(20, 20, 20, 0.18);
+  --spotlight-color: rgba(20, 20, 20, 0.035);
+  --shadow-card: 0 20px 50px -15px rgba(20, 20, 20, 0.07);
+  --shadow-pill: 0 12px 32px -6px rgba(20, 20, 20, 0.08);
+
+  color-scheme: light;
+}
+
+/* ==========================================================================
+   2. BASE & RESET
+   ========================================================================== */
 @layer base {
   html {
-    scroll-behavior: smooth;
-    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+    font-family: var(--font-sans);
+    background-color: var(--bg-primary);
+    color: var(--text-primary);
+    scroll-behavior: auto; /* Controlled by Lenis when active */
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
   }
 
   body {
-    background-color: #07090e;
-    color: #f1f5f9;
+    background-color: var(--bg-primary);
+    color: var(--text-primary);
     overflow-x: hidden;
     min-height: 100vh;
+    margin: 0;
+  }
+
+  *:focus-visible {
+    outline: 2px solid var(--border-focus);
+    outline-offset: 3px;
   }
 }
 
-/* Custom scrollbar */
+/* ==========================================================================
+   3. CINEMATIC LIGHT / DARK VIEW TRANSITION & INTERPOLATION
+   ========================================================================== */
+::view-transition-old(root),
+::view-transition-new(root) {
+  animation: none;
+  mix-blend-mode: normal;
+  display: block;
+}
+
+::view-transition-old(root) {
+  z-index: 1;
+}
+
+::view-transition-new(root) {
+  z-index: 9999;
+}
+
+/* Progressive color interpolation during theme switch */
+html.theme-transitioning,
+html.theme-transitioning body,
+html.theme-transitioning header,
+html.theme-transitioning footer,
+html.theme-transitioning section,
+html.theme-transitioning div,
+html.theme-transitioning article,
+html.theme-transitioning nav,
+html.theme-transitioning span,
+html.theme-transitioning p,
+html.theme-transitioning h1,
+html.theme-transitioning h2,
+html.theme-transitioning h3,
+html.theme-transitioning h4,
+html.theme-transitioning a,
+html.theme-transitioning button,
+html.theme-transitioning input,
+html.theme-transitioning textarea {
+  transition-property: background-color, border-color, color, fill, stroke, box-shadow;
+  transition-duration: 950ms;
+  transition-timing-function: cubic-bezier(0.76, 0, 0.24, 1);
+}
+
+/* ==========================================================================
+   4. FLUID EDITORIAL TYPOGRAPHY & ARCHITECTURAL PATTERNS
+   ========================================================================== */
+.font-display {
+  font-family: var(--font-display);
+}
+
+.font-sans-ui {
+  font-family: var(--font-sans);
+}
+
+.font-mono-tech {
+  font-family: var(--font-mono);
+}
+
+.text-hero-display {
+  font-family: var(--font-display);
+  font-size: clamp(2.65rem, 6.2vw + 0.85rem, 6.15rem);
+  line-height: 0.96;
+  letter-spacing: -0.035em;
+  font-weight: 800;
+}
+
+.text-monumental {
+  font-family: var(--font-display);
+  font-size: clamp(2.4rem, 5.6vw + 0.65rem, 5.4rem);
+  line-height: 0.95;
+  letter-spacing: -0.035em;
+  font-weight: 800;
+}
+
+.text-section-title {
+  font-family: var(--font-display);
+  font-size: clamp(1.85rem, 3.4vw + 0.5rem, 3.35rem);
+  line-height: 1.06;
+  letter-spacing: -0.028em;
+  font-weight: 700;
+}
+
+.text-editorial-lead {
+  font-size: clamp(1.05rem, 0.65vw + 0.88rem, 1.35rem);
+  line-height: 1.6;
+}
+
+.text-outline-monumental {
+  font-family: var(--font-display);
+  font-size: clamp(4.5rem, 13vw, 13.5rem);
+  line-height: 0.88;
+  letter-spacing: -0.04em;
+  font-weight: 800;
+  color: transparent;
+  -webkit-text-stroke: 1.5px var(--outline-stroke-strong);
+  user-select: none;
+}
+
+/* Subtle Architectural Grid */
+.bg-architectural-grid {
+  background-size: 64px 64px;
+  background-image:
+    linear-gradient(to right, var(--grid-line) 1px, transparent 1px),
+    linear-gradient(to bottom, var(--grid-line) 1px, transparent 1px);
+}
+
+/* Editorial 12-Column Container */
+.editorial-container {
+  width: 100%;
+  max-width: 1360px;
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: clamp(1.25rem, 4vw, 3.5rem);
+  padding-right: clamp(1.25rem, 4vw, 3.5rem);
+}
+
+.editorial-grid {
+  display: grid;
+  grid-template-columns: repeat(12, minmax(0, 1fr));
+  gap: clamp(1rem, 2vw, 2rem);
+}
+
+/* Custom Minimal Scrollbar */
 ::-webkit-scrollbar {
-  width: 8px;
+  width: 6px;
+  height: 6px;
 }
+
 ::-webkit-scrollbar-track {
-  background: #07090e;
+  background: var(--bg-primary);
 }
+
 ::-webkit-scrollbar-thumb {
-  background: #1e293b;
-  border-radius: 4px;
+  background: var(--border-strong);
+  border-radius: 9999px;
 }
+
 ::-webkit-scrollbar-thumb:hover {
-  background: #3b82f6;
+  background: var(--text-secondary);
 }
 
-/* Grid & Dots Patterns */
-.bg-grid-pattern {
-  background-size: 44px 44px;
-  background-image: 
-    linear-gradient(to right, rgba(255, 255, 255, 0.035) 1px, transparent 1px),
-    linear-gradient(to bottom, rgba(255, 255, 255, 0.035) 1px, transparent 1px);
+/* Marquee animation for background outline typography */
+@keyframes marquee-slow {
+  0% {
+    transform: translate3d(0%, 0, 0);
+  }
+  100% {
+    transform: translate3d(-50%, 0, 0);
+  }
 }
 
-.bg-radial-glow {
-  background: radial-gradient(circle at 50% 0%, rgba(59, 130, 246, 0.15) 0%, rgba(147, 51, 234, 0.08) 35%, transparent 70%);
+.animate-marquee-slow {
+  display: flex;
+  width: max-content;
+  animation: marquee-slow 42s linear infinite;
+}
+
+/* Reduced Motion Safeguards */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+
+  .animate-marquee-slow {
+    animation: none !important;
+  }
+}
+
+/* Print Styles for Resume */
+@media print {
+  header,
+  footer,
+  .no-print {
+    display: none !important;
+  }
+  body {
+    background: #ffffff !important;
+    color: #000000 !important;
+  }
 }

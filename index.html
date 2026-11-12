@@ -1,13 +1,60 @@
 <!doctype html>
-<html lang="pt-BR">
+<html lang="pt-BR" data-theme="dark">
   <head>
     <meta charset="UTF-8" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="description" content="Portfólio de Lucas Ribeiro - Estudante de Ciência da Computação no Instituto Mauá de Tecnologia. Projetos, certificações oficiais e desenvolvimento de software." />
-    <title>Lucas Ribeiro | Ciência da Computação & Software Engineer</title>
+    <meta
+      name="description"
+      content="Lucas Ribeiro — Computer Science Student at Instituto Mauá de Tecnologia & Software Engineer. Interactive portfolio, architecture case studies, and verified credentials."
+    />
+    <meta name="theme-color" content="#090909" />
+    <title>Lucas Ribeiro — Software Engineer & Computer Science</title>
+
+    <!-- Preconnect & Editorial Typography (Syne + Inter + JetBrains Mono) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:ital,wght@0,400;0,500;0,600;1,400&family=Syne:wght@600;700;800&display=swap"
+      rel="stylesheet"
+    />
+
+    <!-- Synchronous Anti-FOUC Theme & Locale Bootstrap -->
+    <script>
+      (function () {
+        try {
+          var storedTheme = localStorage.getItem('portfolio-theme');
+          var theme = 'dark';
+          if (storedTheme === 'light' || storedTheme === 'dark') {
+            theme = storedTheme;
+          } else if (
+            window.matchMedia &&
+            window.matchMedia('(prefers-color-scheme: light)').matches
+          ) {
+            theme = 'light';
+          }
+          var root = document.documentElement;
+          root.setAttribute('data-theme', theme);
+          root.style.colorScheme = theme;
+          if (theme === 'dark') {
+            root.classList.add('dark');
+          } else {
+            root.classList.remove('dark');
+          }
+
+          var storedLang = localStorage.getItem('portfolio-locale');
+          var lang = 'pt-BR';
+          if (storedLang === 'en' || storedLang === 'pt-BR') {
+            lang = storedLang;
+          } else if (navigator.language && navigator.language.toLowerCase().startsWith('en')) {
+            lang = 'en';
+          }
+          root.setAttribute('lang', lang);
+        } catch (e) {}
+      })();
+    </script>
   </head>
-  <body class="bg-[#07090e] text-slate-100 antialiased selection:bg-blue-600 selection:text-white">
+  <body class="antialiased selection:bg-[var(--accent-bg)] selection:text-[var(--accent-text)]">
     <div id="root"></div>
     <script type="module" src="/src/main.tsx"></script>
   </body>

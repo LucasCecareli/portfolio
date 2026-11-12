@@ -1,19 +1,35 @@
-import React, { createContext, useContext, useState, useEffect } from 'react';
+import React, { createContext, useContext, useState, useEffect, useCallback } from 'react';
 
-export type RoutePath = '/' | '/sobre' | '/projetos' | '/certificacoes' | '/curriculo' | '/contato';
+export type RoutePath =
+  | '/'
+  | '/sobre'
+  | '/projetos'
+  | '/certificacoes'
+  | '/curriculo'
+  | '/contato'
+  | string;
 
 interface RouterContextType {
   currentPath: string;
-  navigate: (to: string) => void;
+  activeSection: string;
+  setActiveSection: (section: string) => void;
+  navigate: (to: string, options?: { sectionId?: string }) => void;
+  scrollToSection: (sectionId: string) => void;
 }
 
 const RouterContext = createContext<RouterContextType>({
-  currentPath: window.location.pathname || '/',
+  currentPath: typeof window !== 'undefined' ? window.location.pathname || '/' : '/',
+  activeSection: 'home',
+  setActiveSection: () => {},
   navigate: () => {},
+  scrollToSection: () => {},
 });
 
 export const RouterProvider: React.FC<{ children: React.ReactNode }> = ({ children }) => {
-  const [currentPath, setCurrentPath] = useState(window.location.pathname || '/');
+  const [currentPath, setCurrentPath] = useState(
+    typeof window !== 'undefined' ? window.location.pathname || '/' : '/'
+  );
+  const [activeSection, setActiveSection] = useState<string>('home');
 
   useEffect(() => {
     const handlePopState = () => {
@@ -23,16 +39,52 @@ export const RouterProvider: React.FC<{ children: React.ReactNode }> = ({ childr
     return () => window.removeEventListener('popstate', handlePopState);
   }, []);
 
-  const navigate = (to: string) => {
-    if (to !== currentPath) {
-      window.history.pushState({}, '', to);
-      setCurrentPath(to);
-      window.scrollTo({ top: 0, behavior: 'smooth' });
+  const scrollToSection = useCallback((sectionId: string) => {
+    const el = document.getElementById(sectionId);
+    if (el) {
+      setActiveSection(sectionId);
+      const headerOffset = 88;
+      const top = el.getBoundingClientRect().top + window.scrollY - headerOffset;
+      window.scrollTo({ top, behavior: 'smooth' });
     }
-  };
+  }, []);
+
+  const navigate = useCallback(
+    (to: string, options?: { sectionId?: string }) => {
+      if (options?.sectionId) {
+        if (currentPath === '/') {
+          scrollToSection(options.sectionId);
+          return;
+        }
+        window.history.pushState({}, '', '/');
+        setCurrentPath('/');
+        window.setTimeout(() => {
+          scrollToSection(options.sectionId!);
+        }, 90);
+        return;
+      }
+
+      if (to !== currentPath) {
+        window.history.pushState({}, '', to);
+        setCurrentPath(to);
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+      } else if (to === '/') {
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+      }
+    },
+    [currentPath, scrollToSection]
+  );
 
   return (
-    <RouterContext.Provider value={{ currentPath, navigate }}>
+    <RouterContext.Provider
+      value={{
+        currentPath,
+        activeSection,
+        setActiveSection,
+        navigate,
+        scrollToSection,
+      }}
+    >
       {children}
     </RouterContext.Provider>
   );
@@ -40,27 +92,36 @@ export const RouterProvider: React.FC<{ children: React.ReactNode }> = ({ childr
 
 export const useRouter = () => useContext(RouterContext);
 
-interface LinkProps {
+interface LinkProps extends Omit<React.AnchorHTMLAttributes<HTMLAnchorElement>, 'className'> {
   to: string;
+  sectionId?: string;
   children: React.ReactNode;
   className?: string | ((props: { isActive: boolean }) => string);
   onClick?: () => void;
 }
 
-export const Link: React.FC<LinkProps> = ({ to, children, className, onClick }) => {
+export const Link: React.FC<LinkProps> = ({
+  to,
+  sectionId,
+  children,
+  className,
+  onClick,
+  ...rest
+}) => {
   const { currentPath, navigate } = useRouter();
   const isActive = currentPath === to;
 
-  const handleClick = (e: React.MouseEvent) => {
+  const handleClick = (e: React.MouseEvent<HTMLAnchorElement>) => {
+    if (e.metaKey || e.ctrlKey || e.shiftKey || e.altKey) return;
     e.preventDefault();
-    navigate(to);
+    navigate(to, sectionId ? { sectionId } : undefined);
     onClick?.();
   };
 
   const computedClassName = typeof className === 'function' ? className({ isActive }) : className;
 
   return (
-    <a href={to} onClick={handleClick} className={computedClassName}>
+    <a href={to} onClick={handleClick} className={computedClassName} {...rest}>
       {children}
     </a>
   );
