@@ -504,9 +504,6 @@ export const EditorialHero: React.FC = () => {
     }
   };
 
-  const hasPersonalPhoto = Boolean(
-    portfolioData.personal.photoUrl && portfolioData.personal.photoUrl.trim().length > 0
-  );
   const hasEmail = Boolean(
     portfolioData.personal.email && portfolioData.personal.email.trim().length > 0
   );
@@ -822,37 +819,29 @@ export const EditorialHero: React.FC = () => {
                       </span>
                     </div>
 
-                    {/* Flexible Canvas: Prepared for Personal B&W Photograph OR Authorial Monogram Composition */}
+                    {/* Authorial Monogram Composition (Personal photograph is revealed exclusively in #about) */}
                     <div className="my-4 relative min-h-[195px] rounded-2xl bg-[var(--bg-primary)] border border-[var(--border-subtle)] overflow-hidden flex items-center justify-center">
                       <div className="absolute inset-0 bg-architectural-grid opacity-75" />
 
-                      {hasPersonalPhoto ? (
-                        <img
-                          src={portfolioData.personal.photoUrl}
-                          alt={portfolioData.personal.name}
-                          className="relative z-10 w-full h-auto max-h-[320px] object-contain grayscale contrast-115 transition-all duration-500"
-                        />
-                      ) : (
-                        <div
-                          ref={emblemRef}
-                          className="relative z-10 flex flex-col items-center justify-center text-center p-5"
-                        >
-                          <div className="relative w-24 h-24 flex items-center justify-center">
-                            <div className="absolute inset-0 rounded-full border border-dashed border-[var(--border-strong)] animate-[spin_36s_linear_infinite]" />
-                            <div className="absolute inset-2.5 rounded-full border border-[var(--border-subtle)]" />
-                            <div className="w-14 h-14 rounded-2xl bg-[var(--bg-surface)] border border-[var(--border-strong)] flex items-center justify-center shadow-md">
-                              <span className="font-display font-extrabold text-lg tracking-tighter text-[var(--text-primary)]">
-                                LCR
-                              </span>
-                            </div>
-                          </div>
-
-                          <div className="mt-3 flex items-center gap-1.5 text-[10px] font-mono-tech text-[var(--text-muted)] tracking-widest uppercase">
-                            <Compass className="w-3 h-3 text-[var(--text-secondary)]" />
-                            <span>SÃO PAULO · IMT</span>
+                      <div
+                        ref={emblemRef}
+                        className="relative z-10 flex flex-col items-center justify-center text-center p-5"
+                      >
+                        <div className="relative w-24 h-24 flex items-center justify-center">
+                          <div className="absolute inset-0 rounded-full border border-dashed border-[var(--border-strong)] animate-[spin_36s_linear_infinite]" />
+                          <div className="absolute inset-2.5 rounded-full border border-[var(--border-subtle)]" />
+                          <div className="w-14 h-14 rounded-2xl bg-[var(--bg-surface)] border border-[var(--border-strong)] flex items-center justify-center shadow-md">
+                            <span className="font-display font-extrabold text-lg tracking-tighter text-[var(--text-primary)]">
+                              LCR
+                            </span>
                           </div>
                         </div>
-                      )}
+
+                        <div className="mt-3 flex items-center gap-1.5 text-[10px] font-mono-tech text-[var(--text-muted)] tracking-widest uppercase">
+                          <Compass className="w-3 h-3 text-[var(--text-secondary)]" />
+                          <span>SÃO PAULO · IMT</span>
+                        </div>
+                      </div>
 
                       {/* Corner Technical Coordinates */}
                       <span className="absolute top-2.5 left-3 font-mono-tech text-[9px] text-[var(--text-muted)]">
@@ -932,7 +921,7 @@ export const EditorialHero: React.FC = () => {
 
         <button
           type="button"
-          onClick={() => navigate('/', { sectionId: 'bridge' })}
+          onClick={() => navigate('/', { sectionId: 'about' })}
           className="inline-flex items-center gap-2 font-mono-tech text-[11px] uppercase tracking-[0.2em] text-[var(--text-secondary)] hover:text-[var(--text-primary)] transition-colors cursor-pointer group"
         >
           <span data-i18n="hero-scroll">{t.hero.scrollIndicator}</span>

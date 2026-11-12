@@ -40,11 +40,16 @@ export const RouterProvider: React.FC<{ children: React.ReactNode }> = ({ childr
   }, []);
 
   const scrollToSection = useCallback((sectionId: string) => {
+    if (sectionId === 'home') {
+      setActiveSection('home');
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+      return;
+    }
     const el = document.getElementById(sectionId);
     if (el) {
       setActiveSection(sectionId);
-      const headerOffset = 88;
-      const top = el.getBoundingClientRect().top + window.scrollY - headerOffset;
+      const headerOffset = sectionId === 'about' ? 0 : 72;
+      const top = Math.max(0, el.getBoundingClientRect().top + window.scrollY - headerOffset);
       window.scrollTo({ top, behavior: 'smooth' });
     }
   }, []);
@@ -58,9 +63,18 @@ export const RouterProvider: React.FC<{ children: React.ReactNode }> = ({ childr
         }
         window.history.pushState({}, '', '/');
         setCurrentPath('/');
-        window.setTimeout(() => {
-          scrollToSection(options.sectionId!);
-        }, 90);
+        const targetId = options.sectionId;
+        let attempts = 0;
+        const tryScroll = () => {
+          attempts += 1;
+          const el = targetId === 'home' ? document.body : document.getElementById(targetId);
+          if (el || attempts >= 8) {
+            scrollToSection(targetId);
+          } else {
+            window.setTimeout(tryScroll, 70);
+          }
+        };
+        window.setTimeout(tryScroll, 90);
         return;
       }
 

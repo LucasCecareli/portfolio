@@ -39,7 +39,7 @@
     "ctaContact": "Contact",
     "ctaResume": "Resume / CV",
     "scrollIndicator": "SCROLL TO EXPLORE",
-    "cardTabIdentity": "IDENTITY & PORTRAIT",
+    "cardTabIdentity": "IDENTITY & PROFILE",
     "cardTabTerminal": "CLI TERMINAL",
     "idCard": {
       "headerLabel": "ACADEMIC IDENTITY · IMT",
@@ -59,7 +59,7 @@
     }
   },
   "bridge": {
-    "eyebrow": "01 / TRAJECTORY & APPROACH",
+    "eyebrow": "02 / TRAJECTORY & APPROACH",
     "titleLeft": "FOUNDATION",
     "titleMiddle": "PRACTICE",
     "titleRight": "EVOLUTION",
@@ -86,7 +86,7 @@
     ]
   },
   "projects": {
-    "eyebrow": "02 / REAL PROJECTS & CASE STUDIES",
+    "eyebrow": "03 / REAL PROJECTS & CASE STUDIES",
     "title": "Selected Projects",
     "subtitle": "Real systems and applications built throughout my academic journey, hackathons, and personal initiatives.",
     "filterAll": "All",
@@ -257,7 +257,7 @@
   },
   "about": {
     "stageEyebrow": "01 / ABOUT ME",
-    "eyebrow": "03 / ABOUT ME & TRAJECTORY",
+    "eyebrow": "01 / ABOUT ME & TRAJECTORY",
     "title": "Far beyond code.",
     "lead": "I'm Lucas Cecareli Ribeiro, a Computer Science student at Instituto Mauá de Tecnologia. I enjoy turning ideas into real projects, exploring software development, web applications, and artificial intelligence.",
     "storyParagraph1": "I believe learning technology goes beyond theory. It means experimenting, building, facing challenges, and evolving with every project.",

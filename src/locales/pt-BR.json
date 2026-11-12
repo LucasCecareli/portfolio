@@ -39,7 +39,7 @@
     "ctaContact": "Contato",
     "ctaResume": "Currículo / CV",
     "scrollIndicator": "ROLE PARA EXPLORAR",
-    "cardTabIdentity": "IDENTIDADE & RETRATO",
+    "cardTabIdentity": "IDENTIDADE & PERFIL",
     "cardTabTerminal": "TERMINAL CLI",
     "idCard": {
       "headerLabel": "IDENTIDADE ACADÊMICA · IMT",
@@ -59,7 +59,7 @@
     }
   },
   "bridge": {
-    "eyebrow": "01 / TRAJETÓRIA & ABORDAGEM",
+    "eyebrow": "02 / TRAJETÓRIA & ABORDAGEM",
     "titleLeft": "FUNDAMENTO",
     "titleMiddle": "PRÁTICA",
     "titleRight": "EVOLUÇÃO",
@@ -86,7 +86,7 @@
     ]
   },
   "projects": {
-    "eyebrow": "02 / PROJETOS REAIS & ESTUDOS DE CASO",
+    "eyebrow": "03 / PROJETOS REAIS & ESTUDOS DE CASO",
     "title": "Projetos Desenvolvidos",
     "subtitle": "Sistemas e aplicações reais criados ao longo da minha trajetória acadêmica, em hackathons e em iniciativas autorais.",
     "filterAll": "Todos",
@@ -257,7 +257,7 @@
   },
   "about": {
     "stageEyebrow": "01 / SOBRE MIM",
-    "eyebrow": "03 / SOBRE MIM & TRAJETÓRIA",
+    "eyebrow": "01 / SOBRE MIM & TRAJETÓRIA",
     "title": "Muito além do código.",
     "lead": "Sou Lucas Cecareli Ribeiro, estudante de Ciência da Computação no Instituto Mauá de Tecnologia. Gosto de transformar ideias em projetos reais, explorando desenvolvimento de software, aplicações web e inteligência artificial.",
     "storyParagraph1": "Acredito que aprender tecnologia vai além da teoria. É experimentar, construir, enfrentar desafios e evoluir a cada projeto.",

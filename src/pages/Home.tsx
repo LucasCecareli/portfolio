@@ -10,9 +10,9 @@ export const Home: React.FC = () => {
   return (
     <div>
       <EditorialHero />
+      <EditorialAbout />
       <StorytellingBridge />
       <EditorialProjects />
-      <EditorialAbout />
       <EditorialSkillsAndCerts />
       <EditorialContact />
     </div>

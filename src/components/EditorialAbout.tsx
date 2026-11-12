@@ -24,19 +24,17 @@ export const EditorialAbout: React.FC = () => {
   const sectionRef = useRef<HTMLElement>(null);
   const stagePinRef = useRef<HTMLDivElement>(null);
 
-  // Act 1 & 2 Refs: Eyebrow & Photograph Horizontal Aperture Stage
+  // Stage Refs: Fixed Outer Portrait Container + Horizontal Mask + Narrative
   const eyebrowWrapRef = useRef<HTMLDivElement>(null);
-  const progressBarRef = useRef<HTMLDivElement>(null);
   const photoStageWrapRef = useRef<HTMLDivElement>(null);
   const photoMaskRef = useRef<HTMLDivElement>(null);
   const photoInnerRef = useRef<HTMLDivElement>(null);
 
-  // Act 3 & 4 Refs: Personal Narrative & Credentials
+  // Personal Narrative Refs (Right Column in Pinned Stage)
   const titleWrapRef = useRef<HTMLDivElement>(null);
   const p1WrapRef = useRef<HTMLDivElement>(null);
   const p2WrapRef = useRef<HTMLDivElement>(null);
   const p3WrapRef = useRef<HTMLDivElement>(null);
-  const metaWrapRef = useRef<HTMLDivElement>(null);
   const quoteWrapRef = useRef<HTMLDivElement>(null);
 
   const hasPersonalPhoto = Boolean(
@@ -55,8 +53,8 @@ export const EditorialAbout: React.FC = () => {
     if (prefersReducedMotion) {
       if (photoMaskRef.current) {
         gsap.set(photoMaskRef.current, {
-          clipPath: 'inset(0% 0% 0% 0% round 1rem)',
-          webkitClipPath: 'inset(0% 0% 0% 0% round 1rem)',
+          clipPath: 'inset(0% 0% 0% 0% round 1.25rem)',
+          webkitClipPath: 'inset(0% 0% 0% 0% round 1.25rem)',
         });
       }
       if (photoInnerRef.current) {
@@ -69,51 +67,62 @@ export const EditorialAbout: React.FC = () => {
 
     const ctx = gsap.context(() => {
       // =====================================================================
-      // 1. DESKTOP (>= 1024px): 4-ACT PINNED SCROLL STORYTELLING & REVEAL
-      //    Compact pin distance (+=85%) and responsive scrub (0.18) so it
-      //    tracks Lenis smoothly with zero lag and never traps the visitor.
+      // 1. DESKTOP (>= 1024px): MONUMENTAL PORTRAIT CONTINUOUS MASK REVEAL
+      //    - Outer photo container remains 100% static in size and position.
+      //    - Single continuous horizontal clip-path reveal with ease: 'none'
+      //      so the opening responds 1:1 to Lenis-smoothed scroll.
+      //    - Coordinated entrance of personal narrative beside the portrait.
       // =====================================================================
       mm.add('(min-width: 1024px)', () => {
-        gsap.set(eyebrowWrapRef.current, { opacity: 0.4, y: 8 });
-        gsap.set(progressBarRef.current, { scaleX: 0.08, transformOrigin: 'left center' });
-        gsap.set(photoStageWrapRef.current, { opacity: 0.88, y: 12 });
+        gsap.set(photoStageWrapRef.current, { opacity: 1, y: 0 });
         gsap.set(photoMaskRef.current, {
-          clipPath: 'inset(0% 35% 0% 35% round 1rem)',
-          webkitClipPath: 'inset(0% 35% 0% 35% round 1rem)',
+          clipPath: 'inset(0% 38% 0% 38% round 1.25rem)',
+          webkitClipPath: 'inset(0% 38% 0% 38% round 1.25rem)',
         });
-        gsap.set(photoInnerRef.current, { scale: 1.06 });
+        gsap.set(photoInnerRef.current, { scale: 1.03 });
 
-        gsap.set(titleWrapRef.current, { opacity: 0, y: 24 });
-        gsap.set(p1WrapRef.current, { opacity: 0, y: 20 });
-        gsap.set(p2WrapRef.current, { opacity: 0, y: 20 });
-        gsap.set(p3WrapRef.current, { opacity: 0, y: 18 });
-        gsap.set(metaWrapRef.current, { opacity: 0, y: 16 });
+        gsap.set(eyebrowWrapRef.current, { opacity: 0.45, y: 8 });
+        gsap.set(titleWrapRef.current, { opacity: 0, y: 22 });
+        gsap.set(p1WrapRef.current, { opacity: 0, y: 18 });
+        gsap.set(p2WrapRef.current, { opacity: 0, y: 18 });
+        gsap.set(p3WrapRef.current, { opacity: 0, y: 16 });
         gsap.set(quoteWrapRef.current, { opacity: 0, y: 14 });
 
         const tl = gsap.timeline({
           scrollTrigger: {
             trigger: stagePinRef.current,
             start: 'top top',
-            end: '+=85%',
+            end: '+=78%',
             pin: true,
-            scrub: 0.18,
+            scrub: 0.14,
             anticipatePin: 1,
             invalidateOnRefresh: true,
           },
         });
 
-        // Subtle continuous progress line (0.00 -> 1.00)
+        // Continuous horizontal mask opening (0.00 -> 0.62) with ease: 'none'
         tl.to(
-          progressBarRef.current,
+          photoMaskRef.current,
           {
-            scaleX: 1,
-            duration: 1.0,
+            clipPath: 'inset(0% 0% 0% 0% round 1.25rem)',
+            webkitClipPath: 'inset(0% 0% 0% 0% round 1.25rem)',
+            duration: 0.62,
             ease: 'none',
           },
           0.0
         );
 
-        // ACT 1 — ENTRADA (0.00 -> 0.20): Discrete section header & partially masked portrait
+        tl.to(
+          photoInnerRef.current,
+          {
+            scale: 1,
+            duration: 0.62,
+            ease: 'none',
+          },
+          0.0
+        );
+
+        // Coordinated personal narrative entrance alongside mask expansion
         tl.to(
           eyebrowWrapRef.current,
           {
@@ -122,63 +131,18 @@ export const EditorialAbout: React.FC = () => {
             duration: 0.18,
             ease: 'power2.out',
           },
-          0.0
+          0.04
         );
 
-        tl.to(
-          photoStageWrapRef.current,
-          {
-            opacity: 1,
-            y: 0,
-            duration: 0.18,
-            ease: 'power2.out',
-          },
-          0.0
-        );
-
-        tl.to(
-          photoMaskRef.current,
-          {
-            clipPath: 'inset(0% 30% 0% 30% round 1rem)',
-            webkitClipPath: 'inset(0% 30% 0% 30% round 1rem)',
-            duration: 0.2,
-            ease: 'sine.inOut',
-          },
-          0.0
-        );
-
-        // ACT 2 — REVELAÇÃO (0.20 -> 0.55): Horizontal mask expansion from inside out + subtle scale settle
-        tl.to(
-          photoMaskRef.current,
-          {
-            clipPath: 'inset(0% 0% 0% 0% round 1rem)',
-            webkitClipPath: 'inset(0% 0% 0% 0% round 1rem)',
-            duration: 0.35,
-            ease: 'power2.inOut',
-          },
-          0.2
-        );
-
-        tl.to(
-          photoInnerRef.current,
-          {
-            scale: 1,
-            duration: 0.38,
-            ease: 'power2.out',
-          },
-          0.18
-        );
-
-        // ACT 3 — APRESENTAÇÃO (0.55 -> 0.80): Progressive title, personal paragraphs & academic metadata
         tl.to(
           titleWrapRef.current,
           {
             opacity: 1,
             y: 0,
-            duration: 0.14,
-            ease: 'power3.out',
+            duration: 0.22,
+            ease: 'power2.out',
           },
-          0.52
+          0.18
         );
 
         tl.to(
@@ -186,10 +150,10 @@ export const EditorialAbout: React.FC = () => {
           {
             opacity: 1,
             y: 0,
-            duration: 0.14,
-            ease: 'power3.out',
+            duration: 0.22,
+            ease: 'power2.out',
           },
-          0.58
+          0.3
         );
 
         tl.to(
@@ -197,10 +161,10 @@ export const EditorialAbout: React.FC = () => {
           {
             opacity: 1,
             y: 0,
-            duration: 0.14,
-            ease: 'power3.out',
+            duration: 0.22,
+            ease: 'power2.out',
           },
-          0.64
+          0.42
         );
 
         tl.to(
@@ -208,58 +172,45 @@ export const EditorialAbout: React.FC = () => {
           {
             opacity: 1,
             y: 0,
-            duration: 0.13,
-            ease: 'power3.out',
+            duration: 0.22,
+            ease: 'power2.out',
           },
-          0.69
+          0.54
         );
 
-        tl.to(
-          metaWrapRef.current,
-          {
-            opacity: 1,
-            y: 0,
-            duration: 0.13,
-            ease: 'power3.out',
-          },
-          0.74
-        );
-
-        // ACT 4 — COMPOSIÇÃO FINAL (0.80 -> 1.00): Quote settles + brief hold before unpin
         tl.to(
           quoteWrapRef.current,
           {
             opacity: 1,
             y: 0,
-            duration: 0.1,
+            duration: 0.2,
             ease: 'power2.out',
           },
-          0.8
+          0.66
         );
 
-        // Intentional reading hold (0.90 -> 1.00) before releasing scroll
-        tl.to({}, { duration: 0.1 }, 0.9);
+        // Clean reading hold (0.86 -> 1.00) with full portrait & narrative before unpin
+        tl.to({}, { duration: 0.14 }, 0.86);
       });
 
       // =====================================================================
-      // 2. MOBILE & TABLET (< 1024px): REVERSIBLE SCROLL-SCRUBBED REVEAL (NO PIN)
+      // 2. MOBILE & TABLET (< 1024px): NATURAL SCROLL + CONTINUOUS MASK REVEAL
       // =====================================================================
       mm.add('(max-width: 1023px)', () => {
         gsap.set(eyebrowWrapRef.current, { opacity: 1, y: 0 });
-        gsap.set(progressBarRef.current, { scaleX: 1, transformOrigin: 'left center' });
         gsap.set(photoStageWrapRef.current, { opacity: 1, y: 0 });
         gsap.set(photoMaskRef.current, {
-          clipPath: 'inset(0% 28% 0% 28% round 1rem)',
-          webkitClipPath: 'inset(0% 28% 0% 28% round 1rem)',
+          clipPath: 'inset(0% 28% 0% 28% round 1.25rem)',
+          webkitClipPath: 'inset(0% 28% 0% 28% round 1.25rem)',
         });
-        gsap.set(photoInnerRef.current, { scale: 1.05 });
+        gsap.set(photoInnerRef.current, { scale: 1.03 });
 
         const mobilePhotoTl = gsap.timeline({
           scrollTrigger: {
             trigger: photoStageWrapRef.current,
             start: 'top 86%',
-            end: 'top 25%',
-            scrub: 0.15,
+            end: 'top 24%',
+            scrub: 0.14,
             invalidateOnRefresh: true,
           },
         });
@@ -268,9 +219,9 @@ export const EditorialAbout: React.FC = () => {
           .to(
             photoMaskRef.current,
             {
-              clipPath: 'inset(0% 0% 0% 0% round 1rem)',
-              webkitClipPath: 'inset(0% 0% 0% 0% round 1rem)',
-              ease: 'power2.inOut',
+              clipPath: 'inset(0% 0% 0% 0% round 1.25rem)',
+              webkitClipPath: 'inset(0% 0% 0% 0% round 1.25rem)',
+              ease: 'none',
               duration: 1,
             },
             0
@@ -279,7 +230,7 @@ export const EditorialAbout: React.FC = () => {
             photoInnerRef.current,
             {
               scale: 1,
-              ease: 'power2.out',
+              ease: 'none',
               duration: 1,
             },
             0
@@ -290,7 +241,6 @@ export const EditorialAbout: React.FC = () => {
           p1WrapRef.current,
           p2WrapRef.current,
           p3WrapRef.current,
-          metaWrapRef.current,
           quoteWrapRef.current,
         ].filter(Boolean);
 
@@ -393,59 +343,31 @@ export const EditorialAbout: React.FC = () => {
       className="border-b border-[var(--border-subtle)] bg-[var(--bg-primary)] relative"
     >
       {/* =====================================================================
-          PART 1: CINEMATIC SCROLL-DRIVEN PHOTO REVEAL & PERSONAL PRESENTATION
-          Desktop: Pinned 4-Act Storytelling (45% Left Photo / 55% Right Narrative)
-          Mobile: Vertical Stack with Reversible Scroll-Scrubbed Aperture Mask
+          PART 1: MONUMENTAL PHOTOGRAPHIC PROTAGONIST & CONTINUOUS MASK REVEAL
+          Desktop: Pinned Asymmetric Stage (~53% Left Portrait / ~47% Right Narrative)
+          Mobile & Tablet: Natural Scroll with Reversible Horizontal Mask
           ===================================================================== */}
       <div
         ref={stagePinRef}
-        className="min-h-screen flex flex-col justify-center pt-24 pb-16 lg:pt-24 lg:pb-10 relative overflow-hidden"
+        className="min-h-screen flex items-center pt-[86px] pb-10 lg:pt-[84px] lg:pb-6 relative overflow-hidden"
       >
-        <div className="editorial-container relative z-10 w-full space-y-6 lg:space-y-7">
-          {/* Act 1 Minimal Eyebrow Bar: "01 / SOBRE MIM" + Discrete Progress Hairline */}
-          <div
-            ref={eyebrowWrapRef}
-            className="flex items-center justify-between gap-4 border-b border-[var(--border-subtle)] pb-3.5"
-          >
-            <span
-              data-i18n="about-stage-eyebrow"
-              className="font-mono-tech text-xs uppercase tracking-[0.22em] text-[var(--text-muted)]"
-            >
-              {t.about.stageEyebrow}
-            </span>
-
-            <div className="flex items-center gap-4">
-              <div
-                aria-hidden="true"
-                className="hidden lg:block w-24 h-[1px] bg-[var(--border-subtle)] overflow-hidden"
-              >
-                <div
-                  ref={progressBarRef}
-                  className="h-full w-full bg-[var(--text-primary)] origin-left"
-                />
-              </div>
-              <span className="font-mono-tech text-xs text-[var(--text-muted)]">
-                {t.about.education.location}
-              </span>
-            </div>
-          </div>
-
-          {/* Asymmetric Editorial Grid: Left ~45% (5 cols) Photograph / Right ~55% (7 cols) Narrative */}
-          <div className="editorial-grid items-center gap-8 lg:gap-12">
-            {/* LEFT COLUMN (~45% on Desktop): Pure Photographic Protagonist with Horizontal Mask */}
-            <div ref={photoStageWrapRef} className="col-span-12 lg:col-span-5">
-              <figure className="w-full max-w-[420px] xl:max-w-[440px] mx-auto lg:mx-0 space-y-2.5">
-                {/* HORIZONTAL APERTURE MASK CONTAINER (Opens from center vertical slit to full 3:4 portrait) */}
+        <div className="editorial-container relative z-10 w-full">
+          {/* Asymmetric Editorial Grid: Left ~53% Monumental Photograph / Right ~47% Clean Personal Narrative */}
+          <div className="grid grid-cols-1 lg:grid-cols-[53%_1fr] items-center gap-8 lg:gap-11 xl:gap-14">
+            {/* LEFT COLUMN (~53% on Desktop): Monumental Portrait with Fixed Outer Container & Continuous Horizontal Mask */}
+            <div ref={photoStageWrapRef} className="w-full">
+              <figure className="w-full max-w-[min(520px,calc(74vh*0.76))] lg:max-w-[calc(min(80vh,100vh-7.5rem)*0.86)] xl:max-w-[calc(min(82vh,100vh-7.5rem)*0.86)] mx-auto lg:mx-0 space-y-2">
+                {/* HORIZONTAL APERTURE MASK CONTAINER (Fixed outer geometry, opens continuously from center outward) */}
                 <div
                   ref={photoMaskRef}
-                  className="relative aspect-[3/4] max-h-[65vh] w-full rounded-[1rem] overflow-hidden bg-[var(--bg-surface)] border border-[var(--border-subtle)] will-change-[clip-path]"
+                  className="relative w-full aspect-[3/4] lg:aspect-auto lg:h-[min(80vh,calc(100vh-7.5rem))] xl:h-[min(82vh,calc(100vh-7.5rem))] rounded-[1.25rem] overflow-hidden bg-[var(--bg-surface)] border border-[var(--border-subtle)] will-change-[clip-path]"
                   style={{
-                    clipPath: 'inset(0% 35% 0% 35% round 1rem)',
-                    WebkitClipPath: 'inset(0% 35% 0% 35% round 1rem)',
+                    clipPath: 'inset(0% 38% 0% 38% round 1.25rem)',
+                    WebkitClipPath: 'inset(0% 38% 0% 38% round 1.25rem)',
                     boxShadow: 'var(--shadow-card)',
                   }}
                 >
-                  {/* Inner Scalable Portrait Layer (Subtle scale 1.06 -> 1.0 during reveal) */}
+                  {/* Inner Scalable Portrait Layer (Subtle scale 1.03 -> 1.0 during reveal) */}
                   <div
                     ref={photoInnerRef}
                     className="w-full h-full relative will-change-transform"
@@ -472,7 +394,7 @@ export const EditorialAbout: React.FC = () => {
                             onLoad={() => ScrollTrigger.refresh()}
                             style={{
                               objectPosition:
-                                portfolioData.personal.photoObjectPosition || 'center top',
+                                portfolioData.personal.photoObjectPosition || 'center 32%',
                             }}
                             className="w-full h-full object-cover select-none"
                           />
@@ -500,7 +422,7 @@ export const EditorialAbout: React.FC = () => {
                             onLoad={() => ScrollTrigger.refresh()}
                             style={{
                               objectPosition:
-                                portfolioData.personal.photoObjectPosition || 'center top',
+                                portfolioData.personal.photoObjectPosition || 'center 32%',
                             }}
                             className="w-full h-full object-cover select-none"
                           />
@@ -545,7 +467,7 @@ export const EditorialAbout: React.FC = () => {
 
                         <div className="relative z-10 border-t border-[var(--border-subtle)] pt-3 flex items-center justify-between font-mono-tech text-[10px] text-[var(--text-muted)]">
                           <span>SÃO PAULO, BR</span>
-                          <span>4 : 5</span>
+                          <span>3 : 4</span>
                         </div>
                       </div>
                     )}
@@ -553,7 +475,7 @@ export const EditorialAbout: React.FC = () => {
                 </div>
 
                 {/* Quiet Editorial Caption */}
-                <figcaption className="flex items-center justify-between font-mono-tech text-[11px] text-[var(--text-muted)] px-0.5">
+                <figcaption className="flex items-center justify-between font-mono-tech text-[11px] text-[var(--text-muted)] px-1">
                   <span data-i18n="about-photo-caption" className="truncate">
                     {t.about.photoFrame.caption}
                   </span>
@@ -562,20 +484,36 @@ export const EditorialAbout: React.FC = () => {
               </figure>
             </div>
 
-            {/* RIGHT COLUMN (~55% on Desktop): Authentic Personal Presentation (Acts 3 & 4) */}
-            <div className="col-span-12 lg:col-span-7 space-y-5 lg:space-y-6">
-              {/* Act 3.1: Expressive Editorial Heading ("Muito além do código.") */}
+            {/* RIGHT COLUMN (~47% on Desktop): Clean, Balanced Personal Narrative */}
+            <div className="w-full space-y-5 lg:space-y-6 xl:space-y-7">
+              {/* Discrete Editorial Eyebrow */}
+              <div
+                ref={eyebrowWrapRef}
+                className="flex items-center justify-between gap-4 border-b border-[var(--border-subtle)] pb-3"
+              >
+                <span
+                  data-i18n="about-stage-eyebrow"
+                  className="font-mono-tech text-xs uppercase tracking-[0.22em] text-[var(--text-muted)]"
+                >
+                  {t.about.stageEyebrow}
+                </span>
+                <span className="font-mono-tech text-xs text-[var(--text-muted)]">
+                  {t.about.education.location}
+                </span>
+              </div>
+
+              {/* Expressive Editorial Heading ("Muito além do código." / "Far beyond code.") */}
               <div ref={titleWrapRef}>
                 <h2
                   id="about-main-heading"
                   data-i18n="about-title"
-                  className="font-display font-extrabold text-[clamp(2.15rem,3.8vw+0.5rem,3.85rem)] leading-[1.03] tracking-[-0.03em] text-[var(--text-primary)]"
+                  className="font-display font-extrabold text-[clamp(2.1rem,3.6vw+0.4rem,3.75rem)] leading-[1.03] tracking-[-0.03em] text-[var(--text-primary)]"
                 >
                   {t.about.title}
                 </h2>
               </div>
 
-              {/* Act 3.2: Main Personal Presentation Paragraph */}
+              {/* Main Personal Presentation Lead */}
               <div ref={p1WrapRef}>
                 <p
                   data-i18n="about-lead"
@@ -585,7 +523,7 @@ export const EditorialAbout: React.FC = () => {
                 </p>
               </div>
 
-              {/* Act 3.3: Personal Philosophy Complement */}
+              {/* Personal Philosophy Complement */}
               <div ref={p2WrapRef}>
                 <p
                   data-i18n="about-p1"
@@ -595,7 +533,7 @@ export const EditorialAbout: React.FC = () => {
                 </p>
               </div>
 
-              {/* Act 3.4: Practical Academic & Project Context (IMT, Hackathon ELO, Velore) */}
+              {/* Practical Academic & Project Context (IMT, Hackathon ELO, Velore) */}
               <div ref={p3WrapRef}>
                 <p
                   data-i18n="about-p2"
@@ -605,47 +543,8 @@ export const EditorialAbout: React.FC = () => {
                 </p>
               </div>
 
-              {/* Act 3.5: Verified Academic & Practical Metadata Strip */}
-              <div ref={metaWrapRef} className="pt-1">
-                <div className="grid grid-cols-1 sm:grid-cols-3 gap-3">
-                  {t.about.metrics.map((metric, idx) => (
-                    <button
-                      key={idx}
-                      type="button"
-                      onClick={() =>
-                        navigate('/', {
-                          sectionId: idx === 1 ? 'projects' : 'skills',
-                        })
-                      }
-                      className="p-4 rounded-2xl bg-[var(--bg-surface)] hover:bg-[var(--bg-elevated)] border border-[var(--border-subtle)] hover:border-[var(--border-strong)] transition-all flex flex-col justify-between text-left group cursor-pointer"
-                    >
-                      <div className="flex items-center justify-between w-full mb-1.5 gap-2">
-                        <span className="font-display font-extrabold text-base xl:text-lg whitespace-nowrap tracking-tight text-[var(--text-primary)]">
-                          {metric.value}
-                        </span>
-                        <ArrowUpRight className="w-3.5 h-3.5 text-[var(--text-muted)] group-hover:text-[var(--text-primary)] group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform shrink-0" />
-                      </div>
-                      <div>
-                        <span
-                          data-i18n={`about-metric-lbl-${idx}`}
-                          className="block font-mono-tech text-[10px] uppercase tracking-widest text-[var(--text-primary)] font-semibold"
-                        >
-                          {metric.label}
-                        </span>
-                        <span
-                          data-i18n={`about-metric-sub-${idx}`}
-                          className="block font-mono-tech text-[10px] text-[var(--text-muted)] mt-0.5 truncate"
-                        >
-                          {metric.sub}
-                        </span>
-                      </div>
-                    </button>
-                  ))}
-                </div>
-              </div>
-
-              {/* Act 4: Personal Quote & Signature Block */}
-              <div ref={quoteWrapRef}>
+              {/* Personal Quote & Signature Block */}
+              <div ref={quoteWrapRef} className="pt-1">
                 <blockquote className="pl-4 sm:pl-5 py-1.5 border-l border-[var(--border-strong)] flex flex-col sm:flex-row sm:items-center justify-between gap-2">
                   <p
                     data-i18n="about-quote"
@@ -664,10 +563,47 @@ export const EditorialAbout: React.FC = () => {
       </div>
 
       {/* =====================================================================
-          PART 2 & PART 3: PRESERVED PERSONAL NARRATIVE CHAPTERS, ACADEMIC
-          DEGREE (IMT 2025–2029), FOCUS PILLARS & TIMELINE
+          PART 2 & PART 3: CREDENTIAL METRICS, PERSONAL NARRATIVE CHAPTERS,
+          ACADEMIC DEGREE (IMT 2025–2029), FOCUS PILLARS & TIMELINE
           ===================================================================== */}
-      <div className="editorial-container py-20 sm:py-28 space-y-20 border-t border-[var(--border-subtle)]">
+      <div className="editorial-container py-20 sm:py-28 space-y-16 sm:space-y-20 border-t border-[var(--border-subtle)]">
+        {/* Verified Academic & Practical Metadata Strip (Relocated from Pinned Stage for Visual Clarity) */}
+        <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
+          {t.about.metrics.map((metric, idx) => (
+            <button
+              key={idx}
+              type="button"
+              onClick={() =>
+                navigate('/', {
+                  sectionId: idx === 1 ? 'projects' : 'skills',
+                })
+              }
+              className="p-5 sm:p-6 rounded-2xl bg-[var(--bg-surface)] hover:bg-[var(--bg-elevated)] border border-[var(--border-subtle)] hover:border-[var(--border-strong)] transition-all flex flex-col justify-between text-left group cursor-pointer"
+            >
+              <div className="flex items-center justify-between w-full mb-2 gap-2">
+                <span className="font-display font-extrabold text-xl sm:text-2xl whitespace-nowrap tracking-tight text-[var(--text-primary)]">
+                  {metric.value}
+                </span>
+                <ArrowUpRight className="w-4 h-4 text-[var(--text-muted)] group-hover:text-[var(--text-primary)] group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform shrink-0" />
+              </div>
+              <div>
+                <span
+                  data-i18n={`about-metric-lbl-${idx}`}
+                  className="block font-mono-tech text-xs uppercase tracking-widest text-[var(--text-primary)] font-semibold"
+                >
+                  {metric.label}
+                </span>
+                <span
+                  data-i18n={`about-metric-sub-${idx}`}
+                  className="block font-mono-tech text-[11px] text-[var(--text-muted)] mt-0.5 truncate"
+                >
+                  {metric.sub}
+                </span>
+              </div>
+            </button>
+          ))}
+        </div>
+
         {/* PART 2: 3 Personal Narrative Chapters (Why Tech, Software & AI Interests, Professional Goals) */}
         <div className="about-chapters-grid grid grid-cols-1 md:grid-cols-3 gap-6">
           {chapters.map((chapter) => {

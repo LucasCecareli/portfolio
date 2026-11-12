@@ -61,7 +61,7 @@ export const portfolioData = {
     photoSrcSet: "",
     photoAlt:
       "Lucas Cecareli Ribeiro — Estudante de Ciência da Computação no Instituto Mauá de Tecnologia",
-    photoObjectPosition: "center top",
+    photoObjectPosition: "center 32%",
     photoAspectRatio: "3 / 4",
   },
 
