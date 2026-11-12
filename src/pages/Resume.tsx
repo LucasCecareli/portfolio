@@ -15,13 +15,33 @@ import {
   ArrowLeft,
   Check,
   FolderGit2,
+  Clock,
 } from 'lucide-react';
 import { motion } from 'framer-motion';
 import confetti from 'canvas-confetti';
 
+interface CertItem {
+  id: string;
+  title: string;
+  issuer: string;
+  issueDate: string;
+  credentialId?: string;
+}
+
 export const Resume: React.FC = () => {
   const { t } = useLanguage();
   const [downloaded, setDownloaded] = useState(false);
+
+  const hasEmail = Boolean(
+    portfolioData.personal.email && portfolioData.personal.email.trim().length > 0
+  );
+  const hasGithub = Boolean(
+    portfolioData.personal.github && portfolioData.personal.github.trim().length > 0
+  );
+  const hasLinkedin = Boolean(
+    portfolioData.personal.linkedin && portfolioData.personal.linkedin.trim().length > 0
+  );
+  const certItems = (t.skills.certifications.items || []) as CertItem[];
 
   const handleDownloadPDF = () => {
     setDownloaded(true);
@@ -126,43 +146,49 @@ export const Resume: React.FC = () => {
                 data-i18n="resume-role"
                 className="font-mono-tech text-sm text-[var(--text-secondary)]"
               >
-                {t.hero.idCard.role}
+                {t.hero.idCard.role} · {t.hero.idCard.institution}
               </p>
               <div className="flex flex-wrap items-center gap-4 text-xs font-mono-tech text-[var(--text-muted)] pt-1">
                 <span className="flex items-center gap-1.5">
                   <MapPin className="w-3.5 h-3.5" />
                   {t.about.education.location}
                 </span>
-                <span className="flex items-center gap-1.5">
-                  <Mail className="w-3.5 h-3.5" />
-                  {portfolioData.personal.email}
-                </span>
+                {hasEmail && (
+                  <span className="flex items-center gap-1.5">
+                    <Mail className="w-3.5 h-3.5" />
+                    {portfolioData.personal.email}
+                  </span>
+                )}
               </div>
             </div>
 
             <div className="flex flex-wrap gap-2.5 text-xs font-mono-tech">
-              <a
-                href={portfolioData.personal.github}
-                target="_blank"
-                rel="noreferrer"
-                className="px-4 py-2 rounded-full bg-[var(--bg-primary)] border border-[var(--border-subtle)] hover:border-[var(--border-strong)] text-[var(--text-primary)] flex items-center gap-2 transition-colors"
-              >
-                <span>GitHub</span>
-                <ArrowUpRight className="w-3.5 h-3.5" />
-              </a>
-              <a
-                href={portfolioData.personal.linkedin}
-                target="_blank"
-                rel="noreferrer"
-                className="px-4 py-2 rounded-full bg-[var(--bg-primary)] border border-[var(--border-subtle)] hover:border-[var(--border-strong)] text-[var(--text-primary)] flex items-center gap-2 transition-colors"
-              >
-                <span>LinkedIn</span>
-                <ArrowUpRight className="w-3.5 h-3.5" />
-              </a>
+              {hasGithub && (
+                <a
+                  href={portfolioData.personal.github}
+                  target="_blank"
+                  rel="noreferrer"
+                  className="px-4 py-2 rounded-full bg-[var(--bg-primary)] border border-[var(--border-subtle)] hover:border-[var(--border-strong)] text-[var(--text-primary)] flex items-center gap-2 transition-colors"
+                >
+                  <span>GitHub</span>
+                  <ArrowUpRight className="w-3.5 h-3.5" />
+                </a>
+              )}
+              {hasLinkedin && (
+                <a
+                  href={portfolioData.personal.linkedin}
+                  target="_blank"
+                  rel="noreferrer"
+                  className="px-4 py-2 rounded-full bg-[var(--bg-primary)] border border-[var(--border-subtle)] hover:border-[var(--border-strong)] text-[var(--text-primary)] flex items-center gap-2 transition-colors"
+                >
+                  <span>LinkedIn</span>
+                  <ArrowUpRight className="w-3.5 h-3.5" />
+                </a>
+              )}
             </div>
           </div>
 
-          {/* Academic & Professional Summary */}
+          {/* Academic & Personal Summary */}
           <div className="space-y-3">
             <h3 className="font-mono-tech text-xs uppercase tracking-widest text-[var(--text-muted)] flex items-center gap-2">
               <Briefcase className="w-4 h-4 text-[var(--text-primary)]" />
@@ -172,7 +198,7 @@ export const Resume: React.FC = () => {
               data-i18n="resume-sum-body"
               className="text-sm sm:text-base text-[var(--text-secondary)] leading-relaxed"
             >
-              {t.about.lead}
+              {t.about.lead} {t.about.storyParagraph1}
             </p>
           </div>
 
@@ -219,13 +245,21 @@ export const Resume: React.FC = () => {
                   key={proj.id}
                   className="p-5 rounded-2xl bg-[var(--bg-primary)] border border-[var(--border-subtle)] space-y-2"
                 >
-                  <div className="flex items-center justify-between">
+                  <div className="flex items-center justify-between gap-2">
                     <h4 className="font-display font-bold text-base text-[var(--text-primary)]">
                       {proj.title}
                     </h4>
-                    <span className="font-mono-tech text-[11px] text-[var(--text-muted)]">
-                      {proj.year}
-                    </span>
+                    <div className="flex items-center gap-1.5 shrink-0">
+                      {proj.inDevelopment && (
+                        <span className="inline-flex items-center gap-1 font-mono-tech text-[10px] px-2 py-0.5 rounded-full bg-[var(--accent-bg)] text-[var(--accent-text)] font-semibold">
+                          <Clock className="w-2.5 h-2.5" />
+                          <span>{t.projects.inDevelopmentBadge}</span>
+                        </span>
+                      )}
+                      <span className="font-mono-tech text-[11px] text-[var(--text-muted)]">
+                        {proj.year}
+                      </span>
+                    </div>
                   </div>
                   <p className="text-xs text-[var(--text-secondary)] leading-relaxed">
                     {proj.description}
@@ -273,32 +307,35 @@ export const Resume: React.FC = () => {
             </div>
           </div>
 
-          {/* Verified Certifications */}
-          <div className="space-y-4">
-            <h3 className="font-mono-tech text-xs uppercase tracking-widest text-[var(--text-muted)] flex items-center gap-2">
-              <Award className="w-4 h-4 text-[var(--text-primary)]" />
-              <span data-i18n="resume-certs-title">{t.resume.certificationsTitle}</span>
-            </h3>
+          {/* Certifications (Only rendered if verified certifications exist) */}
+          {certItems.length > 0 && (
+            <div className="space-y-4">
+              <h3 className="font-mono-tech text-xs uppercase tracking-widest text-[var(--text-muted)] flex items-center gap-2">
+                <Award className="w-4 h-4 text-[var(--text-primary)]" />
+                <span data-i18n="resume-certs-title">{t.resume.certificationsTitle}</span>
+              </h3>
 
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 text-xs">
-              {t.skills.certifications.items.map((cert) => (
-                <div
-                  key={cert.id}
-                  className="p-4 rounded-2xl bg-[var(--bg-primary)] border border-[var(--border-subtle)] flex items-start justify-between gap-3"
-                >
-                  <div>
-                    <h4 className="font-bold text-[var(--text-primary)]">{cert.title}</h4>
-                    <span className="text-[var(--text-secondary)] font-mono-tech text-[11px]">
-                      {cert.issuer} ({cert.issueDate}) · {cert.credentialId}
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 text-xs">
+                {certItems.map((cert) => (
+                  <div
+                    key={cert.id}
+                    className="p-4 rounded-2xl bg-[var(--bg-primary)] border border-[var(--border-subtle)] flex items-start justify-between gap-3"
+                  >
+                    <div>
+                      <h4 className="font-bold text-[var(--text-primary)]">{cert.title}</h4>
+                      <span className="text-[var(--text-secondary)] font-mono-tech text-[11px]">
+                        {cert.issuer} ({cert.issueDate})
+                        {cert.credentialId ? ` · ${cert.credentialId}` : ''}
+                      </span>
+                    </div>
+                    <span className="font-mono-tech text-[10px] px-2.5 py-0.5 rounded-full bg-[var(--bg-elevated)] border border-[var(--border-subtle)] text-[var(--text-primary)] shrink-0">
+                      {t.resume.verifiedBadge}
                     </span>
                   </div>
-                  <span className="font-mono-tech text-[10px] px-2.5 py-0.5 rounded-full bg-[var(--bg-elevated)] border border-[var(--border-subtle)] text-[var(--text-primary)] shrink-0">
-                    {t.resume.verifiedBadge}
-                  </span>
-                </div>
-              ))}
+                ))}
+              </div>
             </div>
-          </div>
+          )}
         </div>
       </div>
     </motion.div>

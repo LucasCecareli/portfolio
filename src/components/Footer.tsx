@@ -20,8 +20,8 @@ export const Footer: React.FC = () => {
           {/* Brand Column (5 cols) */}
           <div className="md:col-span-5 space-y-4">
             <div className="flex items-center gap-3">
-              <span className="w-8 h-8 rounded-full bg-[var(--accent-bg)] text-[var(--accent-text)] flex items-center justify-center font-display font-extrabold text-xs">
-                LR
+              <span className="w-8 h-8 rounded-full bg-[var(--accent-bg)] text-[var(--accent-text)] flex items-center justify-center font-display font-extrabold text-[11px]">
+                LCR
               </span>
               <span className="font-display font-bold text-base tracking-wider uppercase text-[var(--text-primary)]">
                 {portfolioData.personal.name}
@@ -31,7 +31,7 @@ export const Footer: React.FC = () => {
               data-i18n="footer-inst"
               className="font-mono-tech text-xs text-[var(--text-muted)] max-w-sm leading-relaxed"
             >
-              {t.about.education.degree} · {t.about.education.institution}
+              {t.about.education.degree} · {t.about.education.institution} (2025—2029)
             </p>
           </div>
 

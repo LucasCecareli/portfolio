@@ -38,16 +38,12 @@ export const TerminalWidget: React.FC = () => {
                 {t.terminal.helpAbout}
               </div>
               <div>
-                <span className="text-[var(--text-primary)] font-semibold">skills</span> —{' '}
-                {t.terminal.helpSkills}
-              </div>
-              <div>
                 <span className="text-[var(--text-primary)] font-semibold">projects</span> —{' '}
                 {t.terminal.helpProjects}
               </div>
               <div>
-                <span className="text-[var(--text-primary)] font-semibold">certs</span> —{' '}
-                {t.terminal.helpCerts}
+                <span className="text-[var(--text-primary)] font-semibold">skills</span> —{' '}
+                {t.terminal.helpSkills}
               </div>
               <div>
                 <span className="text-[var(--text-primary)] font-semibold">contact</span> —{' '}
@@ -125,7 +121,9 @@ export const TerminalWidget: React.FC = () => {
                 <span className="text-[var(--text-primary)] font-medium">
                   {p.index}. {p.title}
                 </span>
-                <span className="text-[11px] text-[var(--text-muted)]">[{p.categoryDisplay}]</span>
+                <span className="text-[11px] text-[var(--text-muted)]">
+                  [{p.categoryDisplay}]
+                </span>
               </div>
             ))}
           </div>
@@ -136,14 +134,10 @@ export const TerminalWidget: React.FC = () => {
       case 'cat certs.json':
         output = (
           <div className="space-y-1 text-xs text-[var(--text-secondary)]">
-            {t.skills.certifications.items.map((c) => (
-              <div key={c.id} className="py-0.5">
-                <span className="text-[var(--text-primary)] font-semibold">✓ {c.title}</span> —{' '}
-                <span className="text-[var(--text-muted)]">
-                  {c.issuer} ({c.issueDate}) · ID: {c.credentialId}
-                </span>
-              </div>
-            ))}
+            <p className="text-[var(--text-primary)] font-medium">
+              {t.skills.certifications.emptyStateTitle}
+            </p>
+            <p className="text-[var(--text-muted)]">{t.skills.certifications.emptyStateBody}</p>
           </div>
         );
         break;
@@ -151,17 +145,19 @@ export const TerminalWidget: React.FC = () => {
       case 'contact':
         output = (
           <div className="space-y-1 text-xs text-[var(--text-secondary)]">
+            {portfolioData.personal.github && (
+              <p>
+                <span className="text-[var(--text-primary)] font-semibold">GITHUB:</span>{' '}
+                {portfolioData.personal.github}
+              </p>
+            )}
             <p>
               <span className="text-[var(--text-primary)] font-semibold">EMAIL:</span>{' '}
-              {portfolioData.personal.email}
-            </p>
-            <p>
-              <span className="text-[var(--text-primary)] font-semibold">GITHUB:</span>{' '}
-              {portfolioData.personal.github}
+              {portfolioData.personal.email || t.contact.pendingChannel}
             </p>
             <p>
               <span className="text-[var(--text-primary)] font-semibold">LINKEDIN:</span>{' '}
-              {portfolioData.personal.linkedin}
+              {portfolioData.personal.linkedin || t.contact.pendingChannel}
             </p>
           </div>
         );
@@ -190,7 +186,7 @@ export const TerminalWidget: React.FC = () => {
     { label: 'about', cmd: 'about' },
     { label: 'projects', cmd: 'projects' },
     { label: 'skills', cmd: 'skills' },
-    { label: 'certs', cmd: 'certs' },
+    { label: 'contact', cmd: 'contact' },
     { label: 'clear', cmd: 'clear' },
   ];
 
@@ -204,7 +200,7 @@ export const TerminalWidget: React.FC = () => {
           <span className="w-2.5 h-2.5 rounded-full bg-[var(--text-muted)]/25" />
           <span className="ml-2 text-[11px] font-mono-tech text-[var(--text-secondary)] flex items-center gap-1.5">
             <Terminal className="w-3.5 h-3.5 text-[var(--text-primary)]" />
-            lucas@imt-cs:~
+            lcr@imt-bcc:~
           </span>
         </div>
         <span className="text-[10px] font-mono-tech text-[var(--text-muted)] uppercase tracking-wider">

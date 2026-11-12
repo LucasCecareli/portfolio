@@ -1,18 +1,23 @@
 {
   "meta": {
-    "title": "Lucas Ribeiro — Engenharia de Software & Ciência da Computação",
-    "description": "Portfólio de Lucas Ribeiro — Estudante de Ciência da Computação no Instituto Mauá de Tecnologia e Software Engineer. Estudos de caso, arquitetura de sistemas e credenciais verificadas."
+    "title": "Lucas Cecareli Ribeiro — Ciência da Computação · Portfólio",
+    "description": "Portfólio de Lucas Cecareli Ribeiro — Estudante de Ciência da Computação no Instituto Mauá de Tecnologia (2025–2029). Projetos práticos de software, aplicações web e soluções tecnológicas."
+  },
+  "intro": {
+    "indexLabel": "00 — PORTFÓLIO PESSOAL",
+    "locationLabel": "SÃO PAULO · IMT · 2025—2029",
+    "skipLabel": "Pular Intro [ESC]"
   },
   "nav": {
     "home": "Início",
-    "about": "Sobre",
+    "about": "Sobre Mim",
     "projects": "Projetos",
-    "skills": "Skills",
-    "certifications": "Certificações",
+    "skills": "Competências",
+    "certifications": "Formação",
     "resume": "Currículo",
     "contact": "Contato",
-    "hireMe": "Vamos Conversar",
-    "available": "Disponível para Oportunidades",
+    "hireMe": "Contato",
+    "available": "Estudante de Ciência da Computação · IMT",
     "switchThemeToLight": "Ativar tema claro",
     "switchThemeToDark": "Ativar tema escuro",
     "switchLang": "Alternar idioma",
@@ -22,85 +27,88 @@
     "backToProjects": "Voltar para Projetos"
   },
   "hero": {
-    "statusBadge": "DISPONÍVEL PARA ESTÁGIO & ENGENHARIA DE SOFTWARE",
-    "institutionBadge": "Bacharelado em Ciência da Computação · Instituto Mauá de Tecnologia",
-    "greeting": "LUCAS RIBEIRO",
-    "headlineLine1": "Arquitetura",
-    "headlineLine2": "de Software &",
-    "headlineLine3": "Engenharia Web.",
-    "subtitle": "Desenvolvendo soluções eficientes, escaláveis e com design moderno. Focado em arquitetura de software, sistemas distribuídos, estruturas de dados e tecnologias web modernas.",
-    "ctaProjects": "Explorar Projetos",
-    "ctaContact": "Entrar em Contato",
+    "statusBadge": "CIÊNCIA DA COMPUTAÇÃO · 2025 — 2029",
+    "institutionBadge": "Instituto Mauá de Tecnologia (IMT)",
+    "greeting": "PORTFÓLIO PESSOAL & PROJETOS",
+    "headlineLine1": "LUCAS",
+    "headlineLine2": "CECARELI",
+    "headlineLine3": "RIBEIRO.",
+    "subtitle": "Estudante de Ciência da Computação no Instituto Mauá de Tecnologia. Desenvolvo projetos práticos de software, aplicações web e soluções tecnológicas com foco em aprendizado contínuo, engenharia de software e inteligência artificial.",
+    "ctaProjects": "Ver Projetos",
+    "ctaAbout": "Sobre Mim",
+    "ctaContact": "Contato",
     "ctaResume": "Currículo / CV",
     "scrollIndicator": "ROLE PARA EXPLORAR",
-    "cardTabIdentity": "CREDENCIAL TÉCNICA",
+    "cardTabIdentity": "IDENTIDADE & RETRATO",
     "cardTabTerminal": "TERMINAL CLI",
     "idCard": {
-      "headerLabel": "IDENTIDADE ACADÊMICA & TÉCNICA",
-      "code": "IMT — BCC · 2027",
-      "role": "Ciência da Computação & Software Engineer",
+      "headerLabel": "IDENTIDADE ACADÊMICA · IMT",
+      "code": "BCC · 2025—2029",
+      "role": "Estudante de Ciência da Computação",
       "institution": "Instituto Mauá de Tecnologia",
       "location": "São Paulo, Brasil",
-      "focusLabel": "FOCO DE ENGENHARIA",
+      "focusLabel": "INTERESSES & PRÁTICA",
       "focusItems": [
-        "Arquitetura de Software",
-        "Sistemas Distribuídos",
-        "Algoritmos & Estruturas",
-        "Aplicações Full-Stack"
+        "Desenvolvimento de Software",
+        "Aplicações Web",
+        "Inteligência Artificial",
+        "Resolução de Problemas"
       ],
-      "photoPlaceholderNote": "ARTEFATO MONOGRAMÁTICO AUTORAL · PRONTO PARA RETRATO P&B",
-      "interactiveHint": "Mova o cursor para inspecionar · Clique para alternar visão"
+      "photoPlaceholderNote": "ESPAÇO PREPARADO PARA FOTOGRAFIA PESSOAL",
+      "interactiveHint": "Passe o cursor para interagir · Alterne para o Terminal CLI"
     }
   },
   "bridge": {
-    "eyebrow": "01 / METODOLOGIA & ENGENHARIA",
-    "titleLeft": "TEORIA",
-    "titleMiddle": "ARQUITETURA",
-    "titleRight": "PRODUÇÃO",
-    "statement": "Traduzo fundamentos rigorosos da Ciência da Computação — complexidade algorítmica, concorrência e modelagem de dados — em arquiteturas limpas e interfaces digitais de alta precisão.",
+    "eyebrow": "01 / TRAJETÓRIA & ABORDAGEM",
+    "titleLeft": "FUNDAMENTO",
+    "titleMiddle": "PRÁTICA",
+    "titleRight": "EVOLUÇÃO",
+    "statement": "Construo minha formação em Ciência da Computação transformando o aprendizado acadêmico em projetos práticos — de sistemas de gestão e jogos educacionais a plataformas de hackathon e assistentes inteligentes.",
     "steps": [
       {
         "index": "01",
-        "label": "FUNDAMENTO",
-        "title": "Modelagem & Complexidade",
-        "detail": "Estruturas de dados, grafos, árvores balanceadas e análise assintótica Big-O."
+        "label": "BASE ACADÊMICA",
+        "title": "Lógica & Computação",
+        "detail": "Estudo estruturado de algoritmos, programação e raciocínio computacional no Instituto Mauá de Tecnologia (ingresso em fev/2025)."
       },
       {
         "index": "02",
-        "label": "SISTEMA",
-        "title": "Arquitetura Limpa & Concorrência",
-        "detail": "Princípios SOLID, microsserviços assíncronos, WebSockets, filas e containers Docker."
+        "label": "PROJETOS REAIS",
+        "title": "Software Aplicado",
+        "detail": "Desenvolvimento de aplicações práticas para problemas reais: agendamento de laboratórios, educação interativa e saúde."
       },
       {
         "index": "03",
-        "label": "EXECUÇÃO",
-        "title": "Interfaces & Performance",
-        "detail": "Aplicações reativas em TypeScript e React com foco em usabilidade, clareza e velocidade."
+        "label": "EXPLORAÇÃO",
+        "title": "Web & Inteligência Artificial",
+        "detail": "Evolução contínua no desenvolvimento de interfaces modernas, engenharia de software e soluções apoiadas por IA."
       }
     ]
   },
   "projects": {
-    "eyebrow": "02 / OBRAS SELECIONADAS & CASE STUDIES",
-    "title": "Projetos & Sistemas",
-    "subtitle": "Sistemas desenvolvidos aplicando arquitetura limpa, computação concorrente, visualização algorítmica e processamento de linguagem natural.",
+    "eyebrow": "02 / PROJETOS REAIS & ESTUDOS DE CASO",
+    "title": "Projetos Desenvolvidos",
+    "subtitle": "Sistemas e aplicações reais criados ao longo da minha trajetória acadêmica, em hackathons e em iniciativas autorais.",
     "filterAll": "Todos",
-    "viewCaseStudy": "Estudo de Caso",
+    "viewCaseStudy": "Ver Detalhes",
     "viewRepository": "Repositório GitHub",
-    "viewLiveDemo": "Live Demo",
-    "cursorLabel": "VER CASE ↗",
-    "metricsLabel": "Métrica Verificada",
-    "technologiesLabel": "Stack Utilizada",
-    "yearLabel": "Ano",
-    "categoryLabel": "Domínio",
+    "viewLiveDemo": "Acessar Projeto",
+    "cursorLabel": "VER PROJETO ↗",
+    "metricsLabel": "Contexto do Projeto",
+    "technologiesLabel": "Foco & Domínio",
+    "yearLabel": "Período",
+    "categoryLabel": "Categoria",
+    "inDevelopmentBadge": "EM DESENVOLVIMENTO",
+    "pendingLinksNote": "Links públicos e repositório em atualização.",
     "caseStudy": {
       "backButton": "Voltar aos Projetos",
       "overviewTitle": "Visão Geral",
-      "problemTitle": "Contexto & Problema",
-      "objectiveTitle": "Objetivo Técnico",
-      "solutionTitle": "Arquitetura & Solução",
-      "processTitle": "Processo de Engenharia",
-      "featuresTitle": "Funcionalidades Implementadas",
-      "resultsTitle": "Resultados & Métricas",
+      "problemTitle": "Contexto & Motivação",
+      "objectiveTitle": "Objetivo do Projeto",
+      "solutionTitle": "Proposta & Construção",
+      "processTitle": "Etapas de Desenvolvimento",
+      "featuresTitle": "Aspectos Principais do Projeto",
+      "resultsTitle": "Status & Contexto",
       "nextProject": "Próximo Projeto",
       "prevProject": "Projeto Anterior",
       "linksHeading": "Acesso ao Projeto"
@@ -110,282 +118,309 @@
         "id": "proj-1",
         "index": "01",
         "year": "2025",
-        "title": "Algorithmic Visualizer 3D",
-        "category": "Sistemas / C++",
-        "categoryDisplay": "Algoritmos & Sistemas",
-        "description": "Plataforma interativa para visualização em tempo real de algoritmos de ordenação, grafos (Dijkstra, A*) e árvores de busca.",
-        "longDescription": "Projeto desenvolvido para consolidar os estudos de Ciência da Computação. Demonstra passos de execução, compara complexidades Big-O de tempo e espaço e permite ao usuário testar dados customizados.",
-        "technologies": ["TypeScript", "Canvas API", "Algoritmos", "Web Workers"],
-        "metrics": "Complexidade visualizada passo a passo",
-        "githubUrl": "https://github.com/exemplo/algo-visualizer",
-        "liveUrl": "https://algo-visualizer-demo.vercel.app",
+        "title": "ELO",
+        "category": "Saúde & Tecnologia",
+        "categoryDisplay": "Hackathon · Saúde & Tecnologia",
+        "inDevelopment": false,
+        "description": "Plataforma desenvolvida durante um hackathon de saúde e tecnologia, concebida para conectar demandas da área da saúde a uma experiência digital clara e acessível.",
+        "longDescription": "O projeto ELO foi construído em ambiente de hackathon voltado a saúde e tecnologia. A iniciativa reuniu ideação rápida, entendimento de um problema real enfrentado na área da saúde e estruturação de uma plataforma funcional dentro do tempo da competição.",
+        "technologies": ["Saúde & Tecnologia", "Hackathon", "Prototipação", "Aplicação Web"],
+        "metrics": "Desenvolvido em Hackathon de Saúde e Tecnologia",
+        "githubUrl": "",
+        "liveUrl": "",
         "featured": true,
-        "image": "https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&w=1200&q=85",
-        "problem": "O estudo abstrato de estruturas de dados e algoritmos em grafos e árvores frequentemente carece de inspeção visual em tempo real do estado interno da memória, fronteiras de exploração e custo assintótico.",
-        "objective": "Construir um motor gráfico interativo no navegador capaz de executar e pausar algoritmos clássicos passo a passo sem bloquear a thread principal de renderização.",
-        "solution": "Arquitetura desacoplada utilizando Web Workers para o cálculo das transições de estados algorítmicos e Canvas API para renderização fluida a 60fps.",
+        "image": "",
+        "problem": "Em contextos de saúde, a comunicação e o acompanhamento de informações costumam ser fragmentados, exigindo ferramentas digitais mais diretas e compreensíveis para os usuários envolvidos.",
+        "objective": "Projetar e estruturar, durante o período intensivo do hackathon, uma plataforma focada em usabilidade, clareza de fluxo e aplicação prática na área da saúde.",
+        "solution": "Desenvolvimento colaborativo da plataforma ELO, organizando a jornada do usuário em uma interface intuitiva voltada à conexão e ao suporte em saúde.",
         "process": [
-          "Modelagem das estruturas de dados (grafos ponderados, árvores de busca e vetores) em TypeScript estrito.",
-          "Implementação de geradores de estados (step-by-step snapshots) para permitir avanço, pausa e controle de velocidade.",
-          "Isolamento do processamento pesado em Web Workers para manter a interface responsiva mesmo com entradas densas."
+          "Imersão no desafio proposto pelo hackathon de saúde e definição do escopo principal.",
+          "Estruturação dos fluxos de navegação e da interface da plataforma em equipe.",
+          "Consolidação e apresentação da proposta técnica e funcional ao final do evento."
         ],
         "features": [
-          "Visualização passo a passo de algoritmos de caminho mínimo (Dijkstra e A*).",
-          "Inspeção dinâmica de algoritmos de ordenação e árvores de busca.",
-          "Comparativo em tempo real de complexidade Big-O de tempo e espaço.",
-          "Entrada de conjuntos de dados e topologias customizadas pelo usuário."
+          "Concepção voltada a desafios reais de saúde e tecnologia.",
+          "Interface pensada para clareza, acessibilidade e rapidez de uso.",
+          "Projeto desenvolvido de ponta a ponta em ritmo de hackathon.",
+          "Trabalho colaborativo unindo visão de produto e desenvolvimento."
         ]
       },
       {
         "id": "proj-2",
         "index": "02",
         "year": "2025",
-        "title": "DevNexus — Plataforma Colaborativa de Código",
-        "category": "Full-Stack",
-        "categoryDisplay": "Full-Stack & Tempo Real",
-        "description": "Aplicação full-stack com autenticação segura, editor de código em tempo real e compartilhamento de snippets entre desenvolvedores.",
-        "longDescription": "Sistema distribuído com WebSockets para sincronização de edições colaborativas, persistência em MongoDB e cache em memória para otimização de consultas frequentes.",
-        "technologies": ["React", "Node.js", "WebSockets", "MongoDB", "Tailwind CSS"],
-        "metrics": "Sincronização em tempo real < 50ms",
-        "githubUrl": "https://github.com/exemplo/dev-nexus",
-        "liveUrl": "https://devnexus-demo.vercel.app",
+        "title": "Sistema de Agendamento de Laboratórios",
+        "category": "Aplicações & Sistemas",
+        "categoryDisplay": "Aplicação Prática · Gestão",
+        "inDevelopment": false,
+        "description": "Aplicação desenvolvida para organizar e gerenciar reservas, horários e disponibilidade de laboratórios em ambiente acadêmico.",
+        "longDescription": "O Sistema de Agendamento de Laboratórios surgiu da necessidade prática de organizar o uso compartilhado de salas e recursos laboratoriais, evitando conflitos de horários e facilitando a visualização da disponibilidade.",
+        "technologies": [
+          "Gestão de Reservas",
+          "Lógica de Agendamento",
+          "Interface de Usuário",
+          "Organização de Dados"
+        ],
+        "metrics": "Aplicação voltada à organização de horários e reservas",
+        "githubUrl": "",
+        "liveUrl": "",
         "featured": true,
-        "image": "https://images.unsplash.com/photo-1555066931-4365d14bab8c?auto=format&fit=crop&w=1200&q=85",
-        "problem": "Revisões de código e sessões de pair programming exigem sincronização instantânea de estado entre múltiplos clientes conectados simultaneamente sem conflitos de escrita.",
-        "objective": "Desenvolver um ambiente colaborativo full-stack com baixa latência de rede, persistência documental e gerenciamento seguro de sessões.",
-        "solution": "Comunicação bidirecional via WebSockets em Node.js aliada a persistência em MongoDB e camada de cache em memória para leituras de alta frequência.",
+        "image": "",
+        "problem": "O controle manual ou descentralizado do uso de laboratórios gera sobreposição de horários e dificulta saber rapidamente quais salas estão livres em cada período.",
+        "objective": "Criar um sistema estruturado para consulta de horários, registro de solicitações e visualização clara da ocupação dos laboratórios.",
+        "solution": "Implementação de uma aplicação com fluxo organizado por espaços e faixas de horário, permitindo acompanhar e gerenciar agendamentos com clareza.",
         "process": [
-          "Definição do protocolo de eventos WebSocket para transmissão enxuta de deltas de edição e presença de cursores.",
-          "Modelagem documental no MongoDB para versionamento de snippets e permissões de acesso.",
-          "Construção da interface reativa em React e Tailwind CSS com feedback imediato de conexão."
+          "Levantamento das regras básicas de reserva, horários e identificação dos laboratórios.",
+          "Modelagem das informações de salas, períodos disponíveis e agendamentos.",
+          "Desenvolvimento da interface para consulta rápida e realização de reservas."
         ],
         "features": [
-          "Edição colaborativa de código em tempo real via WebSockets.",
-          "Autenticação segura e controle de sessões de usuários.",
-          "Compartilhamento e organização de snippets técnicos.",
-          "Cache em memória para otimização de consultas recorrentes."
+          "Visualização estruturada de disponibilidade por laboratório e horário.",
+          "Fluxo de criação e organização de reservas de uso.",
+          "Prevenção de conflitos de agendamento no mesmo horário.",
+          "Interface limpa voltada ao cotidiano acadêmico."
         ]
       },
       {
         "id": "proj-3",
         "index": "03",
         "year": "2025",
-        "title": "API Gateway & Task Manager Distribuído",
-        "category": "Backend",
-        "categoryDisplay": "Engenharia Backend & Sistemas",
-        "description": "Microsserviço de alto desempenho em FastAPI com filas assíncronas, rate limiting inteligente e monitoramento de saúde do sistema.",
-        "longDescription": "Focado em conceitos de engenharia de software e backend: processamento concorrente com Celery, autenticação JWT, documentação Swagger automática e containerização Docker.",
-        "technologies": ["Python", "FastAPI", "Docker", "Redis", "PostgreSQL"],
-        "metrics": "Throughput de 1.200 req/s em testes de carga",
-        "githubUrl": "https://github.com/exemplo/distributed-task-api",
-        "liveUrl": "https://task-api.onrender.com/docs",
+        "title": "Jogo Educacional — Show do Milhão",
+        "category": "Jogos & Educação",
+        "categoryDisplay": "Jogo Interativo · Educação",
+        "inDevelopment": false,
+        "description": "Jogo educacional interativo de perguntas e respostas inspirado no Show do Milhão, unindo lógica de programação e aprendizado dinâmico.",
+        "longDescription": "Projeto prático que aplica conceitos de lógica de programação, controle de fluxo e eventos na construção de um quiz educacional completo inspirado na dinâmica clássica do Show do Milhão.",
+        "technologies": [
+          "Lógica de Programação",
+          "Aplicação Interativa",
+          "Educação",
+          "Controle de Estados"
+        ],
+        "metrics": "Projeto prático de jogo interativo educacional",
+        "githubUrl": "",
+        "liveUrl": "",
         "featured": true,
-        "image": "https://images.unsplash.com/photo-1526374965328-7f61d4dc18c5?auto=format&fit=crop&w=1200&q=85",
-        "problem": "APIs síncronas tradicionais sofrem degradação severa de latência quando submetidas a picos de tráfego ou tarefas de processamento intensivo.",
-        "objective": "Projetar um backend resiliente e escalável que desacople o recebimento de requisições da execução pesada por meio de filas distribuídas.",
-        "solution": "Arquitetura em Python/FastAPI utilizando Redis como message broker e camada de rate limiting, workers Celery para processamento concorrente, PostgreSQL para persistência transacional e Docker para orquestração.",
+        "image": "",
+        "problem": "Ferramentas tradicionais de revisão de conteúdo muitas vezes são estáticas; formatos gamificados aumentam o engajamento e a fixação do conhecimento.",
+        "objective": "Desenvolver um jogo de perguntas e respostas funcional, com progressão de rodadas, verificação de alternativas e mecânicas inspiradas no Show do Milhão.",
+        "solution": "Construção da lógica de seleção de perguntas, evolução de pontuação por nível, recursos de auxílio durante as partidas e feedback visual imediato para cada resposta.",
         "process": [
-          "Desenvolvimento dos endpoints assíncronos em FastAPI com validação estrita e documentação OpenAPI/Swagger.",
-          "Implementação de rate limiting no Redis e delegação de jobs assíncronos para workers Celery.",
-          "Containerização completa do ambiente (API, Worker, Redis e PostgreSQL) com Docker."
+          "Estruturação do banco de perguntas, alternativas e níveis de progressão.",
+          "Implementação das regras de pontuação, validação de respostas e ajudas da partida.",
+          "Criação da interface interativa para conduzir o jogador ao longo das rodadas."
         ],
         "features": [
-          "Processamento assíncrono e concorrente de tarefas em background com Celery e Redis.",
-          "Rate limiting inteligente e autenticação baseada em tokens JWT.",
-          "Monitoramento de saúde (health checks) e documentação interativa Swagger.",
-          "Ambiente 100% containerizado com Docker e persistência ACID em PostgreSQL."
+          "Sistema de perguntas e respostas com progressão por rodadas.",
+          "Mecânicas de auxílio e pontuação inspiradas no formato Show do Milhão.",
+          "Feedback imediato de acerto, erro e avanço de nível.",
+          "Aplicação prática de estruturas de decisão e gerenciamento de estado."
         ]
       },
       {
         "id": "proj-4",
         "index": "04",
-        "year": "2025",
-        "title": "Classificador de Sentimentos & NLP",
-        "category": "IA / Dados",
-        "categoryDisplay": "Inteligência Artificial & NLP",
-        "description": "Pipeline de Processamento de Linguagem Natural com fine-tuning de modelo para análise de sentimentos e feedback de usuários.",
-        "longDescription": "Implementação de pré-processamento de texto, tokenização, extração de embeddings e deployment com endpoint de inferência em alta disponibilidade.",
-        "technologies": ["Python", "PyTorch", "Hugging Face", "FastAPI", "Docker"],
-        "metrics": "Acurácia de 93.4% no dataset de validação",
-        "githubUrl": "https://github.com/exemplo/nlp-sentiment-ai",
-        "liveUrl": "https://nlp-demo.streamlit.app",
-        "featured": false,
-        "image": "https://images.unsplash.com/photo-1507146426996-ef05306b995a?auto=format&fit=crop&w=1200&q=85",
-        "problem": "A análise manual de grandes volumes de feedback textual é lenta e sujeita a inconsistências, exigindo modelos capazes de capturar nuances semânticas do texto.",
-        "objective": "Estruturar um pipeline ponta a ponta de Processamento de Linguagem Natural — do pré-processamento e fine-tuning à disponibilização via API de inferência.",
-        "solution": "Fine-tuning de arquitetura baseada em Transformers (PyTorch / Hugging Face) com pipeline de tokenização padronizado e serviço de inferência empacotado em FastAPI e Docker.",
+        "year": "2025 — Presente",
+        "title": "Velore",
+        "category": "Em Desenvolvimento",
+        "categoryDisplay": "Assistente Financeiro · Em Desenvolvimento",
+        "inDevelopment": true,
+        "description": "Projeto autoral de assistente pessoal financeiro em desenvolvimento, pensado para simplificar o acompanhamento e a organização das finanças pessoais.",
+        "longDescription": "A Velore é um projeto em desenvolvimento ativo que une meus estudos em desenvolvimento de software e inteligência artificial para criar um assistente pessoal financeiro focado em clareza e apoio no dia a dia.",
+        "technologies": [
+          "Em Desenvolvimento",
+          "Assistente Financeiro",
+          "Desenvolvimento de Software",
+          "Inteligência Artificial"
+        ],
+        "metrics": "Em Desenvolvimento · Projeto Autoral",
+        "githubUrl": "",
+        "liveUrl": "",
+        "featured": true,
+        "image": "",
+        "problem": "Acompanhar gastos, organizar categorias e manter visibilidade sobre a vida financeira pessoal costuma exigir planilhas complexas ou aplicativos pouco intuitivos.",
+        "objective": "Desenvolver progressivamente um assistente pessoal financeiro capaz de organizar informações financeiras e oferecer uma experiência de acompanhamento mais inteligente e direta.",
+        "solution": "Arquitetura em evolução contínua, priorizando uma base sólida de software, organização clara de dados financeiros e integração gradual de recursos assistivos.",
         "process": [
-          "Limpeza de corpus textual, normalização, tokenização e extração de embeddings.",
-          "Treinamento e validação do modelo em PyTorch com acompanhamento rigoroso de métricas de precisão e recall.",
-          "Exposição do modelo treinado através de endpoint REST em FastAPI containerizado."
+          "Definição da visão do produto, escopo inicial e arquitetura base da aplicação.",
+          "Desenvolvimento iterativo da estrutura do sistema e dos fluxos principais (em andamento).",
+          "Estudo e experimentação de recursos de assistência inteligente aplicados a finanças pessoais."
         ],
         "features": [
-          "Pipeline automatizado de pré-processamento textual e tokenização.",
-          "Extração de embeddings e classificação semântica com PyTorch e Hugging Face.",
-          "Endpoint de inferência de baixa latência servido via FastAPI.",
-          "Demonstração interativa para teste de sentenças em tempo real."
+          "Projeto autoral atualmente em fase ativa de desenvolvimento.",
+          "Proposta focada em organização financeira pessoal com experiência simplificada.",
+          "Laboratório prático para aplicação de engenharia de software e inteligência artificial.",
+          "Evolução contínua de arquitetura e funcionalidades."
         ]
       }
     ]
   },
   "about": {
-    "eyebrow": "03 / PERFIL & FORMAÇÃO ACADÊMICA",
-    "title": "Engenharia com Base Científica.",
-    "lead": "Sou apaixonado por resolver problemas complexos com código limpo e algoritmos eficientes. Minha jornada na Ciência da Computação combina forte base teórica com o desenvolvimento prático de aplicações full-stack de alto desempenho.",
-    "quote": "\"Computação não é sobre computadores, assim como a astronomia não é sobre telescópios.\"",
-    "quoteAuthor": "— Edsger W. Dijkstra",
+    "eyebrow": "03 / SOBRE MIM & TRAJETÓRIA",
+    "title": "Quem Sou & Minha Caminhada na Computação.",
+    "lead": "Me chamo Lucas Cecareli Ribeiro e sou estudante de Ciência da Computação no Instituto Mauá de Tecnologia (IMT), em São Paulo. Ingressei na graduação em fevereiro de 2025, com conclusão prevista para 2029.",
+    "storyParagraph1": "Escolhi a área de tecnologia pela curiosidade em entender como os sistemas que usamos todos os dias são construídos e pela possibilidade de criar ferramentas que resolvam problemas reais de forma prática.",
+    "storyParagraph2": "Mais do que apenas estudar teoria de forma isolada, gosto de aprender construindo: cada projeto — seja em um hackathon, em atividades acadêmicas ou em iniciativas próprias como a Velore — é uma oportunidade de transformar conceitos de programação em software que realmente funciona.",
+    "photoFrame": {
+      "label": "IDENTIDADE PESSOAL",
+      "status": "RETRATO PESSOAL · EM SELEÇÃO",
+      "caption": "Espaço editorial preparado para fotografia pessoal em preto e branco."
+    },
+    "chapters": {
+      "whyTech": {
+        "index": "01",
+        "title": "Por Que Escolhi Tecnologia",
+        "body": "A computação reúne raciocínio lógico, criatividade e impacto direto. O que mais me motiva é sair de uma ideia ou problema concreto e construir, linha por linha, uma aplicação capaz de organizar processos, ensinar ou facilitar a rotina das pessoas."
+      },
+      "interests": {
+        "index": "02",
+        "title": "Desenvolvimento de Software & IA",
+        "body": "Meus principais interesses estão no desenvolvimento de software, na construção de aplicações web modernas e no estudo de Inteligência Artificial — buscando compreender como integrar boas práticas de código a sistemas cada vez mais inteligentes."
+      },
+      "goals": {
+        "index": "03",
+        "title": "Objetivos Profissionais",
+        "body": "Busco evoluir continuamente minha base técnica ao longo da graduação na Mauá, participar de novos projetos desafiadores e conquistar oportunidades práticas onde eu possa contribuir com dedicação, aprender com equipes experientes e crescer como desenvolvedor."
+      }
+    },
+    "timeline": {
+      "eyebrow": "LINHA DO TEMPO ACADÊMICA & PRÁTICA",
+      "title": "Trajetória 2025 — 2029",
+      "items": [
+        {
+          "period": "FEV 2025",
+          "title": "Ingresso em Ciência da Computação — IMT",
+          "subtitle": "Instituto Mauá de Tecnologia · São Paulo",
+          "description": "Início do Bacharelado em Ciência da Computação, construindo a base em lógica de programação, algoritmos e fundamentos de computação."
+        },
+        {
+          "period": "2025",
+          "title": "Primeiros Projetos Práticos & Sistemas",
+          "subtitle": "Jogo Educacional (Show do Milhão) & Agendamento de Laboratórios",
+          "description": "Desenvolvimento de aplicações práticas voltadas à lógica interativa, organização de reservas e resolução de necessidades do ambiente acadêmico."
+        },
+        {
+          "period": "2025",
+          "title": "Hackathon de Saúde & Tecnologia — Projeto ELO",
+          "subtitle": "Desenvolvimento Colaborativo sob Imersão",
+          "description": "Criação da plataforma ELO em equipe durante hackathon focado em saúde e tecnologia, exercitando prototipação rápida e foco no usuário."
+        },
+        {
+          "period": "2025 — PRESENTE",
+          "title": "Desenvolvimento do Projeto Velore",
+          "subtitle": "Assistente Pessoal Financeiro (Em Desenvolvimento)",
+          "description": "Concepção e desenvolvimento contínuo de um assistente pessoal financeiro autoral, aprofundando estudos em arquitetura de software e inteligência artificial."
+        },
+        {
+          "period": "2029",
+          "title": "Previsão de Conclusão do Bacharelado",
+          "subtitle": "Bacharelado em Ciência da Computação · IMT",
+          "description": "Consolidação da formação acadêmica no Instituto Mauá de Tecnologia."
+        }
+      ]
+    },
+    "quote": "\"A melhor maneira de consolidar o conhecimento em computação é transformar conceitos em projetos reais.\"",
+    "quoteAuthor": "— Lucas Cecareli Ribeiro",
     "education": {
       "label": "FORMAÇÃO ACADÊMICA",
-      "period": "2023 — Presente (Previsão: 2027)",
+      "period": "Fevereiro de 2025 — 2029 (Previsão)",
       "degree": "Bacharelado em Ciência da Computação",
       "institution": "Instituto Mauá de Tecnologia (IMT)",
       "location": "São Paulo, Brasil",
-      "description": "Formação integral focada em fundamentos de computação, engenharia de software e sistemas complexos.",
+      "description": "Graduação em Ciência da Computação focada em fundamentos de programação, engenharia de software, desenvolvimento de sistemas e projetos práticos.",
       "highlights": [
-        "Média de rendimento acadêmico destacada",
-        "Participação em maratonas de programação e hackathons",
-        "Projetos práticos integrados com empresas parceiras"
+        "Ingresso em fevereiro de 2025 · Previsão de conclusão em 2029",
+        "Participação em hackathon de saúde e tecnologia com o projeto ELO",
+        "Desenvolvimento prático de sistemas web, jogos educacionais e projetos autorais"
       ]
     },
-    "pillarsTitle": "Fundamentos da Ciência da Computação",
-    "pillarsSubtitle": "Os alicerces teóricos que sustentam cada decisão de arquitetura e implementação.",
+    "pillarsTitle": "Áreas de Foco & Estudo",
+    "pillarsSubtitle": "Os temas que guiam meus estudos acadêmicos e o desenvolvimento dos meus projetos atuais.",
     "pillars": [
       {
         "index": "01",
-        "title": "Estruturas de Dados & Algoritmos",
-        "description": "Grafos (Dijkstra, BFS/DFS), Árvores balanceadas (AVL, Red-Black), tabelas hash e análise de complexidade assintótica Big-O."
+        "title": "Lógica & Algoritmos",
+        "description": "Resolução estruturada de problemas, estruturas de dados fundamentais e construção de lógica limpa e compreensível."
       },
       {
         "index": "02",
-        "title": "Sistemas Operacionais & Concorrência",
-        "description": "Gerenciamento de memória (Virtual Memory, Paging), processos, threads, mutexes, semáforos e prevenção de deadlocks."
+        "title": "Desenvolvimento de Aplicações Web",
+        "description": "Criação de interfaces modernas, responsivas e funcionais utilizando TypeScript, React e boas práticas de componentização."
       },
       {
         "index": "03",
-        "title": "Redes de Computadores & Protocolos",
-        "description": "Camadas OSI/TCP-IP, roteamento, WebSockets, HTTP/2 e 3, RESTful APIs, gRPC e comunicação cliente-servidor."
+        "title": "Engenharia de Software Prática",
+        "description": "Organização de projetos do zero, modelagem de fluxos de uso, controle de versão com Git e evolução iterativa de sistemas."
       },
       {
         "index": "04",
-        "title": "Bancos de Dados & Modelagem",
-        "description": "Normalização relacional (PostgreSQL/MySQL), modelagem documental (MongoDB), transações ACID, índices e queries eficientes."
-      },
-      {
-        "index": "05",
-        "title": "Arquitetura de Software & Clean Code",
-        "description": "Princípios SOLID, separação de responsabilidades (Clean Architecture), Design Patterns e cobertura de testes."
-      },
-      {
-        "index": "06",
-        "title": "DevOps & Containers",
-        "description": "Containerização com Docker, automação de pipelines CI/CD, ambientes isolados no Linux e deploy em nuvem."
+        "title": "Inteligência Artificial Aplicada",
+        "description": "Interesse e estudo contínuo sobre como integrar recursos de IA em aplicações práticas, como no desenvolvimento da Velore."
       }
     ],
     "metrics": [
-      { "value": "04", "label": "PROJETOS EM DESTAQUE", "sub": "Full-Stack, Backend, IA & Sistemas" },
-      { "value": "04", "label": "CERTIFICAÇÕES OFICIAIS", "sub": "AWS, Harvard CS50, Meta & DeepLearning.AI" },
-      { "value": "05", "label": "LINGUAGENS CORE", "sub": "TypeScript, Python, C/C++, Java & SQL" }
+      { "value": "2025—2029", "label": "CIÊNCIA DA COMPUTAÇÃO", "sub": "Instituto Mauá de Tecnologia (IMT)" },
+      { "value": "04", "label": "PROJETOS PRÁTICOS", "sub": "ELO, Laboratórios, Jogo Educacional & Velore" },
+      { "value": "SW & IA", "label": "FOCO DE EVOLUÇÃO", "sub": "Desenvolvimento de Software & Aplicações Web" }
     ]
   },
   "skills": {
-    "eyebrow": "04 / CAPACIDADES TÉCNICAS & CREDENCIAIS",
-    "title": "Stack & Certificações",
-    "subtitle": "Tecnologias organizadas por domínio de atuação e credenciais técnicas verificáveis.",
+    "eyebrow": "04 / COMPETÊNCIAS & FERRAMENTAS",
+    "title": "Tecnologias & Estudos",
+    "subtitle": "Linguagens, tecnologias e ferramentas que utilizo e aprimoro na graduação e no desenvolvimento dos meus projetos.",
     "categories": {
       "languages": {
         "index": "01",
-        "title": "Linguagens de Programação",
+        "title": "Linguagens & Base",
         "items": [
-          { "name": "TypeScript / JavaScript", "meta": "Avançado" },
-          { "name": "Python", "meta": "Avançado" },
-          { "name": "C / C++", "meta": "Intermediário (Acadêmico)" },
-          { "name": "Java", "meta": "Intermediário" },
-          { "name": "SQL", "meta": "Avançado" }
+          { "name": "Python", "meta": "Estudos & Projetos" },
+          { "name": "TypeScript / JavaScript", "meta": "Aplicações Web" },
+          { "name": "HTML5 & CSS3", "meta": "Interfaces" },
+          { "name": "SQL", "meta": "Banco de Dados" }
         ]
       },
       "frameworks": {
         "index": "02",
-        "title": "Frameworks & Ecossistema Web",
+        "title": "Desenvolvimento & Web",
         "items": [
-          { "name": "React / Next.js", "meta": "Frontend" },
-          { "name": "Node.js / Express", "meta": "Backend" },
-          { "name": "FastAPI / Flask", "meta": "Backend" },
-          { "name": "Tailwind CSS", "meta": "Frontend" }
+          { "name": "React", "meta": "Frontend" },
+          { "name": "Tailwind CSS", "meta": "Estilização" },
+          { "name": "Node.js", "meta": "Ambiente JS" }
         ]
       },
       "tools": {
         "index": "03",
-        "title": "Infraestrutura, DevOps & Dados",
+        "title": "Ferramentas & Práticas",
         "items": [
           { "name": "Git & GitHub", "meta": "Versionamento" },
-          { "name": "Docker", "meta": "Containers" },
-          { "name": "Linux / Bash", "meta": "Ambiente" },
-          { "name": "MongoDB & PostgreSQL", "meta": "Databases" },
-          { "name": "Vercel & Cloudflare", "meta": "Deploy & Cloud" }
+          { "name": "VS Code", "meta": "Desenvolvimento" },
+          { "name": "Prototipação & Fluxos", "meta": "Projetos & Hackathons" }
         ]
       }
     },
     "certifications": {
-      "eyebrow": "CREDENCIAIS VERIFICADAS",
+      "eyebrow": "FORMAÇÃO COMPLEMENTAR",
       "title": "Certificações & Cursos",
-      "subtitle": "Validação formal de competências técnicas internacionais com código de autenticidade (ID) e link oficial.",
+      "subtitle": "Novas certificações verificadas serão adicionadas conforme concluídas ao longo da graduação.",
+      "emptyStateTitle": "Em construção acadêmica contínua",
+      "emptyStateBody": "Atualmente dedicado às disciplinas do Bacharelado em Ciência da Computação no Instituto Mauá de Tecnologia (2025–2029) e ao desenvolvimento de projetos práticos. Certificações oficiais serão publicadas aqui assim que emitidas.",
       "verifyLabel": "Verificar Credencial",
       "idLabel": "ID",
-      "items": [
-        {
-          "id": "cert-1",
-          "index": "01",
-          "title": "AWS Certified Cloud Practitioner",
-          "issuer": "Amazon Web Services",
-          "issueDate": "2025",
-          "credentialUrl": "https://aws.amazon.com/verification",
-          "credentialId": "AWS-CLF-00129",
-          "skills": ["Cloud Computing", "AWS Architecture", "Segurança", "Storage & S3"]
-        },
-        {
-          "id": "cert-2",
-          "index": "02",
-          "title": "CS50's Introduction to Computer Science",
-          "issuer": "Harvard University (edX)",
-          "issueDate": "2024",
-          "credentialUrl": "https://cs50.harvard.edu/certificates",
-          "credentialId": "CS50X-HC-98214",
-          "skills": ["C", "Python", "Algoritmos", "Gerenciamento de Memória", "SQL"]
-        },
-        {
-          "id": "cert-3",
-          "index": "03",
-          "title": "Meta Front-End Developer Professional",
-          "issuer": "Meta / Coursera",
-          "issueDate": "2024",
-          "credentialUrl": "https://coursera.org/verify/professional-cert",
-          "credentialId": "META-FED-83741",
-          "skills": ["React.js", "JavaScript ES6+", "UI/UX Design", "Testes Unitários"]
-        },
-        {
-          "id": "cert-4",
-          "index": "04",
-          "title": "Python for Data Science & Machine Learning",
-          "issuer": "DeepLearning.AI / Coursera",
-          "issueDate": "2025",
-          "credentialUrl": "https://coursera.org/verify",
-          "credentialId": "DL-PY-49120",
-          "skills": ["Pandas", "NumPy", "Scikit-Learn", "Visualização de Dados"]
-        }
-      ]
+      "items": []
     }
   },
   "contact": {
     "eyebrow": "05 / CONTATO & CONEXÃO",
     "monumentalLine1": "VAMOS",
-    "monumentalLine2": "TRABALHAR",
-    "monumentalLine3": "JUNTOS.",
-    "lead": "Em busca do próximo desafio que valha a pena resolver.",
-    "description": "Disponível para oportunidades de estágio em Engenharia de Software, Desenvolvimento Full-Stack, Backend e projetos técnicos desafiadores em São Paulo ou remoto.",
-    "downloadResume": "BAIXAR CURRÍCULO",
-    "sendMessageCta": "ENVIAR UMA MENSAGEM",
+    "monumentalLine2": "CONVERSAR",
+    "monumentalLine3": "SOBRE IDEIAS.",
+    "lead": "Aberto a conexões, aprendizado e oportunidades em tecnologia.",
+    "description": "Se você quiser trocar ideias sobre desenvolvimento de software, conhecer melhor meus projetos na Mauá ou conversar sobre oportunidades de estágio e colaboração, fique à vontade para entrar em contato.",
+    "downloadResume": "VER CURRÍCULO",
+    "sendMessageCta": "ESCREVER MENSAGEM",
     "copyEmail": "Copiar E-mail",
     "copiedEmail": "E-mail Copiado!",
+    "pendingChannel": "Em atualização",
     "channels": {
       "emailLabel": "E-MAIL",
       "githubLabel": "GITHUB",
@@ -393,58 +428,58 @@
     },
     "form": {
       "title": "Mensagem Direta",
-      "subtitle": "Preencha os campos abaixo para iniciar a conversa via cliente de e-mail.",
-      "nameLabel": "Seu Nome / Empresa",
-      "namePlaceholder": "Ex: Ana Silva (Tech Lead)",
+      "subtitle": "Deixe sua mensagem abaixo.",
+      "nameLabel": "Seu Nome",
+      "namePlaceholder": "Ex: Nome / Empresa",
       "emailLabel": "Seu E-mail",
-      "emailPlaceholder": "nome@empresa.com",
-      "messageLabel": "Mensagem ou Oportunidade",
-      "messagePlaceholder": "Olá Lucas! Gostaríamos de conversar sobre uma oportunidade em Engenharia de Software...",
-      "submit": "Enviar Mensagem",
+      "emailPlaceholder": "voce@exemplo.com",
+      "messageLabel": "Mensagem",
+      "messagePlaceholder": "Olá Lucas! Gostaria de conversar sobre...",
+      "submit": "Preparar Mensagem",
       "close": "Fechar",
-      "successMessage": "Seu cliente de e-mail foi aberto com a mensagem pronta para envio."
+      "successMessage": "Mensagem registrada! Assim que o endereço de e-mail direto for configurado, o envio será aberto automaticamente."
     },
-    "closingBanner": "Vamos construir algo útil."
+    "closingBanner": "Construindo minha trajetória um projeto por vez."
   },
   "resume": {
-    "eyebrow": "DOCUMENTO OFICIAL / CV",
+    "eyebrow": "RESUMO ACADÊMICO / CV",
     "title": "Currículo & Trajetória",
-    "subtitle": "Síntese estruturada da formação acadêmica no Instituto Mauá de Tecnologia, projetos técnicos e certificações.",
+    "subtitle": "Síntese da minha formação em Ciência da Computação no Instituto Mauá de Tecnologia (2025–2029) e projetos desenvolvidos.",
     "downloadPdf": "Imprimir / Salvar em PDF",
     "downloadedPdf": "Preparando Impressão...",
     "printVersion": "Versão para Impressão",
-    "summaryTitle": "Resumo Acadêmico & Profissional",
+    "summaryTitle": "Apresentação Pessoal",
     "educationTitle": "Formação Acadêmica",
-    "skillsTitle": "Competências Técnicas",
-    "projectsTitle": "Projetos Selecionados",
-    "certificationsTitle": "Certificações Verificadas",
+    "skillsTitle": "Tecnologias & Ferramentas",
+    "projectsTitle": "Projetos Realizados & Em Desenvolvimento",
+    "certificationsTitle": "Certificações",
     "verifiedBadge": "Verificado"
   },
   "terminal": {
-    "welcomeTitle": "✦ Sessão interativa inicializada.",
-    "welcomeBody": "Explore os dados técnicos de Lucas Ribeiro via linha de comando.",
+    "welcomeTitle": "✦ Terminal interativo iniciado.",
+    "welcomeBody": "Explore a trajetória e os projetos de Lucas Cecareli Ribeiro via linha de comando.",
     "welcomeHint": "Digite 'help' ou clique em um comando rápido abaixo.",
     "shortcutsLabel": "comandos:",
-    "placeholder": "Digite um comando (help, about, skills, projects, certs, contact, clear)...",
+    "placeholder": "Digite um comando (help, about, projects, skills, contact, clear)...",
     "helpTitle": "Comandos disponíveis:",
-    "helpAbout": "Formação na Mauá & visão geral",
-    "helpSkills": "Linguagens, frameworks e ferramentas",
-    "helpProjects": "Projetos e estudos de caso",
-    "helpCerts": "Certificações oficiais e IDs",
-    "helpContact": "Canais diretos de contato",
+    "helpAbout": "Quem sou & formação no IMT (2025–2029)",
+    "helpSkills": "Linguagens e ferramentas de estudo",
+    "helpProjects": "Projetos reais (ELO, Laboratórios, Quiz, Velore)",
+    "helpCerts": "Status de certificações e cursos",
+    "helpContact": "GitHub e canais de contato",
     "helpClear": "Limpar histórico do terminal",
     "unknownCmd": "Comando não reconhecido. Digite 'help' para ver a lista."
   },
   "footer": {
     "navigationHeading": "NAVEGAÇÃO",
-    "focusHeading": "ÁREAS DE ATUAÇÃO",
+    "focusHeading": "INTERESSES & FOCO",
     "focusItems": [
-      "Engenharia de Software",
-      "Aplicações Web Full-Stack",
-      "Sistemas Distribuídos & APIs",
-      "Estruturas de Dados & IA"
+      "Ciência da Computação (IMT · 2025–2029)",
+      "Desenvolvimento de Software",
+      "Aplicações Web & Projetos Práticos",
+      "Inteligência Artificial"
     ],
-    "builtWith": "Projetado & desenvolvido por Lucas Ribeiro",
+    "builtWith": "Portfólio pessoal de Lucas Cecareli Ribeiro",
     "backToTop": "Voltar ao topo"
   }
 }

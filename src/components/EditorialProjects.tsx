@@ -2,8 +2,9 @@ import React, { useState, useEffect, useRef } from 'react';
 import { useLanguage } from '../context/LanguageContext';
 import { useRouter } from '../router';
 import { GithubIcon } from './Icons';
-import { ArrowUpRight, ArrowRight, Layers, Sparkles } from 'lucide-react';
+import { ArrowUpRight, ArrowRight, Layers, Sparkles, Clock } from 'lucide-react';
 import { MagneticButton } from './MagneticButton';
+import { ProjectVisualPreview } from './ProjectVisualPreview';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 
@@ -17,10 +18,10 @@ export const EditorialProjects: React.FC = () => {
 
   const categories = [
     { key: 'ALL', label: t.projects.filterAll },
-    { key: 'Sistemas / C++', label: 'Sistemas / C++' },
-    { key: 'Full-Stack', label: 'Full-Stack' },
-    { key: 'Backend', label: 'Backend' },
-    { key: 'IA / Dados', label: 'IA / Dados' },
+    { key: 'Saúde & Tecnologia', label: 'Saúde & Tech' },
+    { key: 'Aplicações & Sistemas', label: 'Sistemas' },
+    { key: 'Jogos & Educação', label: 'Educação' },
+    { key: 'Em Desenvolvimento', label: t.projects.inDevelopmentBadge },
   ];
 
   const filteredProjects =
@@ -40,11 +41,11 @@ export const EditorialProjects: React.FC = () => {
       spreads.forEach((spread) => {
         gsap.fromTo(
           spread,
-          { opacity: 0, y: 40 },
+          { opacity: 0, y: 36 },
           {
             opacity: 1,
             y: 0,
-            duration: 0.9,
+            duration: 0.85,
             ease: 'power3.out',
             scrollTrigger: {
               trigger: spread,
@@ -123,6 +124,9 @@ export const EditorialProjects: React.FC = () => {
         <div className="divide-y divide-[var(--border-subtle)] border-t border-b border-[var(--border-subtle)]">
           {filteredProjects.map((project, idx) => {
             const isEven = idx % 2 === 1;
+            const hasGithub = Boolean(project.githubUrl && project.githubUrl.trim().length > 0);
+            const hasLive = Boolean(project.liveUrl && project.liveUrl.trim().length > 0);
+
             return (
               <article
                 key={project.id}
@@ -135,8 +139,8 @@ export const EditorialProjects: React.FC = () => {
                       isEven ? 'lg:order-2' : 'lg:order-1'
                     }`}
                   >
-                    {/* Index + Year + Category */}
-                    <div className="flex items-center justify-between border-b border-[var(--border-subtle)] pb-3">
+                    {/* Index + Category + Year/InDevelopment */}
+                    <div className="flex flex-wrap items-center justify-between gap-2 border-b border-[var(--border-subtle)] pb-3">
                       <div className="flex items-center gap-3">
                         <span className="font-display font-extrabold text-2xl sm:text-3xl text-[var(--text-primary)]">
                           {project.index}
@@ -150,9 +154,17 @@ export const EditorialProjects: React.FC = () => {
                         </span>
                       </div>
 
-                      <span className="font-mono-tech text-xs px-2.5 py-0.5 rounded-full bg-[var(--bg-surface)] border border-[var(--border-subtle)] text-[var(--text-muted)]">
-                        {project.year}
-                      </span>
+                      <div className="flex items-center gap-2">
+                        {project.inDevelopment && (
+                          <span className="inline-flex items-center gap-1 font-mono-tech text-[10px] font-semibold px-2.5 py-0.5 rounded-full bg-[var(--accent-bg)] text-[var(--accent-text)]">
+                            <Clock className="w-2.5 h-2.5" />
+                            <span>{t.projects.inDevelopmentBadge}</span>
+                          </span>
+                        )}
+                        <span className="font-mono-tech text-xs px-2.5 py-0.5 rounded-full bg-[var(--bg-surface)] border border-[var(--border-subtle)] text-[var(--text-muted)]">
+                          {project.year}
+                        </span>
+                      </div>
                     </div>
 
                     {/* Project Title */}
@@ -174,7 +186,7 @@ export const EditorialProjects: React.FC = () => {
                       {project.description}
                     </p>
 
-                    {/* Verified Metric Box */}
+                    {/* Project Context Highlight */}
                     {project.metrics && (
                       <div className="p-3.5 rounded-xl bg-[var(--bg-surface)] border border-[var(--border-subtle)] flex items-center justify-between gap-3">
                         <div className="flex items-center gap-2.5">
@@ -192,7 +204,7 @@ export const EditorialProjects: React.FC = () => {
                       </div>
                     )}
 
-                    {/* Tech Stack Pills */}
+                    {/* Domain / Focus Pills */}
                     <div className="space-y-2">
                       <span className="block font-mono-tech text-[10px] uppercase tracking-widest text-[var(--text-muted)]">
                         {t.projects.technologiesLabel}
@@ -209,7 +221,7 @@ export const EditorialProjects: React.FC = () => {
                       </div>
                     </div>
 
-                    {/* Coordinated Actions: Case Study + Live Demo + GitHub */}
+                    {/* Coordinated Actions */}
                     <div className="pt-3 flex flex-wrap items-center gap-3">
                       <MagneticButton strength={0.18}>
                         <button
@@ -224,7 +236,7 @@ export const EditorialProjects: React.FC = () => {
                         </button>
                       </MagneticButton>
 
-                      {project.liveUrl && (
+                      {hasLive && (
                         <a
                           href={project.liveUrl}
                           target="_blank"
@@ -238,16 +250,18 @@ export const EditorialProjects: React.FC = () => {
                         </a>
                       )}
 
-                      <a
-                        href={project.githubUrl}
-                        target="_blank"
-                        rel="noreferrer"
-                        aria-label={`${project.title} — ${t.projects.viewRepository}`}
-                        title={t.projects.viewRepository}
-                        className="w-10 h-10 rounded-full bg-[var(--bg-surface)] hover:bg-[var(--bg-elevated)] text-[var(--text-secondary)] hover:text-[var(--text-primary)] border border-[var(--border-subtle)] hover:border-[var(--border-strong)] flex items-center justify-center transition-colors"
-                      >
-                        <GithubIcon className="w-4 h-4" />
-                      </a>
+                      {hasGithub && (
+                        <a
+                          href={project.githubUrl}
+                          target="_blank"
+                          rel="noreferrer"
+                          aria-label={`${project.title} — ${t.projects.viewRepository}`}
+                          title={t.projects.viewRepository}
+                          className="w-10 h-10 rounded-full bg-[var(--bg-surface)] hover:bg-[var(--bg-elevated)] text-[var(--text-secondary)] hover:text-[var(--text-primary)] border border-[var(--border-subtle)] hover:border-[var(--border-strong)] flex items-center justify-center transition-colors"
+                        >
+                          <GithubIcon className="w-4 h-4" />
+                        </a>
+                      )}
                     </div>
                   </div>
 
@@ -278,40 +292,26 @@ export const EditorialProjects: React.FC = () => {
                           <span className="w-2.5 h-2.5 rounded-full bg-[var(--text-muted)]/35" />
                           <span className="w-2.5 h-2.5 rounded-full bg-[var(--text-muted)]/20" />
                           <span className="ml-2 font-mono-tech text-[10px] text-[var(--text-muted)] uppercase tracking-widest">
-                            CASE_{project.index} // {project.id.toUpperCase()}
+                            PROJECT_{project.index} // {project.title.toUpperCase()}
                           </span>
                         </div>
 
                         <div className="flex items-center gap-1.5 font-mono-tech text-[10px] text-[var(--text-secondary)]">
                           <Layers className="w-3 h-3" />
-                          <span>{project.technologies.length} TECH</span>
+                          <span>{project.year}</span>
                         </div>
                       </div>
 
-                      {/* Image Container with Mask & Subtle Hover Scale */}
+                      {/* Bespoke Interactive Visual Preview or Project Image */}
                       <div className="relative aspect-[16/10] overflow-hidden bg-[var(--bg-primary)]">
-                        <img
-                          src={project.image}
-                          alt={project.title}
-                          loading="lazy"
-                          className="w-full h-full object-cover grayscale-[35%] contrast-[1.06] group-hover:grayscale-0 group-hover:scale-[1.04] transition-all duration-700 ease-out"
+                        <ProjectVisualPreview
+                          projectId={project.id}
+                          title={project.title}
+                          categoryDisplay={project.categoryDisplay}
+                          image={project.image}
+                          inDevelopment={project.inDevelopment}
+                          inDevelopmentLabel={t.projects.inDevelopmentBadge}
                         />
-
-                        {/* Subtle Vignette & Bottom Editorial Bar */}
-                        <div className="absolute inset-0 bg-gradient-to-t from-black/75 via-black/15 to-transparent opacity-80 group-hover:opacity-65 transition-opacity duration-500" />
-
-                        <div className="absolute bottom-4 left-4 right-4 flex items-center justify-between text-white">
-                          <div className="flex items-center gap-2">
-                            <span className="px-3 py-1 rounded-full bg-black/70 backdrop-blur-md border border-white/15 font-mono-tech text-[11px]">
-                              {project.categoryDisplay}
-                            </span>
-                          </div>
-
-                          <span className="inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-full bg-white text-black font-mono-tech text-[11px] font-semibold uppercase tracking-wider translate-y-1 opacity-90 group-hover:translate-y-0 group-hover:opacity-100 transition-all duration-300">
-                            <span>{t.projects.viewCaseStudy}</span>
-                            <ArrowUpRight className="w-3.5 h-3.5" />
-                          </span>
-                        </div>
                       </div>
                     </div>
                   </div>

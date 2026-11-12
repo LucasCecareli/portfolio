@@ -2,6 +2,7 @@ import React, { useEffect } from 'react';
 import { useLanguage } from '../context/LanguageContext';
 import { useRouter, Link } from '../router';
 import { GithubIcon } from '../components/Icons';
+import { ProjectVisualPreview } from '../components/ProjectVisualPreview';
 import {
   ArrowLeft,
   ArrowUpRight,
@@ -11,6 +12,7 @@ import {
   Layers,
   Sparkles,
   Cpu,
+  Clock,
 } from 'lucide-react';
 import { motion } from 'framer-motion';
 
@@ -29,6 +31,9 @@ export const ProjectCaseStudy: React.FC<ProjectCaseStudyProps> = ({ projectId })
     t.projects.items[(projectIndex - 1 + t.projects.items.length) % t.projects.items.length];
   const nextProject = t.projects.items[(projectIndex + 1) % t.projects.items.length];
 
+  const hasGithub = Boolean(project.githubUrl && project.githubUrl.trim().length > 0);
+  const hasLive = Boolean(project.liveUrl && project.liveUrl.trim().length > 0);
+
   useEffect(() => {
     window.scrollTo({ top: 0, behavior: 'smooth' });
   }, [projectId]);
@@ -42,7 +47,7 @@ export const ProjectCaseStudy: React.FC<ProjectCaseStudyProps> = ({ projectId })
       className="min-h-screen pt-28 pb-24 bg-[var(--bg-primary)]"
     >
       <div className="editorial-container space-y-16">
-        {/* Top Back Navigation Bar (Inspired by rifqi.dev 00:20) */}
+        {/* Top Back Navigation Bar */}
         <div className="flex items-center justify-between border-b border-[var(--border-subtle)] pb-5">
           <button
             type="button"
@@ -54,13 +59,13 @@ export const ProjectCaseStudy: React.FC<ProjectCaseStudyProps> = ({ projectId })
           </button>
 
           <div className="flex items-center gap-2 font-mono-tech text-xs text-[var(--text-muted)]">
-            <span>CASE STUDY</span>
+            <span>PROJECT</span>
             <span>/</span>
             <span className="text-[var(--text-primary)] font-semibold">{project.index}</span>
           </div>
         </div>
 
-        {/* Hero Split Layout (Left: Title, Summary, Counters & Stack | Right: Framed Preview & Key Features) */}
+        {/* Hero Split Layout */}
         <div className="editorial-grid items-start gap-10 lg:gap-12">
           {/* Left Column (6 cols) */}
           <div className="col-span-12 lg:col-span-6 space-y-8">
@@ -72,6 +77,12 @@ export const ProjectCaseStudy: React.FC<ProjectCaseStudyProps> = ({ projectId })
                 <span className="px-3 py-1 rounded-full bg-[var(--bg-surface)] border border-[var(--border-subtle)] font-mono-tech text-xs text-[var(--text-muted)]">
                   {project.year}
                 </span>
+                {project.inDevelopment && (
+                  <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-[var(--accent-bg)] text-[var(--accent-text)] font-mono-tech text-xs font-semibold">
+                    <Clock className="w-3 h-3" />
+                    <span>{t.projects.inDevelopmentBadge}</span>
+                  </span>
+                )}
               </div>
 
               <h1
@@ -89,7 +100,7 @@ export const ProjectCaseStudy: React.FC<ProjectCaseStudyProps> = ({ projectId })
               </p>
             </div>
 
-            {/* Key Counters Row (Inspired by rifqi.dev 00:20) */}
+            {/* Key Counters Row */}
             <div className="grid grid-cols-2 gap-4">
               <div className="p-5 rounded-2xl bg-[var(--bg-surface)] border border-[var(--border-subtle)] flex items-center gap-4">
                 <div className="w-11 h-11 rounded-xl bg-[var(--bg-elevated)] border border-[var(--border-subtle)] flex items-center justify-center text-[var(--text-primary)]">
@@ -120,7 +131,7 @@ export const ProjectCaseStudy: React.FC<ProjectCaseStudyProps> = ({ projectId })
               </div>
             </div>
 
-            {/* Verified Metric Highlight */}
+            {/* Status & Context Highlight */}
             {project.metrics && (
               <div className="p-5 rounded-2xl bg-[var(--bg-surface)] border border-[var(--border-strong)] space-y-1.5">
                 <div className="flex items-center gap-2 font-mono-tech text-[11px] uppercase tracking-wider text-[var(--text-muted)]">
@@ -136,33 +147,37 @@ export const ProjectCaseStudy: React.FC<ProjectCaseStudyProps> = ({ projectId })
               </div>
             )}
 
-            {/* Direct Action Buttons */}
-            <div className="flex flex-wrap items-center gap-3.5">
-              {project.liveUrl && (
-                <a
-                  href={project.liveUrl}
-                  target="_blank"
-                  rel="noreferrer"
-                  className="inline-flex items-center gap-2 px-6 py-3.5 rounded-full bg-[var(--accent-bg)] text-[var(--accent-text)] font-mono-tech text-xs font-semibold uppercase tracking-wider hover:opacity-90 transition-opacity"
-                >
-                  <span>{t.projects.viewLiveDemo}</span>
-                  <ArrowUpRight className="w-4 h-4" />
-                </a>
-              )}
+            {/* Direct Action Buttons (Only shown when real URLs are configured) */}
+            {(hasLive || hasGithub) && (
+              <div className="flex flex-wrap items-center gap-3.5">
+                {hasLive && (
+                  <a
+                    href={project.liveUrl}
+                    target="_blank"
+                    rel="noreferrer"
+                    className="inline-flex items-center gap-2 px-6 py-3.5 rounded-full bg-[var(--accent-bg)] text-[var(--accent-text)] font-mono-tech text-xs font-semibold uppercase tracking-wider hover:opacity-90 transition-opacity"
+                  >
+                    <span>{t.projects.viewLiveDemo}</span>
+                    <ArrowUpRight className="w-4 h-4" />
+                  </a>
+                )}
 
-              <a
-                href={project.githubUrl}
-                target="_blank"
-                rel="noreferrer"
-                className="inline-flex items-center gap-2 px-5 py-3.5 rounded-full bg-[var(--bg-surface)] hover:bg-[var(--bg-elevated)] text-[var(--text-primary)] border border-[var(--border-subtle)] hover:border-[var(--border-strong)] font-mono-tech text-xs uppercase tracking-wider transition-colors"
-              >
-                <GithubIcon className="w-4 h-4" />
-                <span>{t.projects.viewRepository}</span>
-                <ArrowUpRight className="w-3.5 h-3.5" />
-              </a>
-            </div>
+                {hasGithub && (
+                  <a
+                    href={project.githubUrl}
+                    target="_blank"
+                    rel="noreferrer"
+                    className="inline-flex items-center gap-2 px-5 py-3.5 rounded-full bg-[var(--bg-surface)] hover:bg-[var(--bg-elevated)] text-[var(--text-primary)] border border-[var(--border-subtle)] hover:border-[var(--border-strong)] font-mono-tech text-xs uppercase tracking-wider transition-colors"
+                  >
+                    <GithubIcon className="w-4 h-4" />
+                    <span>{t.projects.viewRepository}</span>
+                    <ArrowUpRight className="w-3.5 h-3.5" />
+                  </a>
+                )}
+              </div>
+            )}
 
-            {/* Technologies Used */}
+            {/* Focus & Domain Tags */}
             <div className="space-y-3 pt-2">
               <h2 className="font-mono-tech text-xs uppercase tracking-widest text-[var(--text-muted)] flex items-center gap-2">
                 <Cpu className="w-3.5 h-3.5 text-[var(--text-primary)]" />
@@ -199,15 +214,18 @@ export const ProjectCaseStudy: React.FC<ProjectCaseStudyProps> = ({ projectId })
               </div>
 
               <div className="aspect-[16/10] bg-[var(--bg-primary)] overflow-hidden">
-                <img
-                  src={project.image}
-                  alt={project.title}
-                  className="w-full h-full object-cover"
+                <ProjectVisualPreview
+                  projectId={project.id}
+                  title={project.title}
+                  categoryDisplay={project.categoryDisplay}
+                  image={project.image}
+                  inDevelopment={project.inDevelopment}
+                  inDevelopmentLabel={t.projects.inDevelopmentBadge}
                 />
               </div>
             </div>
 
-            {/* Key Capabilities Box */}
+            {/* Key Project Highlights Box */}
             <div className="p-7 rounded-3xl bg-[var(--bg-surface)] border border-[var(--border-subtle)] space-y-4">
               <h2
                 data-i18n="case-features-heading"
@@ -231,7 +249,7 @@ export const ProjectCaseStudy: React.FC<ProjectCaseStudyProps> = ({ projectId })
           </div>
         </div>
 
-        {/* Deep-Dive Engineering Breakdown: Problem, Objective, Solution */}
+        {/* Deep-Dive Project Breakdown: Context, Objective, Approach */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6 pt-8 border-t border-[var(--border-subtle)]">
           <div className="p-7 rounded-2xl bg-[var(--bg-surface)] border border-[var(--border-subtle)] space-y-3">
             <span className="font-mono-tech text-xs text-[var(--text-muted)]">01 / CONTEXT</span>
@@ -266,7 +284,7 @@ export const ProjectCaseStudy: React.FC<ProjectCaseStudyProps> = ({ projectId })
           </div>
 
           <div className="p-7 rounded-2xl bg-[var(--bg-surface)] border border-[var(--border-subtle)] space-y-3">
-            <span className="font-mono-tech text-xs text-[var(--text-muted)]">03 / DESIGN</span>
+            <span className="font-mono-tech text-xs text-[var(--text-muted)]">03 / APPROACH</span>
             <h3
               data-i18n="case-sol-title"
               className="font-display font-bold text-xl text-[var(--text-primary)]"
@@ -282,7 +300,7 @@ export const ProjectCaseStudy: React.FC<ProjectCaseStudyProps> = ({ projectId })
           </div>
         </div>
 
-        {/* Engineering Process Steps */}
+        {/* Development Stages */}
         <div className="p-8 sm:p-10 rounded-3xl bg-[var(--bg-surface)] border border-[var(--border-subtle)] space-y-6">
           <h3
             data-i18n="case-proc-title"
@@ -297,7 +315,7 @@ export const ProjectCaseStudy: React.FC<ProjectCaseStudyProps> = ({ projectId })
                 className="p-5 rounded-2xl bg-[var(--bg-primary)] border border-[var(--border-subtle)] space-y-2"
               >
                 <span className="font-mono-tech text-xs text-[var(--text-muted)]">
-                  STEP 0{idx + 1}
+                  STAGE 0{idx + 1}
                 </span>
                 <p
                   data-i18n={`case-proc-${project.id}-${idx}`}

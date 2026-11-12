@@ -1,18 +1,23 @@
 {
   "meta": {
-    "title": "Lucas Ribeiro — Software Engineering & Computer Science",
-    "description": "Portfolio of Lucas Ribeiro — Computer Science student at Instituto Mauá de Tecnologia & Software Engineer. Interactive case studies, system architecture, and verified credentials."
+    "title": "Lucas Cecareli Ribeiro — Computer Science · Portfolio",
+    "description": "Portfolio of Lucas Cecareli Ribeiro — Computer Science student at Instituto Mauá de Tecnologia (2025–2029). Practical software projects, web applications, and technological solutions."
+  },
+  "intro": {
+    "indexLabel": "00 — PERSONAL PORTFOLIO",
+    "locationLabel": "SÃO PAULO · IMT · 2025—2029",
+    "skipLabel": "Skip Intro [ESC]"
   },
   "nav": {
     "home": "Home",
-    "about": "About",
+    "about": "About Me",
     "projects": "Projects",
     "skills": "Skills",
-    "certifications": "Certifications",
+    "certifications": "Education",
     "resume": "Resume",
     "contact": "Contact",
-    "hireMe": "Let's Talk",
-    "available": "Available for Opportunities",
+    "hireMe": "Contact",
+    "available": "Computer Science Student · IMT",
     "switchThemeToLight": "Switch to light mode",
     "switchThemeToDark": "Switch to dark mode",
     "switchLang": "Switch language",
@@ -22,85 +27,88 @@
     "backToProjects": "Back to Projects"
   },
   "hero": {
-    "statusBadge": "AVAILABLE FOR INTERNSHIP & SOFTWARE ENGINEERING",
-    "institutionBadge": "B.Sc. in Computer Science · Instituto Mauá de Tecnologia",
-    "greeting": "LUCAS RIBEIRO",
-    "headlineLine1": "Software",
-    "headlineLine2": "Architecture &",
-    "headlineLine3": "Web Engineering.",
-    "subtitle": "Building efficient, scalable solutions with modern design. Focused on software architecture, distributed systems, data structures, and modern web technologies.",
-    "ctaProjects": "Explore Projects",
-    "ctaContact": "Get in Touch",
+    "statusBadge": "COMPUTER SCIENCE · 2025 — 2029",
+    "institutionBadge": "Instituto Mauá de Tecnologia (IMT)",
+    "greeting": "PERSONAL PORTFOLIO & PROJECTS",
+    "headlineLine1": "LUCAS",
+    "headlineLine2": "CECARELI",
+    "headlineLine3": "RIBEIRO.",
+    "subtitle": "Computer Science student at Instituto Mauá de Tecnologia. Building practical software projects, web applications, and technological solutions with a focus on continuous learning, software engineering, and artificial intelligence.",
+    "ctaProjects": "View Projects",
+    "ctaAbout": "About Me",
+    "ctaContact": "Contact",
     "ctaResume": "Resume / CV",
-    "scrollIndicator": "SCROLL DOWN",
-    "cardTabIdentity": "TECHNICAL PASS",
+    "scrollIndicator": "SCROLL TO EXPLORE",
+    "cardTabIdentity": "IDENTITY & PORTRAIT",
     "cardTabTerminal": "CLI TERMINAL",
     "idCard": {
-      "headerLabel": "ACADEMIC & TECHNICAL IDENTITY",
-      "code": "IMT — BCS · 2027",
-      "role": "Computer Science & Software Engineer",
+      "headerLabel": "ACADEMIC IDENTITY · IMT",
+      "code": "B.SC. CS · 2025—2029",
+      "role": "Computer Science Student",
       "institution": "Instituto Mauá de Tecnologia",
       "location": "São Paulo, Brazil",
-      "focusLabel": "ENGINEERING FOCUS",
+      "focusLabel": "INTERESTS & PRACTICE",
       "focusItems": [
-        "Software Architecture",
-        "Distributed Systems",
-        "Algorithms & Data Structures",
-        "Full-Stack Applications"
+        "Software Development",
+        "Web Applications",
+        "Artificial Intelligence",
+        "Problem Solving"
       ],
-      "photoPlaceholderNote": "AUTHORIAL MONOGRAM ARTIFACT · READY FOR B&W PORTRAIT",
-      "interactiveHint": "Move cursor to inspect · Click to switch view"
+      "photoPlaceholderNote": "RESERVED FOR PERSONAL PHOTOGRAPH",
+      "interactiveHint": "Hover to interact · Switch to CLI Terminal"
     }
   },
   "bridge": {
-    "eyebrow": "01 / METHODOLOGY & ENGINEERING",
-    "titleLeft": "THEORY",
-    "titleMiddle": "ARCHITECTURE",
-    "titleRight": "PRODUCTION",
-    "statement": "I translate rigorous Computer Science fundamentals — algorithmic complexity, concurrency, and data modeling — into clean software architectures and precision-crafted digital interfaces.",
+    "eyebrow": "01 / TRAJECTORY & APPROACH",
+    "titleLeft": "FOUNDATION",
+    "titleMiddle": "PRACTICE",
+    "titleRight": "EVOLUTION",
+    "statement": "I build my Computer Science education by turning academic learning into practical projects — from management systems and educational games to hackathon platforms and intelligent assistants.",
     "steps": [
       {
         "index": "01",
-        "label": "FOUNDATION",
-        "title": "Modeling & Complexity",
-        "detail": "Data structures, graph theory, balanced trees, and asymptotic Big-O analysis."
+        "label": "ACADEMIC BASE",
+        "title": "Logic & Computing",
+        "detail": "Structured study of algorithms, programming, and computational thinking at Instituto Mauá de Tecnologia (started Feb 2025)."
       },
       {
         "index": "02",
-        "label": "SYSTEM",
-        "title": "Clean Architecture & Concurrency",
-        "detail": "SOLID principles, asynchronous microservices, WebSockets, message queues, and Docker containers."
+        "label": "REAL PROJECTS",
+        "title": "Applied Software",
+        "detail": "Hands-on development of applications addressing concrete needs: laboratory scheduling, interactive education, and healthcare."
       },
       {
         "index": "03",
-        "label": "EXECUTION",
-        "title": "Interfaces & Performance",
-        "detail": "Reactive TypeScript and React applications crafted for clarity, responsiveness, and speed."
+        "label": "EXPLORATION",
+        "title": "Web & Artificial Intelligence",
+        "detail": "Continuous growth in modern interfaces, software architecture, and AI-assisted solutions."
       }
     ]
   },
   "projects": {
-    "eyebrow": "02 / SELECTED WORK & CASE STUDIES",
-    "title": "Projects & Systems",
-    "subtitle": "Systems engineered from the ground up applying clean architecture, concurrent computing, algorithmic visualization, and natural language processing.",
+    "eyebrow": "02 / REAL PROJECTS & CASE STUDIES",
+    "title": "Selected Projects",
+    "subtitle": "Real systems and applications built throughout my academic journey, hackathons, and personal initiatives.",
     "filterAll": "All",
-    "viewCaseStudy": "Case Study",
+    "viewCaseStudy": "Project Details",
     "viewRepository": "GitHub Repository",
-    "viewLiveDemo": "Live Demo",
-    "cursorLabel": "VIEW CASE ↗",
-    "metricsLabel": "Verified Metric",
-    "technologiesLabel": "Tech Stack",
-    "yearLabel": "Year",
-    "categoryLabel": "Domain",
+    "viewLiveDemo": "Live Project",
+    "cursorLabel": "VIEW PROJECT ↗",
+    "metricsLabel": "Project Context",
+    "technologiesLabel": "Focus & Domain",
+    "yearLabel": "Period",
+    "categoryLabel": "Category",
+    "inDevelopmentBadge": "IN DEVELOPMENT",
+    "pendingLinksNote": "Public links and repository being updated.",
     "caseStudy": {
       "backButton": "Back to Projects",
       "overviewTitle": "Overview",
-      "problemTitle": "Context & Problem",
-      "objectiveTitle": "Technical Objective",
-      "solutionTitle": "Architecture & Solution",
-      "processTitle": "Engineering Process",
-      "featuresTitle": "Implemented Capabilities",
-      "resultsTitle": "Results & Metrics",
+      "problemTitle": "Context & Motivation",
+      "objectiveTitle": "Project Objective",
+      "solutionTitle": "Approach & Implementation",
+      "processTitle": "Development Stages",
+      "featuresTitle": "Key Project Highlights",
+      "resultsTitle": "Status & Context",
       "nextProject": "Next Project",
       "prevProject": "Previous Project",
       "linksHeading": "Project Access"
@@ -110,282 +118,309 @@
         "id": "proj-1",
         "index": "01",
         "year": "2025",
-        "title": "Algorithmic Visualizer 3D",
-        "category": "Sistemas / C++",
-        "categoryDisplay": "Algorithms & Systems",
-        "description": "Interactive platform for real-time visualization of sorting algorithms, graph traversal (Dijkstra, A*), and search trees.",
-        "longDescription": "Developed to consolidate core Computer Science studies. Demonstrates step-by-step execution states, compares time and space Big-O complexities, and allows testing with custom datasets.",
-        "technologies": ["TypeScript", "Canvas API", "Algoritmos", "Web Workers"],
-        "metrics": "Step-by-step complexity visualization",
-        "githubUrl": "https://github.com/exemplo/algo-visualizer",
-        "liveUrl": "https://algo-visualizer-demo.vercel.app",
+        "title": "ELO",
+        "category": "Saúde & Tecnologia",
+        "categoryDisplay": "Hackathon · Health & Tech",
+        "inDevelopment": false,
+        "description": "Platform developed during a healthcare and technology hackathon, designed to connect real healthcare needs with an accessible digital experience.",
+        "longDescription": "ELO was created collaboratively during a health and technology hackathon. The project combined rapid product ideation, understanding a real healthcare challenge, and structuring a functional platform within the competition timeframe.",
+        "technologies": ["Health & Tech", "Hackathon", "Prototyping", "Web Application"],
+        "metrics": "Built at a Health & Technology Hackathon",
+        "githubUrl": "",
+        "liveUrl": "",
         "featured": true,
-        "image": "https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&w=1200&q=85",
-        "problem": "Studying graph traversal and tree algorithms abstractly often lacks real-time visual inspection of internal memory states, exploration frontiers, and asymptotic cost.",
-        "objective": "Engineer an interactive browser-based graphics engine capable of executing and stepping through classic algorithms without blocking the main UI thread.",
-        "solution": "Decoupled architecture leveraging Web Workers for computing algorithmic state transitions and the HTML5 Canvas API for smooth 60fps rendering.",
+        "image": "",
+        "problem": "In healthcare environments, information tracking and communication are often fragmented, calling for clearer and more approachable digital tools.",
+        "objective": "Design and structure, within the intensive timeframe of a hackathon, a platform focused on usability, clear user flows, and practical healthcare application.",
+        "solution": "Collaborative development of the ELO platform, organizing the user journey into an intuitive interface focused on healthcare connection and support.",
         "process": [
-          "Modeled core data structures (weighted graphs, search trees, and arrays) in strict TypeScript.",
-          "Implemented deterministic state snapshot generators to support stepping forward, pausing, and speed control.",
-          "Offloaded heavy algorithmic computation into Web Workers to keep the UI responsive under dense inputs."
+          "Immersion into the healthcare hackathon challenge and definition of the core scope.",
+          "Collaborative structuring of user navigation flows and platform interface.",
+          "Consolidation and presentation of the functional and technical proposal."
         ],
         "features": [
-          "Step-by-step pathfinding visualization (Dijkstra and A*).",
-          "Dynamic inspection of sorting algorithms and binary search trees.",
-          "Real-time comparison of time and space Big-O complexity.",
-          "Custom dataset and graph topology input controls."
+          "Conceived around real healthcare and technology challenges.",
+          "Interface crafted for clarity, accessibility, and ease of use.",
+          "Built end-to-end under hackathon constraints.",
+          "Team collaboration bridging product thinking and software development."
         ]
       },
       {
         "id": "proj-2",
         "index": "02",
         "year": "2025",
-        "title": "DevNexus — Collaborative Code Platform",
-        "category": "Full-Stack",
-        "categoryDisplay": "Full-Stack & Real-Time",
-        "description": "Full-stack application featuring secure authentication, a real-time collaborative code editor, and snippet sharing among developers.",
-        "longDescription": "Distributed system powered by WebSockets for collaborative editing synchronization, MongoDB persistence, and in-memory caching for frequent query optimization.",
-        "technologies": ["React", "Node.js", "WebSockets", "MongoDB", "Tailwind CSS"],
-        "metrics": "Real-time sync latency < 50ms",
-        "githubUrl": "https://github.com/exemplo/dev-nexus",
-        "liveUrl": "https://devnexus-demo.vercel.app",
+        "title": "Laboratory Scheduling System",
+        "category": "Aplicações & Sistemas",
+        "categoryDisplay": "Practical App · Management",
+        "inDevelopment": false,
+        "description": "Practical application built to organize and manage laboratory reservations, time slots, and room availability.",
+        "longDescription": "The Laboratory Scheduling System was developed to address the practical need of coordinating shared laboratory spaces and schedules, preventing booking conflicts and making availability easy to inspect.",
+        "technologies": [
+          "Reservation Management",
+          "Scheduling Logic",
+          "User Interface",
+          "Data Organization"
+        ],
+        "metrics": "Practical application for schedule & room management",
+        "githubUrl": "",
+        "liveUrl": "",
         "featured": true,
-        "image": "https://images.unsplash.com/photo-1555066931-4365d14bab8c?auto=format&fit=crop&w=1200&q=85",
-        "problem": "Remote code reviews and pair-programming sessions require instantaneous state synchronization across multiple connected clients without write conflicts.",
-        "objective": "Build a low-latency collaborative full-stack environment with document persistence and secure session management.",
-        "solution": "Bidirectional WebSocket communication in Node.js paired with MongoDB document storage and an in-memory caching layer for high-frequency reads.",
+        "image": "",
+        "problem": "Manual or decentralized laboratory tracking often leads to overlapping bookings and makes it difficult to quickly check which rooms are available.",
+        "objective": "Create a structured system for checking time slots, registering reservation requests, and clearly visualizing laboratory occupancy.",
+        "solution": "Implementation of an application organized by laboratory spaces and time intervals, enabling clear tracking and management of reservations.",
         "process": [
-          "Designed a lightweight WebSocket event protocol for streaming edit deltas and active participant states.",
-          "Modeled MongoDB schemas for snippet versioning and access permissions.",
-          "Crafted a responsive React and Tailwind CSS workspace with live connection telemetry."
+          "Mapped core reservation rules, time slots, and laboratory identifiers.",
+          "Modeled room information, available periods, and booking records.",
+          "Built a clean interface for quick availability lookup and reservation handling."
         ],
         "features": [
-          "Real-time collaborative code editing powered by WebSockets.",
-          "Secure user authentication and session management.",
-          "Technical snippet sharing and categorization.",
-          "In-memory caching layer for fast recurring query resolution."
+          "Structured availability view by laboratory and time slot.",
+          "Clear workflow for creating and organizing room bookings.",
+          "Prevention of overlapping schedule conflicts.",
+          "Clean interface tailored to academic routines."
         ]
       },
       {
         "id": "proj-3",
         "index": "03",
         "year": "2025",
-        "title": "Distributed API Gateway & Task Manager",
-        "category": "Backend",
-        "categoryDisplay": "Backend & Distributed Systems",
-        "description": "High-performance FastAPI microservice with asynchronous task queues, intelligent rate limiting, and system health monitoring.",
-        "longDescription": "Focused on software engineering and backend architecture: concurrent processing with Celery, JWT authentication, automated Swagger documentation, and Docker containerization.",
-        "technologies": ["Python", "FastAPI", "Docker", "Redis", "PostgreSQL"],
-        "metrics": "1,200 req/s throughput in load tests",
-        "githubUrl": "https://github.com/exemplo/distributed-task-api",
-        "liveUrl": "https://task-api.onrender.com/docs",
+        "title": "Educational Quiz Game — Show do Milhão",
+        "category": "Jogos & Educação",
+        "categoryDisplay": "Interactive Game · Education",
+        "inDevelopment": false,
+        "description": "Interactive question-and-answer educational game inspired by 'Show do Milhão', combining programming logic with dynamic learning.",
+        "longDescription": "Hands-on project applying programming logic, state control, and event handling to build a complete educational quiz game inspired by the classic 'Show do Milhão' format.",
+        "technologies": [
+          "Programming Logic",
+          "Interactive App",
+          "Education",
+          "State Management"
+        ],
+        "metrics": "Hands-on interactive educational game project",
+        "githubUrl": "",
+        "liveUrl": "",
         "featured": true,
-        "image": "https://images.unsplash.com/photo-1526374965328-7f61d4dc18c5?auto=format&fit=crop&w=1200&q=85",
-        "problem": "Traditional synchronous APIs suffer severe latency spikes when handling traffic bursts or compute-intensive background operations.",
-        "objective": "Design a resilient backend architecture that decouples request ingestion from heavy execution through distributed queues.",
-        "solution": "Python/FastAPI service using Redis as both a message broker and rate-limiting store, Celery workers for concurrent execution, PostgreSQL for ACID persistence, and Docker for orchestration.",
+        "image": "",
+        "problem": "Traditional study review formats can feel static; gamified mechanics boost engagement and help reinforce knowledge.",
+        "objective": "Develop a functional question-and-answer game with progressive rounds, answer validation, and mechanics inspired by 'Show do Milhão'.",
+        "solution": "Built the question selection logic, level-based score progression, match lifelines/aids, and immediate visual feedback for each answer.",
         "process": [
-          "Built asynchronous FastAPI endpoints with strict schema validation and automated OpenAPI/Swagger specs.",
-          "Implemented Redis-backed rate limiting and dispatched long-running jobs to Celery worker pools.",
-          "Containerized the full stack (API, Celery Workers, Redis, and PostgreSQL) using Docker."
+          "Structured the question bank, answer options, and difficulty progression.",
+          "Implemented scoring rules, answer verification, and in-game help mechanics.",
+          "Created the interactive interface guiding players across rounds."
         ],
         "features": [
-          "Concurrent background task execution with Celery and Redis.",
-          "Intelligent rate limiting and JWT-based authentication.",
-          "System health check endpoints and interactive Swagger documentation.",
-          "Fully containerized Docker setup with transactional PostgreSQL storage."
+          "Question-and-answer system with round-by-round progression.",
+          "Lifeline and scoring mechanics inspired by the Show do Milhão format.",
+          "Immediate visual feedback for right answers, mistakes, and level progression.",
+          "Practical application of decision structures and state management."
         ]
       },
       {
         "id": "proj-4",
         "index": "04",
-        "year": "2025",
-        "title": "Sentiment Classifier & NLP Pipeline",
-        "category": "IA / Dados",
-        "categoryDisplay": "AI & Natural Language Processing",
-        "description": "Natural Language Processing pipeline with model fine-tuning for sentiment analysis and automated user feedback classification.",
-        "longDescription": "End-to-end implementation covering text preprocessing, tokenization, embedding extraction, and high-availability inference endpoint deployment.",
-        "technologies": ["Python", "PyTorch", "Hugging Face", "FastAPI", "Docker"],
-        "metrics": "93.4% validation dataset accuracy",
-        "githubUrl": "https://github.com/exemplo/nlp-sentiment-ai",
-        "liveUrl": "https://nlp-demo.streamlit.app",
-        "featured": false,
-        "image": "https://images.unsplash.com/photo-1507146426996-ef05306b995a?auto=format&fit=crop&w=1200&q=85",
-        "problem": "Manually evaluating large volumes of user feedback is slow and inconsistent, requiring models capable of capturing subtle semantic context.",
-        "objective": "Build an end-to-end Natural Language Processing pipeline — from corpus preprocessing and model fine-tuning to production inference serving.",
-        "solution": "Fine-tuned Transformer model using PyTorch and Hugging Face, paired with a standardized tokenization pipeline and served via a containerized FastAPI endpoint.",
+        "year": "2025 — Present",
+        "title": "Velore",
+        "category": "Em Desenvolvimento",
+        "categoryDisplay": "Financial Assistant · In Development",
+        "inDevelopment": true,
+        "description": "Personal financial assistant project currently in development, designed to simplify tracking and organizing personal finances.",
+        "longDescription": "Velore is an active personal project combining my studies in software development and artificial intelligence to create a personal financial assistant focused on clarity and everyday organization.",
+        "technologies": [
+          "In Development",
+          "Financial Assistant",
+          "Software Development",
+          "Artificial Intelligence"
+        ],
+        "metrics": "In Development · Personal Project",
+        "githubUrl": "",
+        "liveUrl": "",
+        "featured": true,
+        "image": "",
+        "problem": "Tracking expenses, organizing categories, and maintaining visibility over personal finances often requires complex spreadsheets or cluttered apps.",
+        "objective": "Progressively build a personal financial assistant capable of organizing financial information and providing a clearer, smarter tracking experience.",
+        "solution": "Continuously evolving architecture prioritizing a clean software foundation, structured financial organization, and gradual integration of intelligent assistant capabilities.",
         "process": [
-          "Executed corpus cleaning, text normalization, tokenization, and embedding extraction.",
-          "Fine-tuned and evaluated the PyTorch model across validation splits.",
-          "Packaged the trained model behind a FastAPI REST inference service inside Docker."
+          "Defined product vision, initial scope, and foundational application architecture.",
+          "Iterative development of system structure and core workflows (ongoing).",
+          "Research and experimentation with intelligent assistant capabilities for personal finance."
         ],
         "features": [
-          "Automated text preprocessing and tokenization pipeline.",
-          "Semantic embedding extraction and sentiment classification with PyTorch & Hugging Face.",
-          "Low-latency REST inference endpoint served via FastAPI.",
-          "Interactive web interface for live sentence evaluation."
+          "Personal project currently in active development.",
+          "Focused on personal financial organization with a streamlined user experience.",
+          "Practical laboratory for applying software engineering and artificial intelligence.",
+          "Continuous evolution of architecture and features."
         ]
       }
     ]
   },
   "about": {
-    "eyebrow": "03 / PROFILE & ACADEMIC BACKGROUND",
-    "title": "Engineering Grounded in Computer Science.",
-    "lead": "I am passionate about solving complex problems with clean code and efficient algorithms. My Computer Science journey combines strong theoretical foundations with hands-on development of high-performance full-stack applications.",
-    "quote": "\"Computer science is no more about computers than astronomy is about telescopes.\"",
-    "quoteAuthor": "— Edsger W. Dijkstra",
+    "eyebrow": "03 / ABOUT ME & TRAJECTORY",
+    "title": "Who I Am & My Path in Computer Science.",
+    "lead": "My name is Lucas Cecareli Ribeiro, and I am a Computer Science student at Instituto Mauá de Tecnologia (IMT) in São Paulo, Brazil. I started my degree in February 2025, with expected graduation in 2029.",
+    "storyParagraph1": "I chose technology out of genuine curiosity to understand how the systems we use every day are built, and the ability to create tools that solve real problems in a practical way.",
+    "storyParagraph2": "Beyond studying theory in isolation, I learn best by building: every project — whether in a hackathon, academic coursework, or personal initiatives like Velore — is an opportunity to turn programming concepts into working software.",
+    "photoFrame": {
+      "label": "PERSONAL IDENTITY",
+      "status": "PERSONAL PORTRAIT · IN SELECTION",
+      "caption": "Editorial space prepared for future personal black-and-white photograph."
+    },
+    "chapters": {
+      "whyTech": {
+        "index": "01",
+        "title": "Why I Chose Technology",
+        "body": "Computer science brings together logical reasoning, creativity, and direct impact. What motivates me most is taking a concrete idea or problem and building, line by line, an application that organizes workflows, teaches, or makes everyday tasks simpler."
+      },
+      "interests": {
+        "index": "02",
+        "title": "Software Development & AI",
+        "body": "My primary interests lie in software development, modern web applications, and Artificial Intelligence — learning how to combine clean code practices with increasingly intelligent systems."
+      },
+      "goals": {
+        "index": "03",
+        "title": "Professional Goals",
+        "body": "I aim to continuously strengthen my technical foundation throughout my degree at Mauá, take on challenging projects, and pursue internship and practical opportunities where I can contribute, learn from experienced teams, and grow as a developer."
+      }
+    },
+    "timeline": {
+      "eyebrow": "ACADEMIC & PRACTICAL TIMELINE",
+      "title": "Trajectory 2025 — 2029",
+      "items": [
+        {
+          "period": "FEB 2025",
+          "title": "Started Computer Science — IMT",
+          "subtitle": "Instituto Mauá de Tecnologia · São Paulo",
+          "description": "Began the B.Sc. in Computer Science, building core foundations in programming logic, algorithms, and computing fundamentals."
+        },
+        {
+          "period": "2025",
+          "title": "First Practical Projects & Systems",
+          "subtitle": "Educational Quiz Game & Laboratory Scheduling System",
+          "description": "Developed practical applications focused on interactive logic, reservation management, and solving real academic workflow needs."
+        },
+        {
+          "period": "2025",
+          "title": "Health & Tech Hackathon — ELO Project",
+          "subtitle": "Collaborative Development Under Immersion",
+          "description": "Built the ELO platform in a team during a healthcare and technology hackathon, practicing rapid prototyping and user-centered design."
+        },
+        {
+          "period": "2025 — PRESENT",
+          "title": "Developing Velore",
+          "subtitle": "Personal Financial Assistant (In Development)",
+          "description": "Ongoing conception and development of a personal financial assistant, deepening studies in software architecture and artificial intelligence."
+        },
+        {
+          "period": "2029",
+          "title": "Expected B.Sc. Graduation",
+          "subtitle": "Bachelor of Science in Computer Science · IMT",
+          "description": "Expected completion of the Computer Science degree at Instituto Mauá de Tecnologia."
+        }
+      ]
+    },
+    "quote": "\"The best way to solidify computer science knowledge is to turn concepts into real projects.\"",
+    "quoteAuthor": "— Lucas Cecareli Ribeiro",
     "education": {
       "label": "ACADEMIC EDUCATION",
-      "period": "2023 — Present (Expected: 2027)",
+      "period": "February 2025 — 2029 (Expected)",
       "degree": "Bachelor of Science in Computer Science",
       "institution": "Instituto Mauá de Tecnologia (IMT)",
       "location": "São Paulo, Brazil",
-      "description": "Comprehensive degree focused on computer science fundamentals, software engineering, and complex systems.",
+      "description": "Computer Science undergraduate program focused on programming fundamentals, software engineering, systems development, and hands-on projects.",
       "highlights": [
-        "Strong academic performance across core computing courses",
-        "Active participation in programming marathons and hackathons",
-        "Hands-on integrative engineering projects with partner organizations"
+        "Enrolled in February 2025 · Expected graduation in 2029",
+        "Participated in a health and technology hackathon with the ELO project",
+        "Hands-on development of web systems, educational games, and personal projects"
       ]
     },
-    "pillarsTitle": "Computer Science Core Pillars",
-    "pillarsSubtitle": "The theoretical foundations that inform every architectural and implementation decision.",
+    "pillarsTitle": "Focus & Study Areas",
+    "pillarsSubtitle": "The core topics guiding my academic studies and current software projects.",
     "pillars": [
       {
         "index": "01",
-        "title": "Data Structures & Algorithms",
-        "description": "Graphs (Dijkstra, BFS/DFS), balanced trees (AVL, Red-Black), hash tables, and asymptotic Big-O complexity analysis."
+        "title": "Logic & Algorithms",
+        "description": "Structured problem solving, foundational data structures, and writing clear, maintainable logic."
       },
       {
         "index": "02",
-        "title": "Operating Systems & Concurrency",
-        "description": "Memory management (Virtual Memory, Paging), processes, threads, mutexes, semaphores, and deadlock prevention."
+        "title": "Web Application Development",
+        "description": "Building responsive, modern, and functional interfaces using TypeScript, React, and component-driven architecture."
       },
       {
         "index": "03",
-        "title": "Computer Networks & Protocols",
-        "description": "OSI/TCP-IP layers, routing, WebSockets, HTTP/2 & 3, RESTful APIs, gRPC, and client-server communication."
+        "title": "Practical Software Engineering",
+        "description": "Structuring projects from scratch, modeling user workflows, version control with Git, and iterative system evolution."
       },
       {
         "index": "04",
-        "title": "Databases & Data Modeling",
-        "description": "Relational normalization (PostgreSQL/MySQL), document modeling (MongoDB), ACID transactions, indexing, and query optimization."
-      },
-      {
-        "index": "05",
-        "title": "Software Architecture & Clean Code",
-        "description": "SOLID principles, separation of concerns (Clean Architecture), Design Patterns, and automated testing."
-      },
-      {
-        "index": "06",
-        "title": "DevOps & Containers",
-        "description": "Containerization with Docker, CI/CD pipeline automation, isolated Linux environments, and cloud deployment."
+        "title": "Applied Artificial Intelligence",
+        "description": "Ongoing study and exploration of integrating AI capabilities into practical applications such as Velore."
       }
     ],
     "metrics": [
-      { "value": "04", "label": "FEATURED SYSTEMS", "sub": "Full-Stack, Backend, AI & Systems" },
-      { "value": "04", "label": "OFFICIAL CERTIFICATIONS", "sub": "AWS, Harvard CS50, Meta & DeepLearning.AI" },
-      { "value": "05", "label": "CORE LANGUAGES", "sub": "TypeScript, Python, C/C++, Java & SQL" }
+      { "value": "2025—2029", "label": "COMPUTER SCIENCE", "sub": "Instituto Mauá de Tecnologia (IMT)" },
+      { "value": "04", "label": "PRACTICAL PROJECTS", "sub": "ELO, Lab System, Quiz Game & Velore" },
+      { "value": "SW & AI", "label": "GROWTH FOCUS", "sub": "Software Development & Web Applications" }
     ]
   },
   "skills": {
-    "eyebrow": "04 / TECHNICAL CAPABILITIES & CREDENTIALS",
-    "title": "Stack & Certifications",
-    "subtitle": "Technologies organized by engineering domain alongside verifiable technical credentials.",
+    "eyebrow": "04 / SKILLS & TOOLS",
+    "title": "Technologies & Studies",
+    "subtitle": "Languages, technologies, and tools I use and refine across my coursework and practical projects.",
     "categories": {
       "languages": {
         "index": "01",
-        "title": "Programming Languages",
+        "title": "Languages & Foundations",
         "items": [
-          { "name": "TypeScript / JavaScript", "meta": "Advanced" },
-          { "name": "Python", "meta": "Advanced" },
-          { "name": "C / C++", "meta": "Intermediate (Academic)" },
-          { "name": "Java", "meta": "Intermediate" },
-          { "name": "SQL", "meta": "Advanced" }
+          { "name": "Python", "meta": "Studies & Projects" },
+          { "name": "TypeScript / JavaScript", "meta": "Web Applications" },
+          { "name": "HTML5 & CSS3", "meta": "Interfaces" },
+          { "name": "SQL", "meta": "Databases" }
         ]
       },
       "frameworks": {
         "index": "02",
-        "title": "Frameworks & Web Ecosystem",
+        "title": "Development & Web",
         "items": [
-          { "name": "React / Next.js", "meta": "Frontend" },
-          { "name": "Node.js / Express", "meta": "Backend" },
-          { "name": "FastAPI / Flask", "meta": "Backend" },
-          { "name": "Tailwind CSS", "meta": "Frontend" }
+          { "name": "React", "meta": "Frontend" },
+          { "name": "Tailwind CSS", "meta": "Styling" },
+          { "name": "Node.js", "meta": "JS Runtime" }
         ]
       },
       "tools": {
         "index": "03",
-        "title": "Infrastructure, DevOps & Data",
+        "title": "Tools & Workflow",
         "items": [
           { "name": "Git & GitHub", "meta": "Version Control" },
-          { "name": "Docker", "meta": "Containers" },
-          { "name": "Linux / Bash", "meta": "Environment" },
-          { "name": "MongoDB & PostgreSQL", "meta": "Databases" },
-          { "name": "Vercel & Cloudflare", "meta": "Deploy & Cloud" }
+          { "name": "VS Code", "meta": "Development" },
+          { "name": "Prototyping & Workflows", "meta": "Projects & Hackathons" }
         ]
       }
     },
     "certifications": {
-      "eyebrow": "VERIFIED CREDENTIALS",
+      "eyebrow": "CONTINUOUS EDUCATION",
       "title": "Certifications & Courses",
-      "subtitle": "Formal validation of international technical competencies with authenticity IDs and direct verification links.",
+      "subtitle": "Verified certifications will be published here as they are completed throughout my degree.",
+      "emptyStateTitle": "Ongoing academic & practical formation",
+      "emptyStateBody": "Currently focused on the B.Sc. in Computer Science curriculum at Instituto Mauá de Tecnologia (2025–2029) and building practical software projects. Official certifications will be listed here once issued.",
       "verifyLabel": "Verify Credential",
       "idLabel": "ID",
-      "items": [
-        {
-          "id": "cert-1",
-          "index": "01",
-          "title": "AWS Certified Cloud Practitioner",
-          "issuer": "Amazon Web Services",
-          "issueDate": "2025",
-          "credentialUrl": "https://aws.amazon.com/verification",
-          "credentialId": "AWS-CLF-00129",
-          "skills": ["Cloud Computing", "AWS Architecture", "Security", "Storage & S3"]
-        },
-        {
-          "id": "cert-2",
-          "index": "02",
-          "title": "CS50's Introduction to Computer Science",
-          "issuer": "Harvard University (edX)",
-          "issueDate": "2024",
-          "credentialUrl": "https://cs50.harvard.edu/certificates",
-          "credentialId": "CS50X-HC-98214",
-          "skills": ["C", "Python", "Algorithms", "Memory Management", "SQL"]
-        },
-        {
-          "id": "cert-3",
-          "index": "03",
-          "title": "Meta Front-End Developer Professional",
-          "issuer": "Meta / Coursera",
-          "issueDate": "2024",
-          "credentialUrl": "https://coursera.org/verify/professional-cert",
-          "credentialId": "META-FED-83741",
-          "skills": ["React.js", "JavaScript ES6+", "UI/UX Design", "Unit Testing"]
-        },
-        {
-          "id": "cert-4",
-          "index": "04",
-          "title": "Python for Data Science & Machine Learning",
-          "issuer": "DeepLearning.AI / Coursera",
-          "issueDate": "2025",
-          "credentialUrl": "https://coursera.org/verify",
-          "credentialId": "DL-PY-49120",
-          "skills": ["Pandas", "NumPy", "Scikit-Learn", "Data Visualization"]
-        }
-      ]
+      "items": []
     }
   },
   "contact": {
     "eyebrow": "05 / CONTACT & CONNECTION",
     "monumentalLine1": "LET'S",
-    "monumentalLine2": "WORK",
-    "monumentalLine3": "TOGETHER.",
-    "lead": "Looking for the next problem worth solving.",
-    "description": "Open to opportunities in Software Engineering, Full-Stack Development, Backend Architecture, and challenging technical projects in São Paulo or remote.",
-    "downloadResume": "DOWNLOAD RESUME",
-    "sendMessageCta": "SEND ME A MESSAGE",
+    "monumentalLine2": "CONNECT &",
+    "monumentalLine3": "BUILD.",
+    "lead": "Open to connections, learning, and technology opportunities.",
+    "description": "Whether you'd like to exchange ideas about software development, learn more about my projects at Mauá, or discuss internship and collaboration opportunities, feel free to reach out.",
+    "downloadResume": "VIEW RESUME",
+    "sendMessageCta": "WRITE A MESSAGE",
     "copyEmail": "Copy Email",
     "copiedEmail": "Email Copied!",
+    "pendingChannel": "Being updated",
     "channels": {
       "emailLabel": "EMAIL",
       "githubLabel": "GITHUB",
@@ -393,58 +428,58 @@
     },
     "form": {
       "title": "Direct Message",
-      "subtitle": "Fill out the fields below to start a conversation via your email client.",
-      "nameLabel": "Your Name / Company",
-      "namePlaceholder": "e.g., Jane Doe (Tech Lead)",
+      "subtitle": "Leave your message below.",
+      "nameLabel": "Your Name",
+      "namePlaceholder": "e.g., Name / Company",
       "emailLabel": "Your Email",
-      "emailPlaceholder": "name@company.com",
-      "messageLabel": "Message or Opportunity",
-      "messagePlaceholder": "Hi Lucas! We would love to connect regarding a Software Engineering opportunity...",
-      "submit": "Send Message",
+      "emailPlaceholder": "you@example.com",
+      "messageLabel": "Message",
+      "messagePlaceholder": "Hi Lucas! I'd love to connect about...",
+      "submit": "Prepare Message",
       "close": "Close",
-      "successMessage": "Your email client has been opened with the message ready to send."
+      "successMessage": "Message prepared! Once the direct email address is configured, it will open automatically."
     },
-    "closingBanner": "Let's build something useful."
+    "closingBanner": "Building my journey one project at a time."
   },
   "resume": {
-    "eyebrow": "OFFICIAL DOCUMENT / CV",
+    "eyebrow": "ACADEMIC SUMMARY / CV",
     "title": "Resume & Trajectory",
-    "subtitle": "Structured overview of academic education at Instituto Mauá de Tecnologia, technical projects, and verified certifications.",
+    "subtitle": "Overview of my Computer Science education at Instituto Mauá de Tecnologia (2025–2029) and software projects.",
     "downloadPdf": "Print / Save as PDF",
     "downloadedPdf": "Preparing Print...",
     "printVersion": "Print Version",
-    "summaryTitle": "Academic & Professional Summary",
+    "summaryTitle": "Personal Summary",
     "educationTitle": "Academic Education",
-    "skillsTitle": "Technical Competencies",
-    "projectsTitle": "Selected Projects",
-    "certificationsTitle": "Verified Certifications",
+    "skillsTitle": "Technologies & Tools",
+    "projectsTitle": "Completed & Ongoing Projects",
+    "certificationsTitle": "Certifications",
     "verifiedBadge": "Verified"
   },
   "terminal": {
-    "welcomeTitle": "✦ Interactive session initialized.",
-    "welcomeBody": "Explore Lucas Ribeiro's technical profile via command line.",
+    "welcomeTitle": "✦ Interactive terminal initialized.",
+    "welcomeBody": "Explore Lucas Cecareli Ribeiro's trajectory and projects via command line.",
     "welcomeHint": "Type 'help' or click a quick command below.",
     "shortcutsLabel": "commands:",
-    "placeholder": "Type a command (help, about, skills, projects, certs, contact, clear)...",
+    "placeholder": "Type a command (help, about, projects, skills, contact, clear)...",
     "helpTitle": "Available commands:",
-    "helpAbout": "Mauá education & overview",
-    "helpSkills": "Languages, frameworks & tools",
-    "helpProjects": "Projects & case studies",
-    "helpCerts": "Official certifications & IDs",
-    "helpContact": "Direct contact channels",
+    "helpAbout": "Who I am & IMT education (2025–2029)",
+    "helpSkills": "Languages and study tools",
+    "helpProjects": "Real projects (ELO, Lab System, Quiz, Velore)",
+    "helpCerts": "Certifications and education status",
+    "helpContact": "GitHub and contact channels",
     "helpClear": "Clear terminal history",
     "unknownCmd": "Command not recognized. Type 'help' to see valid commands."
   },
   "footer": {
     "navigationHeading": "NAVIGATION",
-    "focusHeading": "WHAT I BUILD",
+    "focusHeading": "INTERESTS & FOCUS",
     "focusItems": [
-      "Software Engineering",
-      "Full-Stack Web Applications",
-      "Distributed Systems & APIs",
-      "Data Structures & AI"
+      "Computer Science (IMT · 2025–2029)",
+      "Software Development",
+      "Web Applications & Practical Projects",
+      "Artificial Intelligence"
     ],
-    "builtWith": "Designed & engineered by Lucas Ribeiro",
+    "builtWith": "Personal portfolio of Lucas Cecareli Ribeiro",
     "backToTop": "Back to top"
   }
 }

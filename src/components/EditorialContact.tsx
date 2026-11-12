@@ -25,7 +25,18 @@ export const EditorialContact: React.FC = () => {
   const [formState, setFormState] = useState({ name: '', email: '', message: '' });
   const [submitted, setSubmitted] = useState(false);
 
+  const hasEmail = Boolean(
+    portfolioData.personal.email && portfolioData.personal.email.trim().length > 0
+  );
+  const hasGithub = Boolean(
+    portfolioData.personal.github && portfolioData.personal.github.trim().length > 0
+  );
+  const hasLinkedin = Boolean(
+    portfolioData.personal.linkedin && portfolioData.personal.linkedin.trim().length > 0
+  );
+
   const handleCopyEmail = () => {
+    if (!hasEmail) return;
     navigator.clipboard.writeText(portfolioData.personal.email);
     setCopied(true);
     try {
@@ -44,12 +55,14 @@ export const EditorialContact: React.FC = () => {
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     if (!formState.name || !formState.message) return;
-    const mailto = `mailto:${portfolioData.personal.email}?subject=Contato via Portfólio — ${encodeURIComponent(
-      formState.name
-    )}&body=${encodeURIComponent(
-      formState.message + '\n\nE-mail de retorno: ' + formState.email
-    )}`;
-    window.location.href = mailto;
+    if (hasEmail) {
+      const mailto = `mailto:${portfolioData.personal.email}?subject=Contato via Portfólio — ${encodeURIComponent(
+        formState.name
+      )}&body=${encodeURIComponent(
+        formState.message + '\n\nE-mail de retorno: ' + formState.email
+      )}`;
+      window.location.href = mailto;
+    }
     setSubmitted(true);
   };
 
@@ -72,9 +85,9 @@ export const EditorialContact: React.FC = () => {
           </span>
         </div>
 
-        {/* Monumental Split Layout (Inspired by Richard 00:56 "LET'S WORK TOGETHER") */}
+        {/* Monumental Split Layout */}
         <div className="editorial-grid items-start gap-12">
-          {/* Left Column (7 cols): Monumental Typography + Lead + Download Resume CTA */}
+          {/* Left Column (7 cols): Monumental Typography + Lead + Resume CTA */}
           <div className="col-span-12 lg:col-span-7 space-y-8">
             <h2 className="text-monumental tracking-tight uppercase">
               <span
@@ -123,32 +136,64 @@ export const EditorialContact: React.FC = () => {
                 </Link>
               </MagneticButton>
 
-              <button
-                type="button"
-                onClick={handleCopyEmail}
-                className="inline-flex items-center gap-2 px-5 py-4 rounded-full bg-[var(--bg-surface)] hover:bg-[var(--bg-elevated)] border border-[var(--border-subtle)] hover:border-[var(--border-strong)] font-mono-tech text-xs uppercase tracking-wider text-[var(--text-primary)] transition-colors cursor-pointer"
-              >
-                {copied ? (
-                  <>
-                    <Check className="w-4 h-4" />
-                    <span>{t.contact.copiedEmail}</span>
-                  </>
-                ) : (
-                  <>
-                    <Copy className="w-4 h-4" />
-                    <span data-i18n="contact-copy-btn">{t.contact.copyEmail}</span>
-                  </>
-                )}
-              </button>
+              {hasEmail && (
+                <button
+                  type="button"
+                  onClick={handleCopyEmail}
+                  className="inline-flex items-center gap-2 px-5 py-4 rounded-full bg-[var(--bg-surface)] hover:bg-[var(--bg-elevated)] border border-[var(--border-subtle)] hover:border-[var(--border-strong)] font-mono-tech text-xs uppercase tracking-wider text-[var(--text-primary)] transition-colors cursor-pointer"
+                >
+                  {copied ? (
+                    <>
+                      <Check className="w-4 h-4" />
+                      <span>{t.contact.copiedEmail}</span>
+                    </>
+                  ) : (
+                    <>
+                      <Copy className="w-4 h-4" />
+                      <span data-i18n="contact-copy-btn">{t.contact.copyEmail}</span>
+                    </>
+                  )}
+                </button>
+              )}
             </div>
           </div>
 
-          {/* Right Column (5 cols): Numbered Cards 01—03 + Send Message Trigger */}
+          {/* Right Column (5 cols): Verified Channels + Direct Message Trigger */}
           <div className="col-span-12 lg:col-span-5 space-y-4">
-            {/* Card 01: EMAIL */}
-            <div className="p-6 rounded-2xl bg-[var(--bg-surface)] border border-[var(--border-subtle)] hover:border-[var(--border-strong)] transition-colors relative">
+            {/* Card 01: GITHUB (Verified) */}
+            {hasGithub && (
+              <a
+                href={portfolioData.personal.github}
+                target="_blank"
+                rel="noreferrer"
+                className="block p-6 rounded-2xl bg-[var(--bg-surface)] border border-[var(--border-subtle)] hover:border-[var(--border-strong)] transition-colors relative group"
+              >
+                <span className="absolute top-4 right-5 font-mono-tech text-xs text-[var(--text-muted)]">
+                  01
+                </span>
+                <div className="flex items-center justify-between gap-4">
+                  <div className="flex items-center gap-4 min-w-0">
+                    <div className="w-11 h-11 rounded-xl bg-[var(--bg-elevated)] border border-[var(--border-subtle)] flex items-center justify-center text-[var(--text-primary)] shrink-0">
+                      <GithubIcon className="w-4 h-4" />
+                    </div>
+                    <div className="min-w-0">
+                      <span className="block font-mono-tech text-[10px] uppercase tracking-widest text-[var(--text-muted)]">
+                        {t.contact.channels.githubLabel}
+                      </span>
+                      <span className="block font-mono-tech text-xs sm:text-sm text-[var(--text-primary)] truncate mt-0.5">
+                        {portfolioData.personal.github.replace(/^https?:\/\//, '')}
+                      </span>
+                    </div>
+                  </div>
+                  <ArrowUpRight className="w-4 h-4 text-[var(--text-muted)] group-hover:text-[var(--text-primary)] group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform shrink-0 mt-4" />
+                </div>
+              </a>
+            )}
+
+            {/* Card 02: EMAIL (Shows verified email if set, or clean pending status without fake placeholder) */}
+            <div className="p-6 rounded-2xl bg-[var(--bg-surface)] border border-[var(--border-subtle)] transition-colors relative">
               <span className="absolute top-4 right-5 font-mono-tech text-xs text-[var(--text-muted)]">
-                01
+                02
               </span>
               <div className="flex items-center gap-4">
                 <div className="w-11 h-11 rounded-xl bg-[var(--bg-elevated)] border border-[var(--border-subtle)] flex items-center justify-center text-[var(--text-primary)] shrink-0">
@@ -158,73 +203,72 @@ export const EditorialContact: React.FC = () => {
                   <span className="block font-mono-tech text-[10px] uppercase tracking-widest text-[var(--text-muted)]">
                     {t.contact.channels.emailLabel}
                   </span>
-                  <a
-                    href={`mailto:${portfolioData.personal.email}`}
-                    className="block font-mono-tech text-xs sm:text-sm text-[var(--text-primary)] hover:underline truncate mt-0.5"
-                  >
-                    {portfolioData.personal.email}
-                  </a>
+                  {hasEmail ? (
+                    <a
+                      href={`mailto:${portfolioData.personal.email}`}
+                      className="block font-mono-tech text-xs sm:text-sm text-[var(--text-primary)] hover:underline truncate mt-0.5"
+                    >
+                      {portfolioData.personal.email}
+                    </a>
+                  ) : (
+                    <span className="block font-mono-tech text-xs text-[var(--text-secondary)] mt-0.5">
+                      {t.contact.pendingChannel}
+                    </span>
+                  )}
                 </div>
               </div>
             </div>
 
-            {/* Card 02: GITHUB */}
-            <a
-              href={portfolioData.personal.github}
-              target="_blank"
-              rel="noreferrer"
-              className="block p-6 rounded-2xl bg-[var(--bg-surface)] border border-[var(--border-subtle)] hover:border-[var(--border-strong)] transition-colors relative group"
-            >
-              <span className="absolute top-4 right-5 font-mono-tech text-xs text-[var(--text-muted)]">
-                02
-              </span>
-              <div className="flex items-center justify-between gap-4">
-                <div className="flex items-center gap-4 min-w-0">
-                  <div className="w-11 h-11 rounded-xl bg-[var(--bg-elevated)] border border-[var(--border-subtle)] flex items-center justify-center text-[var(--text-primary)] shrink-0">
-                    <GithubIcon className="w-4 h-4" />
+            {/* Card 03: LINKEDIN (Shows verified URL if set, or clean pending status without fake placeholder) */}
+            {hasLinkedin ? (
+              <a
+                href={portfolioData.personal.linkedin}
+                target="_blank"
+                rel="noreferrer"
+                className="block p-6 rounded-2xl bg-[var(--bg-surface)] border border-[var(--border-subtle)] hover:border-[var(--border-strong)] transition-colors relative group"
+              >
+                <span className="absolute top-4 right-5 font-mono-tech text-xs text-[var(--text-muted)]">
+                  03
+                </span>
+                <div className="flex items-center justify-between gap-4">
+                  <div className="flex items-center gap-4 min-w-0">
+                    <div className="w-11 h-11 rounded-xl bg-[var(--bg-elevated)] border border-[var(--border-subtle)] flex items-center justify-center text-[var(--text-primary)] shrink-0">
+                      <LinkedinIcon className="w-4 h-4" />
+                    </div>
+                    <div className="min-w-0">
+                      <span className="block font-mono-tech text-[10px] uppercase tracking-widest text-[var(--text-muted)]">
+                        {t.contact.channels.linkedinLabel}
+                      </span>
+                      <span className="block font-mono-tech text-xs sm:text-sm text-[var(--text-primary)] truncate mt-0.5">
+                        {portfolioData.personal.linkedin.replace(/^https?:\/\//, '')}
+                      </span>
+                    </div>
                   </div>
-                  <div className="min-w-0">
-                    <span className="block font-mono-tech text-[10px] uppercase tracking-widest text-[var(--text-muted)]">
-                      {t.contact.channels.githubLabel}
-                    </span>
-                    <span className="block font-mono-tech text-xs sm:text-sm text-[var(--text-primary)] truncate mt-0.5">
-                      {portfolioData.personal.github.replace(/^https?:\/\//, '')}
-                    </span>
-                  </div>
+                  <ArrowUpRight className="w-4 h-4 text-[var(--text-muted)] group-hover:text-[var(--text-primary)] group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform shrink-0 mt-4" />
                 </div>
-                <ArrowUpRight className="w-4 h-4 text-[var(--text-muted)] group-hover:text-[var(--text-primary)] group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform shrink-0 mt-4" />
-              </div>
-            </a>
-
-            {/* Card 03: LINKEDIN */}
-            <a
-              href={portfolioData.personal.linkedin}
-              target="_blank"
-              rel="noreferrer"
-              className="block p-6 rounded-2xl bg-[var(--bg-surface)] border border-[var(--border-subtle)] hover:border-[var(--border-strong)] transition-colors relative group"
-            >
-              <span className="absolute top-4 right-5 font-mono-tech text-xs text-[var(--text-muted)]">
-                03
-              </span>
-              <div className="flex items-center justify-between gap-4">
-                <div className="flex items-center gap-4 min-w-0">
+              </a>
+            ) : (
+              <div className="p-6 rounded-2xl bg-[var(--bg-surface)] border border-[var(--border-subtle)] transition-colors relative">
+                <span className="absolute top-4 right-5 font-mono-tech text-xs text-[var(--text-muted)]">
+                  03
+                </span>
+                <div className="flex items-center gap-4">
                   <div className="w-11 h-11 rounded-xl bg-[var(--bg-elevated)] border border-[var(--border-subtle)] flex items-center justify-center text-[var(--text-primary)] shrink-0">
                     <LinkedinIcon className="w-4 h-4" />
                   </div>
-                  <div className="min-w-0">
+                  <div className="min-w-0 flex-1">
                     <span className="block font-mono-tech text-[10px] uppercase tracking-widest text-[var(--text-muted)]">
                       {t.contact.channels.linkedinLabel}
                     </span>
-                    <span className="block font-mono-tech text-xs sm:text-sm text-[var(--text-primary)] truncate mt-0.5">
-                      {portfolioData.personal.linkedin.replace(/^https?:\/\//, '')}
+                    <span className="block font-mono-tech text-xs text-[var(--text-secondary)] mt-0.5">
+                      {t.contact.pendingChannel}
                     </span>
                   </div>
                 </div>
-                <ArrowUpRight className="w-4 h-4 text-[var(--text-muted)] group-hover:text-[var(--text-primary)] group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform shrink-0 mt-4" />
               </div>
-            </a>
+            )}
 
-            {/* Wide Pill Button: SEND ME A MESSAGE -> */}
+            {/* Wide Pill Button: WRITE A MESSAGE -> */}
             <button
               type="button"
               onClick={() => setDrawerOpen((prev) => !prev)}
@@ -332,7 +376,7 @@ export const EditorialContact: React.FC = () => {
           )}
         </AnimatePresence>
 
-        {/* Closing Editorial Banner (Inspired by Richard 01:08 "Let's build something useful.") */}
+        {/* Closing Editorial Banner */}
         <div className="pt-12 border-t border-[var(--border-subtle)] flex flex-col sm:flex-row items-start sm:items-center justify-between gap-6">
           <p
             data-i18n="contact-closing"
@@ -341,7 +385,7 @@ export const EditorialContact: React.FC = () => {
             {t.contact.closingBanner}
           </p>
           <span className="font-mono-tech text-xs text-[var(--text-muted)] uppercase tracking-widest">
-            LUCAS RIBEIRO · {CURRENT_YEAR}
+            LUCAS CECARELI RIBEIRO · {CURRENT_YEAR}
           </span>
         </div>
       </div>

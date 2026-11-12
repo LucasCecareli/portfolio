@@ -94,17 +94,18 @@ export const Navbar: React.FC = () => {
             to="/"
             sectionId="home"
             className="flex items-center gap-3 group focus:outline-none"
-            aria-label="Lucas Ribeiro — Home"
+            aria-label="Lucas Cecareli Ribeiro — Home"
           >
-            <span className="w-9 h-9 rounded-full bg-[var(--accent-bg)] text-[var(--accent-text)] flex items-center justify-center font-display font-extrabold text-xs tracking-tighter transition-transform duration-300 group-hover:scale-105">
-              LR
+            <span className="w-9 h-9 rounded-full bg-[var(--accent-bg)] text-[var(--accent-text)] flex items-center justify-center font-display font-extrabold text-[11px] tracking-tighter transition-transform duration-300 group-hover:scale-105 shrink-0">
+              LCR
             </span>
             <div className="flex flex-col">
               <span className="font-display font-bold text-xs sm:text-sm tracking-wider uppercase text-[var(--text-primary)] leading-none">
-                LUCAS RIBEIRO
+                <span className="hidden xl:inline">LUCAS CECARELI RIBEIRO</span>
+                <span className="xl:hidden">LUCAS C. RIBEIRO</span>
               </span>
               <span className="font-mono-tech text-[10px] text-[var(--text-muted)] tracking-widest uppercase mt-0.5 hidden sm:inline">
-                CS · IMT
+                BCC · IMT · 2025—2029
               </span>
             </div>
           </Link>
