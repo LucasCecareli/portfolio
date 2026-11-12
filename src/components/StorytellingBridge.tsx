@@ -19,16 +19,16 @@ export const StorytellingBridge: React.FC = () => {
     const ctx = gsap.context(() => {
       gsap.fromTo(
         '.bridge-word',
-        { opacity: 0.15, y: 24 },
+        { opacity: 0.15, y: 20 },
         {
           opacity: 1,
           y: 0,
-          stagger: 0.15,
-          duration: 0.9,
+          stagger: 0.12,
+          duration: 0.85,
           ease: 'power3.out',
           scrollTrigger: {
             trigger: sectionRef.current,
-            start: 'top 78%',
+            start: 'top 80%',
           },
         }
       );
@@ -38,27 +38,27 @@ export const StorytellingBridge: React.FC = () => {
         { scaleX: 0 },
         {
           scaleX: 1,
-          duration: 1.15,
-          ease: 'expo.out',
+          duration: 1.1,
+          ease: 'power3.out',
           scrollTrigger: {
             trigger: sectionRef.current,
-            start: 'top 72%',
+            start: 'top 74%',
           },
         }
       );
 
       gsap.fromTo(
         '.bridge-step-card',
-        { opacity: 0, y: 28 },
+        { opacity: 0, y: 24 },
         {
           opacity: 1,
           y: 0,
-          stagger: 0.14,
+          stagger: 0.12,
           duration: 0.8,
           ease: 'power3.out',
           scrollTrigger: {
             trigger: '.bridge-steps-grid',
-            start: 'top 82%',
+            start: 'top 84%',
           },
         }
       );
@@ -82,19 +82,21 @@ export const StorytellingBridge: React.FC = () => {
           >
             {t.bridge.eyebrow}
           </span>
-          <span className="font-mono-tech text-xs text-[var(--text-muted)]">CS · IMT</span>
+          <span className="font-mono-tech text-xs text-[var(--text-muted)]">
+            BCC · IMT · 2025—2029
+          </span>
         </div>
 
-        {/* Monumental Process Flow (Inspired by TITO reference 02:28 "IDEAS → CODE") */}
-        <div className="space-y-8 text-center max-w-5xl mx-auto">
-          <div className="flex flex-col md:flex-row items-center justify-center gap-3 md:gap-6 font-display font-extrabold text-3xl sm:text-5xl lg:text-6xl tracking-tight">
+        {/* Monumental Process Flow — Calibrated fluid typography so edges never clip on desktop or mobile */}
+        <div className="space-y-8 text-center w-full mx-auto px-2 sm:px-4">
+          <div className="flex flex-col lg:flex-row lg:flex-nowrap items-center justify-center gap-x-3.5 gap-y-3 xl:gap-x-5 text-bridge-flow">
             <span
               data-i18n="bridge-left"
               className="bridge-word text-[var(--text-secondary)]"
             >
               {t.bridge.titleLeft}
             </span>
-            <span className="bridge-word text-[var(--text-muted)] font-mono-tech text-2xl sm:text-4xl">
+            <span className="bridge-word text-[var(--text-muted)] font-mono-tech text-xl sm:text-3xl">
               →
             </span>
             <span
@@ -103,12 +105,12 @@ export const StorytellingBridge: React.FC = () => {
             >
               {t.bridge.titleMiddle}
             </span>
-            <span className="bridge-word text-[var(--text-muted)] font-mono-tech text-2xl sm:text-4xl">
+            <span className="bridge-word text-[var(--text-muted)] font-mono-tech text-xl sm:text-3xl">
               →
             </span>
             <span
               data-i18n="bridge-right"
-              className="bridge-word text-[var(--accent-text)] bg-[var(--accent-bg)] px-4 py-1 rounded-xl"
+              className="bridge-word text-[var(--accent-text)] bg-[var(--accent-bg)] px-4 py-1.5 rounded-xl"
             >
               {t.bridge.titleRight}
             </span>

@@ -31,7 +31,8 @@ export const SmoothScroll: React.FC<{ children: React.ReactNode }> = ({ children
     };
 
     gsap.ticker.add(updateLenis);
-    gsap.ticker.lagSmoothing(0);
+    // Smoothly absorb initial main-thread load spikes instead of jumping frames
+    gsap.ticker.lagSmoothing(500, 33);
 
     return () => {
       gsap.ticker.remove(updateLenis);

@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef, useCallback } from 'react';
+import React, { useState, useEffect, useLayoutEffect, useRef, useCallback } from 'react';
 import { portfolioData } from '../data/portfolioData';
 import { useLanguage } from '../context/LanguageContext';
 import { useRouter, Link } from '../router';
@@ -17,7 +17,7 @@ import {
 } from 'lucide-react';
 import gsap from 'gsap';
 
-const INTRO_SESSION_KEY = 'lcr-intro-seen-v2';
+const INTRO_SESSION_KEY = 'lcr-intro-seen-v2_1';
 
 function shouldRunIntroInitial(): boolean {
   if (typeof window === 'undefined') return false;
@@ -30,23 +30,13 @@ function shouldRunIntroInitial(): boolean {
   }
 }
 
-export const EditorialHero: React.FC = () => {
-  const { t } = useLanguage();
-  const { navigate } = useRouter();
-  const [activeRightTab, setActiveRightTab] = useState<'pass' | 'terminal'>('pass');
+/**
+ * Isolated clock component so 1s interval ticks NEVER trigger re-renders of EditorialHero
+ * while GSAP timelines are running.
+ */
+const LiveSaoPauloClock: React.FC = React.memo(() => {
   const [spTime, setSpTime] = useState<string>('');
-  const [introActive, setIntroActive] = useState<boolean>(shouldRunIntroInitial);
-  const [introDarkLock, setIntroDarkLock] = useState<boolean>(shouldRunIntroInitial);
 
-  const heroRef = useRef<HTMLElement>(null);
-  const titleRef = useRef<HTMLHeadingElement>(null);
-  const backdropRef = useRef<HTMLDivElement>(null);
-  const introMetaRef = useRef<HTMLDivElement>(null);
-  const timelineRef = useRef<gsap.core.Timeline | null>(null);
-  const cardRef = useRef<HTMLDivElement>(null);
-  const emblemRef = useRef<HTMLDivElement>(null);
-
-  // Live São Paulo time for the technical pass
   useEffect(() => {
     const updateClock = () => {
       try {
@@ -68,6 +58,30 @@ export const EditorialHero: React.FC = () => {
     return () => window.clearInterval(timer);
   }, []);
 
+  return (
+    <span className="font-mono-tech text-[10px] text-[var(--text-muted)] tracking-wider">
+      {spTime}
+    </span>
+  );
+});
+
+export const EditorialHero: React.FC = () => {
+  const { t } = useLanguage();
+  const { navigate } = useRouter();
+  const [activeRightTab, setActiveRightTab] = useState<'pass' | 'terminal'>('pass');
+  const [introActive, setIntroActive] = useState<boolean>(shouldRunIntroInitial);
+
+  const heroRef = useRef<HTMLElement>(null);
+  const titleRef = useRef<HTMLHeadingElement>(null);
+  const line1Ref = useRef<HTMLSpanElement>(null);
+  const line2Ref = useRef<HTMLSpanElement>(null);
+  const line3Ref = useRef<HTMLSpanElement>(null);
+  const backdropRef = useRef<HTMLDivElement>(null);
+  const introMetaRef = useRef<HTMLDivElement>(null);
+  const timelineRef = useRef<gsap.core.Timeline | null>(null);
+  const cardRef = useRef<HTMLDivElement>(null);
+  const emblemRef = useRef<HTMLDivElement>(null);
+
   // Skip handler for Cinematic Intro
   const skipIntro = useCallback(() => {
     try {
@@ -78,25 +92,42 @@ export const EditorialHero: React.FC = () => {
     if (timelineRef.current) {
       timelineRef.current.progress(1);
     }
-    setIntroDarkLock(false);
     setIntroActive(false);
-    document.body.style.overflow = '';
   }, []);
 
-  // Allow skipping with Escape key
+  // Prevent user scroll via non-reflowing event listeners (avoids body overflow scrollbar shift!)
+  // and listen for Escape key during the intro
   useEffect(() => {
     if (!introActive) return;
+
+    const preventScroll = (e: Event) => {
+      e.preventDefault();
+    };
+
     const onKeyDown = (e: KeyboardEvent) => {
       if (e.key === 'Escape') {
         skipIntro();
+        return;
+      }
+      const scrollKeys = ['ArrowDown', 'ArrowUp', 'PageDown', 'PageUp', ' ', 'Home', 'End'];
+      if (scrollKeys.includes(e.key)) {
+        e.preventDefault();
       }
     };
-    window.addEventListener('keydown', onKeyDown);
-    return () => window.removeEventListener('keydown', onKeyDown);
+
+    window.addEventListener('wheel', preventScroll, { passive: false });
+    window.addEventListener('touchmove', preventScroll, { passive: false });
+    window.addEventListener('keydown', onKeyDown, { passive: false });
+
+    return () => {
+      window.removeEventListener('wheel', preventScroll);
+      window.removeEventListener('touchmove', preventScroll);
+      window.removeEventListener('keydown', onKeyDown);
+    };
   }, [introActive, skipIntro]);
 
-  // Unified GSAP Cinematic Intro -> Hero Continuous Single-Element Timeline
-  useEffect(() => {
+  // Synchronous pre-paint setup (useLayoutEffect) + Font-ready & rAF-synced 3.55s GSAP choreography
+  useLayoutEffect(() => {
     if (!heroRef.current || !titleRef.current) return;
 
     const prefersReducedMotion =
@@ -104,13 +135,18 @@ export const EditorialHero: React.FC = () => {
       window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
     if (prefersReducedMotion) {
-      setIntroDarkLock(false);
       setIntroActive(false);
       return;
     }
 
+    let isCancelled = false;
+    let rafId: number | null = null;
+
     const ctx = gsap.context(() => {
       const titleEl = titleRef.current!;
+      const line1El = line1Ref.current;
+      const line2El = line2Ref.current;
+      const line3El = line3Ref.current;
 
       if (introActive) {
         try {
@@ -119,151 +155,249 @@ export const EditorialHero: React.FC = () => {
           // ignore
         }
 
-        // Prevent scroll during the ~2.1s opening choreography
-        document.body.style.overflow = 'hidden';
         window.scrollTo(0, 0);
 
-        // Measure the natural Hero h1 bounding box so we can start centered and glide to (0, 0, 1) with ZERO cut
-        gsap.set(titleEl, { x: 0, y: 0, scale: 1, clearProps: 'transform' });
-        const rect = titleEl.getBoundingClientRect();
-        const vw = window.innerWidth;
-        const vh = window.innerHeight;
-
-        const maxScaleByWidth = (vw * (vw >= 1024 ? 0.78 : 0.86)) / Math.max(rect.width, 1);
-        const targetStartScale = vw >= 1024 ? 1.34 : 1.14;
-        const startScale = Math.max(1.04, Math.min(targetStartScale, maxScaleByWidth));
-
-        const startX = (vw - rect.width * startScale) / 2 - rect.left;
-        const startY = (vh - rect.height * startScale) / 2 - rect.top;
-
-        // Place the single h1 element in the center of the minimalist black stage
-        gsap.set(titleEl, {
-          x: startX,
-          y: startY,
-          scale: startScale,
-          transformOrigin: '0% 0%',
-        });
-
-        // Hide supporting Hero elements until the morph reveals the Hero stage
+        // Pre-hide lines and supporting Hero elements BEFORE first browser paint so there is ZERO flash
+        gsap.set('.hero-line-inner', { yPercent: 110, force3D: true });
+        gsap.set('.intro-tech-line', { scaleX: 0, opacity: 0 });
+        gsap.set('.intro-tech-text', { opacity: 0, y: 6 });
         gsap.set(
           [
             '.hero-reveal-badge',
             '.hero-reveal-sub',
             '.hero-reveal-cta',
-            '.hero-reveal-card',
             '.hero-reveal-meta',
           ],
-          { opacity: 0, y: 20 }
+          { opacity: 0, y: 18, force3D: true }
         );
-
-        const tl = gsap.timeline({
-          defaults: { ease: 'power4.out' },
-          onComplete: () => {
-            gsap.set(titleEl, { clearProps: 'transform' });
-            setIntroDarkLock(false);
-            setIntroActive(false);
-            document.body.style.overflow = '';
-          },
+        gsap.set('.hero-reveal-portrait-module', {
+          opacity: 0,
+          y: 22,
+          scale: 0.985,
+          force3D: true,
         });
 
-        timelineRef.current = tl;
+        // Lock initial intro colors on the black #090909 stage without React state changes
+        if (line1El && line2El && line3El) {
+          gsap.set([line1El, line3El], { color: '#F5F5F5' });
+          gsap.set(line2El, { color: '#A8A8B3' });
+        }
 
-        // 1. Minimalist black screen -> discrete technical line & index
-        tl.fromTo(
-          '.intro-tech-line',
-          { scaleX: 0, opacity: 0 },
-          { scaleX: 1, opacity: 1, duration: 0.42, ease: 'power3.out' },
-          0.04
-        )
-          .fromTo(
-            '.intro-tech-text',
-            { opacity: 0, y: 8 },
-            { opacity: 1, y: 0, duration: 0.38, stagger: 0.06, ease: 'power3.out' },
-            0.1
-          )
-          // 2. Monumental masked reveal of LUCAS / CECARELI / RIBEIRO.
-          .fromTo(
-            '.hero-line-inner',
-            { yPercent: 115, rotateZ: 1.1 },
+        const computeAndPlaceStart = () => {
+          gsap.set(titleEl, { x: 0, y: 0, scale: 1, clearProps: 'transform' });
+          const rect = titleEl.getBoundingClientRect();
+          const vw = document.documentElement.clientWidth || window.innerWidth;
+          const vh = window.innerHeight;
+
+          const maxScaleByWidth = (vw * (vw >= 1024 ? 0.76 : 0.86)) / Math.max(rect.width, 1);
+          const targetStartScale = vw >= 1024 ? 1.3 : 1.12;
+          const startScale = Math.max(1.04, Math.min(targetStartScale, maxScaleByWidth));
+
+          const startX = Math.round((vw - rect.width * startScale) / 2 - rect.left);
+          const startY = Math.round((vh - rect.height * startScale) / 2 - rect.top);
+
+          gsap.set(titleEl, {
+            x: startX,
+            y: startY,
+            scale: startScale,
+            transformOrigin: '0% 0%',
+            force3D: true,
+          });
+        };
+
+        // Initial synchronous placement before paint
+        computeAndPlaceStart();
+
+        const startChoreography = () => {
+          if (isCancelled) return;
+          // Re-verify geometry now that web fonts (Syne 800) are 100% ready
+          computeAndPlaceStart();
+
+          const computedStyle = getComputedStyle(document.documentElement);
+          const finalPrimaryColor =
+            computedStyle.getPropertyValue('--text-primary').trim() || '#F5F5F5';
+          const finalSecondaryColor =
+            computedStyle.getPropertyValue('--text-secondary').trim() || '#A8A8B3';
+
+          const tl = gsap.timeline({
+            onComplete: () => {
+              gsap.set(titleEl, { clearProps: 'transform' });
+              if (line1El && line2El && line3El) {
+                gsap.set([line1El, line2El, line3El], { clearProps: 'color' });
+              }
+              setIntroActive(false);
+            },
+          });
+
+          timelineRef.current = tl;
+
+          // ACT 1 (0.00s – 0.50s): Discrete visual preparation on black canvas
+          tl.to(
+            '.intro-tech-line',
             {
-              yPercent: 0,
-              rotateZ: 0,
-              duration: 0.88,
-              stagger: 0.12,
-              ease: 'power4.out',
+              scaleX: 1,
+              opacity: 1,
+              duration: 0.46,
+              ease: 'power2.out',
             },
-            0.22
+            0.04
           )
-          // 3. Fade out discrete intro index right as the continuous morph begins
-          .to(
-            introMetaRef.current,
-            {
-              opacity: 0,
-              y: -12,
-              duration: 0.32,
-              ease: 'power2.in',
-            },
-            1.15
-          )
-          // 4. Continuous single-element transformation: scale down & glide into the exact Hero h1 position
-          .to(
-            titleEl,
-            {
-              x: 0,
-              y: 0,
-              scale: 1,
-              duration: 0.98,
-              ease: 'expo.inOut',
-            },
-            1.18
-          )
-          // Release dark text lock halfway through backdrop reveal so Light/Dark theme colors blend seamlessly
-          .call(
-            () => {
-              setIntroDarkLock(false);
-              document.body.style.overflow = '';
-            },
-            [],
-            1.58
-          )
-          // 5. Minimalist black stage opens smoothly to reveal the Hero section
-          .to(
-            backdropRef.current,
-            {
-              opacity: 0,
-              duration: 0.76,
-              ease: 'power2.inOut',
-            },
-            1.38
-          )
-          // 6. Coordinated Hero content timeline enters around the settled headline
-          .to(
+            .to(
+              '.intro-tech-text',
+              {
+                opacity: 1,
+                y: 0,
+                duration: 0.42,
+                stagger: 0.06,
+                ease: 'power2.out',
+              },
+              0.1
+            )
+            // ACT 2 (0.50s – 1.70s): Progressive masked reveal of LUCAS / CECARELI / RIBEIRO.
+            .to(
+              '.hero-line-inner',
+              {
+                yPercent: 0,
+                duration: 0.92,
+                stagger: 0.14,
+                ease: 'power3.out',
+                force3D: true,
+              },
+              0.5
+            )
+            // ACT 3 (1.70s – 2.20s): Intentional 0.50s reading pause for the complete name
+            // ACT 4 (2.20s – 3.55s): Smooth, continuous transformation into Hero position + coordinated reveal
+            .to(
+              introMetaRef.current,
+              {
+                opacity: 0,
+                y: -8,
+                duration: 0.36,
+                ease: 'power2.inOut',
+              },
+              2.15
+            )
+            .to(
+              titleEl,
+              {
+                x: 0,
+                y: 0,
+                scale: 1,
+                duration: 1.24,
+                ease: 'power3.inOut',
+                force3D: true,
+              },
+              2.2
+            )
+            .to(
+              backdropRef.current,
+              {
+                opacity: 0,
+                duration: 0.95,
+                ease: 'power2.inOut',
+              },
+              2.42
+            );
+
+          if (line1El && line2El && line3El) {
+            tl.to(
+              [line1El, line3El],
+              {
+                color: finalPrimaryColor,
+                duration: 0.8,
+                ease: 'power2.inOut',
+              },
+              2.5
+            ).to(
+              line2El,
+              {
+                color: finalSecondaryColor,
+                duration: 0.8,
+                ease: 'power2.inOut',
+              },
+              2.5
+            );
+          }
+
+          // Supporting Hero elements enter smoothly as the name settles
+          tl.to(
             '.hero-reveal-badge',
-            { opacity: 1, y: 0, duration: 0.65, stagger: 0.06, ease: 'power3.out' },
-            1.52
+            {
+              opacity: 1,
+              y: 0,
+              duration: 0.68,
+              stagger: 0.06,
+              ease: 'power3.out',
+              force3D: true,
+            },
+            2.88
           )
-          .to(
-            '.hero-reveal-sub',
-            { opacity: 1, y: 0, duration: 0.72, ease: 'power3.out' },
-            1.62
-          )
-          .to(
-            '.hero-reveal-cta',
-            { opacity: 1, y: 0, duration: 0.68, stagger: 0.06, ease: 'power3.out' },
-            1.7
-          )
-          .to(
-            '.hero-reveal-card',
-            { opacity: 1, y: 0, duration: 0.85, ease: 'power3.out' },
-            1.58
-          )
-          .to(
-            '.hero-reveal-meta',
-            { opacity: 1, y: 0, duration: 0.7, ease: 'power3.out' },
-            1.82
-          );
+            .to(
+              '.hero-reveal-sub',
+              {
+                opacity: 1,
+                y: 0,
+                duration: 0.72,
+                ease: 'power3.out',
+                force3D: true,
+              },
+              2.96
+            )
+            .to(
+              '.hero-reveal-cta',
+              {
+                opacity: 1,
+                y: 0,
+                duration: 0.68,
+                stagger: 0.06,
+                ease: 'power3.out',
+                force3D: true,
+              },
+              3.04
+            )
+            .to(
+              '.hero-reveal-meta',
+              {
+                opacity: 1,
+                y: 0,
+                duration: 0.68,
+                ease: 'power3.out',
+                force3D: true,
+              },
+              3.14
+            )
+            // Independent coordinated entrance for the Portrait / Identity module after the name transformation
+            .to(
+              '.hero-reveal-portrait-module',
+              {
+                opacity: 1,
+                y: 0,
+                scale: 1,
+                duration: 0.82,
+                ease: 'power3.out',
+                force3D: true,
+              },
+              3.02
+            );
+        };
+
+        // Wait for fonts to finish loading and start on a clean requestAnimationFrame boundary
+        const fontsReadyPromise =
+          typeof document !== 'undefined' && 'fonts' in document
+            ? Promise.race([
+                document.fonts.ready,
+                new Promise((resolve) => window.setTimeout(resolve, 250)),
+              ])
+            : Promise.resolve();
+
+        fontsReadyPromise.then(() => {
+          if (isCancelled) return;
+          rafId = window.requestAnimationFrame(() => {
+            startChoreography();
+          });
+        });
       } else {
-        // Subsequent internal route navigations within the same session: crisp, fast Hero entrance without repeating the fullscreen intro
+        // Subsequent internal route navigations within the same session
         const tl = gsap.timeline({ defaults: { ease: 'power3.out' } });
 
         tl.fromTo(
@@ -275,38 +409,41 @@ export const EditorialHero: React.FC = () => {
           .fromTo(
             '.hero-line-inner',
             { yPercent: 105 },
-            { yPercent: 0, duration: 0.75, stagger: 0.08, ease: 'power4.out' },
+            { yPercent: 0, duration: 0.75, stagger: 0.08, ease: 'power3.out' },
             0.06
           )
           .fromTo(
             '.hero-reveal-sub',
             { opacity: 0, y: 14 },
             { opacity: 1, y: 0, duration: 0.6 },
-            0.25
+            0.22
           )
           .fromTo(
             '.hero-reveal-cta',
             { opacity: 0, y: 12 },
             { opacity: 1, y: 0, duration: 0.55, stagger: 0.05 },
-            0.32
+            0.28
           )
           .fromTo(
-            '.hero-reveal-card',
-            { opacity: 0, y: 18 },
-            { opacity: 1, y: 0, duration: 0.75 },
-            0.18
+            '.hero-reveal-portrait-module',
+            { opacity: 0, y: 16, scale: 0.99 },
+            { opacity: 1, y: 0, scale: 1, duration: 0.72 },
+            0.24
           )
           .fromTo(
             '.hero-reveal-meta',
-            { opacity: 0 },
-            { opacity: 1, duration: 0.6 },
-            0.42
+            { opacity: 0, y: 10 },
+            { opacity: 1, y: 0, duration: 0.55 },
+            0.36
           );
       }
     }, heroRef);
 
     return () => {
-      document.body.style.overflow = '';
+      isCancelled = true;
+      if (rafId !== null) {
+        window.cancelAnimationFrame(rafId);
+      }
       ctx.revert();
     };
     // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -328,8 +465,8 @@ export const EditorialHero: React.FC = () => {
     const y = (e.clientY - rect.top) / rect.height - 0.5;
 
     gsap.to(cardRef.current, {
-      rotateY: x * 7,
-      rotateX: -y * 7,
+      rotateY: x * 6,
+      rotateX: -y * 6,
       transformPerspective: 950,
       duration: 0.4,
       ease: 'power3.out',
@@ -338,8 +475,8 @@ export const EditorialHero: React.FC = () => {
 
     if (emblemRef.current) {
       gsap.to(emblemRef.current, {
-        x: x * 12,
-        y: y * 12,
+        x: x * 10,
+        y: y * 10,
         duration: 0.4,
         ease: 'power3.out',
         overwrite: 'auto',
@@ -383,19 +520,19 @@ export const EditorialHero: React.FC = () => {
       ref={heroRef}
       className="relative min-h-screen pt-28 pb-16 sm:pt-36 sm:pb-24 flex flex-col justify-between overflow-hidden bg-architectural-grid border-b border-[var(--border-subtle)]"
     >
-      {/* CINEMATIC INTRO STAGE BACKDROP (#090909) — Only mounted during initial 2.1s sequence */}
+      {/* CINEMATIC INTRO STAGE BACKDROP (#090909) — Only mounted during initial ~3.55s sequence */}
       {introActive && (
         <div
           ref={backdropRef}
-          className="fixed inset-0 z-[60] bg-[#090909] flex flex-col justify-between p-6 sm:p-12 select-none"
+          className="fixed inset-0 z-[60] bg-[#090909] flex flex-col justify-between p-6 sm:p-12 select-none will-change-[opacity]"
         >
-          {/* Top & Bottom Technical Hairlines */}
+          {/* Top Technical Hairline & Discrete Index */}
           <div ref={introMetaRef} className="w-full max-w-[1360px] mx-auto space-y-3">
-            <div className="flex items-center justify-between font-mono-tech text-[10px] sm:text-xs tracking-[0.24em] uppercase text-[#A1A1AA]">
+            <div className="flex items-center justify-between font-mono-tech text-[10px] sm:text-xs tracking-[0.24em] uppercase text-[#A8A8B3]">
               <span className="intro-tech-text">{t.intro.indexLabel}</span>
               <span className="intro-tech-text">{t.intro.locationLabel}</span>
             </div>
-            <div className="intro-tech-line w-full h-[1px] bg-[#292929] origin-left" />
+            <div className="intro-tech-line w-full h-[1px] bg-[#292929] origin-left will-change-transform" />
           </div>
 
           {/* Skip Intro Button */}
@@ -403,7 +540,7 @@ export const EditorialHero: React.FC = () => {
             <button
               type="button"
               onClick={skipIntro}
-              className="relative z-[80] px-3.5 py-1.5 rounded-full border border-[#292929] hover:border-[#F5F5F5] text-[#A1A1AA] hover:text-[#F5F5F5] font-mono-tech text-[10px] uppercase tracking-widest transition-colors cursor-pointer"
+              className="relative z-[80] px-3.5 py-1.5 rounded-full border border-[#292929] hover:border-[#F5F5F5] text-[#A8A8B3] hover:text-[#F5F5F5] font-mono-tech text-[10px] uppercase tracking-widest transition-colors cursor-pointer"
             >
               {t.intro.skipLabel}
             </button>
@@ -414,7 +551,7 @@ export const EditorialHero: React.FC = () => {
       {/* Monumental Background Outline Marquee */}
       <div
         aria-hidden="true"
-        className="pointer-events-none absolute top-1/2 -translate-y-1/2 left-0 right-0 overflow-hidden opacity-60 select-none z-0"
+        className="pointer-events-none absolute top-1/2 -translate-y-1/2 left-0 right-0 overflow-hidden opacity-55 select-none z-0"
       >
         <div className="animate-marquee-slow flex items-center gap-16 whitespace-nowrap">
           <span className="text-outline-monumental">
@@ -426,9 +563,9 @@ export const EditorialHero: React.FC = () => {
         </div>
       </div>
 
-      {/* Main 12-Column Editorial Grid (Note: no z-index trap on container so h1 can sit at z-[70] during Intro) */}
+      {/* Main 12-Column Editorial Grid */}
       <div className="editorial-container flex-1 flex items-center">
-        <div className="editorial-grid items-center w-full">
+        <div className="editorial-grid items-center w-full gap-y-12">
           {/* Left Column (7 cols on lg): Personal Identity & Narrative */}
           <div className="col-span-12 lg:col-span-7 space-y-6 sm:space-y-7">
             {/* Top Academic & Period Pill */}
@@ -465,39 +602,36 @@ export const EditorialHero: React.FC = () => {
               </span>
             </div>
 
-            {/* PROTAGONIST FULL NAME HEADLINE — Single element that morphs continuously from the Cinematic Intro into the Hero */}
+            {/* PROTAGONIST FULL NAME HEADLINE — Single element with GPU-accelerated FLIP continuity */}
             <h1
               ref={titleRef}
               className={`text-hero-display tracking-tight will-change-transform ${
                 introActive ? 'relative z-[70] pointer-events-none' : 'relative z-10'
               }`}
             >
-              <span className="block overflow-hidden pb-1">
+              <span className="block overflow-hidden px-1 -mx-1 py-0.5">
                 <span
+                  ref={line1Ref}
                   data-i18n="hero-line-1"
-                  className={`hero-line-inner block transition-colors duration-300 ${
-                    introDarkLock ? 'text-[#F5F5F5]' : 'text-[var(--text-primary)]'
-                  }`}
+                  className="hero-line-inner block text-[var(--text-primary)] will-change-transform"
                 >
                   {t.hero.headlineLine1}
                 </span>
               </span>
-              <span className="block overflow-hidden pb-1">
+              <span className="block overflow-hidden px-1 -mx-1 py-0.5">
                 <span
+                  ref={line2Ref}
                   data-i18n="hero-line-2"
-                  className={`hero-line-inner block transition-colors duration-300 ${
-                    introDarkLock ? 'text-[#A1A1AA]' : 'text-[var(--text-secondary)]'
-                  }`}
+                  className="hero-line-inner block text-[var(--text-secondary)] will-change-transform"
                 >
                   {t.hero.headlineLine2}
                 </span>
               </span>
-              <span className="block overflow-hidden pb-1.5">
+              <span className="block overflow-hidden px-1 -mx-1 py-0.5">
                 <span
+                  ref={line3Ref}
                   data-i18n="hero-line-3"
-                  className={`hero-line-inner block transition-colors duration-300 ${
-                    introDarkLock ? 'text-[#F5F5F5]' : 'text-[var(--text-primary)]'
-                  }`}
+                  className="hero-line-inner block text-[var(--text-primary)] will-change-transform"
                 >
                   {t.hero.headlineLine3}
                 </span>
@@ -610,9 +744,9 @@ export const EditorialHero: React.FC = () => {
             </div>
           </div>
 
-          {/* Right Column (5 cols on lg): Secondary Editorial Identity & Portrait Module + CLI Switcher */}
-          <div className="col-span-12 lg:col-span-5 hero-reveal-card relative z-10 flex flex-col items-center lg:items-end">
-            <div className="w-full max-w-[430px] space-y-3">
+          {/* Right Column (5 cols on lg): Secondary Editorial Identity & Future Portrait Module + CLI Switcher */}
+          <div className="col-span-12 lg:col-span-5 hero-reveal-portrait-module relative z-10 flex flex-col items-center lg:items-end">
+            <div className="w-full max-w-[420px] space-y-3">
               {/* Top Mode Switcher: Identity/Portrait vs CLI Terminal */}
               <div className="flex items-center justify-between px-1">
                 <div className="inline-flex items-center p-1 rounded-full bg-[var(--bg-surface)] border border-[var(--border-subtle)]">
@@ -641,9 +775,7 @@ export const EditorialHero: React.FC = () => {
                   </button>
                 </div>
 
-                <span className="font-mono-tech text-[10px] text-[var(--text-muted)] tracking-wider">
-                  {spTime}
-                </span>
+                <LiveSaoPauloClock />
               </div>
 
               {activeRightTab === 'terminal' ? (
@@ -690,8 +822,8 @@ export const EditorialHero: React.FC = () => {
                       </span>
                     </div>
 
-                    {/* Flexible Canvas: Prepared for Personal Photograph OR Authorial Monogram Composition */}
-                    <div className="my-4 relative min-h-[200px] rounded-2xl bg-[var(--bg-primary)] border border-[var(--border-subtle)] overflow-hidden flex items-center justify-center">
+                    {/* Flexible Canvas: Prepared for Personal B&W Photograph OR Authorial Monogram Composition */}
+                    <div className="my-4 relative min-h-[195px] rounded-2xl bg-[var(--bg-primary)] border border-[var(--border-subtle)] overflow-hidden flex items-center justify-center">
                       <div className="absolute inset-0 bg-architectural-grid opacity-75" />
 
                       {hasPersonalPhoto ? (
@@ -706,7 +838,7 @@ export const EditorialHero: React.FC = () => {
                           className="relative z-10 flex flex-col items-center justify-center text-center p-5"
                         >
                           <div className="relative w-24 h-24 flex items-center justify-center">
-                            <div className="absolute inset-0 rounded-full border border-dashed border-[var(--border-strong)] animate-[spin_32s_linear_infinite]" />
+                            <div className="absolute inset-0 rounded-full border border-dashed border-[var(--border-strong)] animate-[spin_36s_linear_infinite]" />
                             <div className="absolute inset-2.5 rounded-full border border-[var(--border-subtle)]" />
                             <div className="w-14 h-14 rounded-2xl bg-[var(--bg-surface)] border border-[var(--border-strong)] flex items-center justify-center shadow-md">
                               <span className="font-display font-extrabold text-lg tracking-tighter text-[var(--text-primary)]">

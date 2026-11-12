@@ -117,15 +117,15 @@
       {
         "id": "proj-1",
         "index": "01",
-        "year": "2025",
+        "year": "Nov 2026",
         "title": "ELO",
         "category": "Saúde & Tecnologia",
         "categoryDisplay": "Hackathon · Saúde & Tecnologia",
         "inDevelopment": false,
-        "description": "Plataforma desenvolvida durante um hackathon de saúde e tecnologia, concebida para conectar demandas da área da saúde a uma experiência digital clara e acessível.",
-        "longDescription": "O projeto ELO foi construído em ambiente de hackathon voltado a saúde e tecnologia. A iniciativa reuniu ideação rápida, entendimento de um problema real enfrentado na área da saúde e estruturação de uma plataforma funcional dentro do tempo da competição.",
+        "description": "Plataforma desenvolvida no Hackathon de Saúde e Tecnologia em novembro de 2026, concebida para conectar demandas da área da saúde a uma experiência digital clara e acessível.",
+        "longDescription": "O projeto ELO foi construído em novembro de 2026 em ambiente de hackathon voltado a saúde e tecnologia. A iniciativa reuniu ideação rápida, entendimento de um problema real enfrentado na área da saúde e estruturação de uma plataforma funcional dentro do tempo da competição.",
         "technologies": ["Saúde & Tecnologia", "Hackathon", "Prototipação", "Aplicação Web"],
-        "metrics": "Desenvolvido em Hackathon de Saúde e Tecnologia",
+        "metrics": "Hackathon de Saúde e Tecnologia · Novembro de 2026",
         "githubUrl": "",
         "liveUrl": "",
         "featured": true,
@@ -300,10 +300,10 @@
           "description": "Desenvolvimento de aplicações práticas voltadas à lógica interativa, organização de reservas e resolução de necessidades do ambiente acadêmico."
         },
         {
-          "period": "2025",
+          "period": "NOV 2026",
           "title": "Hackathon de Saúde & Tecnologia — Projeto ELO",
-          "subtitle": "Desenvolvimento Colaborativo sob Imersão",
-          "description": "Criação da plataforma ELO em equipe durante hackathon focado em saúde e tecnologia, exercitando prototipação rápida e foco no usuário."
+          "subtitle": "Desenvolvimento Colaborativo sob Imersão · Novembro de 2026",
+          "description": "Criação da plataforma ELO em equipe durante hackathon focado em saúde e tecnologia realizado em novembro de 2026, exercitando prototipação rápida e foco no usuário."
         },
         {
           "period": "2025 — PRESENTE",

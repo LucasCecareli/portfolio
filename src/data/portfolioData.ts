@@ -94,12 +94,12 @@ export const portfolioData = {
       id: "proj-1",
       title: "ELO",
       description:
-        "Plataforma desenvolvida durante hackathon de saúde e tecnologia, voltada à construção de uma solução digital aplicada a desafios reais da área da saúde.",
+        "Plataforma desenvolvida durante hackathon de saúde e tecnologia em novembro de 2026, voltada à construção de uma solução digital aplicada a desafios reais da área da saúde.",
       longDescription:
-        "Desenvolvido de forma colaborativa em ambiente de hackathon com foco na interseção entre saúde e tecnologia. O projeto exercitou concepção rápida de produto, estruturação de fluxo de uso e validação da proposta.",
+        "Desenvolvido de forma colaborativa em novembro de 2026 durante um hackathon com foco na interseção entre saúde e tecnologia. O projeto exercitou concepção rápida de produto, estruturação de fluxo de uso e validação da proposta.",
       category: "Saúde & Tecnologia",
       technologies: ["Saúde & Tecnologia", "Hackathon", "Prototipação", "Aplicação Web"],
-      metrics: "Hackathon de Saúde & Tecnologia",
+      metrics: "Hackathon de Saúde & Tecnologia · Novembro de 2026",
       githubUrl: "",
       liveUrl: "",
       featured: true,

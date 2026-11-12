@@ -65,7 +65,7 @@ export const ProjectVisualPreview: React.FC<ProjectVisualPreviewProps> = ({
                   <HeartPulse className="w-4 h-4" />
                 </div>
                 <span className="font-mono-tech text-[9px] px-2 py-0.5 rounded-full bg-[var(--bg-elevated)] text-[var(--text-secondary)]">
-                  HACKATHON · 2025
+                  HACKATHON · NOV 2026
                 </span>
               </div>
               <div className="font-display font-extrabold text-xl text-[var(--text-primary)] tracking-tight">

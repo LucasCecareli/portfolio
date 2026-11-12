@@ -117,15 +117,15 @@
       {
         "id": "proj-1",
         "index": "01",
-        "year": "2025",
+        "year": "Nov 2026",
         "title": "ELO",
         "category": "Saúde & Tecnologia",
         "categoryDisplay": "Hackathon · Health & Tech",
         "inDevelopment": false,
-        "description": "Platform developed during a healthcare and technology hackathon, designed to connect real healthcare needs with an accessible digital experience.",
-        "longDescription": "ELO was created collaboratively during a health and technology hackathon. The project combined rapid product ideation, understanding a real healthcare challenge, and structuring a functional platform within the competition timeframe.",
+        "description": "Platform developed during the Health and Technology Hackathon in November 2026, designed to connect real healthcare needs with an accessible digital experience.",
+        "longDescription": "ELO was created collaboratively in November 2026 during a health and technology hackathon. The project combined rapid product ideation, understanding a real healthcare challenge, and structuring a functional platform within the competition timeframe.",
         "technologies": ["Health & Tech", "Hackathon", "Prototyping", "Web Application"],
-        "metrics": "Built at a Health & Technology Hackathon",
+        "metrics": "Health & Technology Hackathon · November 2026",
         "githubUrl": "",
         "liveUrl": "",
         "featured": true,
@@ -300,10 +300,10 @@
           "description": "Developed practical applications focused on interactive logic, reservation management, and solving real academic workflow needs."
         },
         {
-          "period": "2025",
+          "period": "NOV 2026",
           "title": "Health & Tech Hackathon — ELO Project",
-          "subtitle": "Collaborative Development Under Immersion",
-          "description": "Built the ELO platform in a team during a healthcare and technology hackathon, practicing rapid prototyping and user-centered design."
+          "subtitle": "Collaborative Development Under Immersion · November 2026",
+          "description": "Built the ELO platform in a team during a healthcare and technology hackathon in November 2026, practicing rapid prototyping and user-centered design."
         },
         {
           "period": "2025 — PRESENT",
