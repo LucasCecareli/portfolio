@@ -21,13 +21,16 @@ export const Navbar: React.FC = () => {
       setScrolled(y > 24);
 
       if (currentPath === '/') {
-        const sections = ['home', 'about', 'projects', 'skills', 'contact'];
-        const scrollPosition = y + window.innerHeight * 0.32;
+        const sections = ['home', 'projects', 'about', 'skills', 'contact'];
+        const scrollPosition = y + window.innerHeight * 0.35;
         for (let i = sections.length - 1; i >= 0; i--) {
           const el = document.getElementById(sections[i]);
-          if (el && el.offsetTop <= scrollPosition) {
-            setActiveSection(sections[i]);
-            break;
+          if (el) {
+            const top = el.getBoundingClientRect().top + y;
+            if (top <= scrollPosition) {
+              setActiveSection(sections[i]);
+              break;
+            }
           }
         }
       }

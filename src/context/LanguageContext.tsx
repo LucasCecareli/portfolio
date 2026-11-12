@@ -2,6 +2,9 @@ import React, { createContext, useContext, useState, useEffect, useRef, useCallb
 import ptBR from '../locales/pt-BR.json';
 import en from '../locales/en.json';
 import gsap from 'gsap';
+import { ScrollTrigger } from 'gsap/ScrollTrigger';
+
+gsap.registerPlugin(ScrollTrigger);
 
 export type Locale = 'pt-BR' | 'en';
 export type Translations = typeof ptBR;
@@ -138,6 +141,9 @@ export const LanguageProvider: React.FC<{ children: React.ReactNode }> = ({ chil
                 onComplete: () => {
                   lockRef.current = false;
                   setIsSwitchingLanguage(false);
+                  const currentY = window.scrollY;
+                  ScrollTrigger.refresh();
+                  window.scrollTo({ top: currentY, behavior: 'instant' as ScrollBehavior });
                 },
               }
             );

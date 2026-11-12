@@ -1,0 +1,2 @@
+# Coloque sua fotografia pessoal editada nesta pasta (ex: lucas-cecareli-ribeiro.webp ou lucas-cecareli-ribeiro.jpg)
+# e informe o caminho "/images/<nome-do-arquivo>" em src/data/portfolioData.ts (campo personal.photoUrl).

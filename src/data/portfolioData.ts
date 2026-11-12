@@ -52,13 +52,22 @@ export const portfolioData = {
     github: "https://github.com/LucasCecareli",
     linkedin: "",
     availableForHire: true,
-    // Quando selecionar sua fotografia pessoal, basta informar o caminho aqui (ex: "/foto-lucas.jpg")
-    photoUrl: "",
+    // Fotografias pessoais locais para Dark Mode e Light Mode (PNG originais + versões WebP otimizadas)
+    photoUrl: "/images/profile/lucas-dark.webp.png",
+    photoDarkUrl: "/images/profile/lucas-dark.webp.png",
+    photoDarkWebpUrl: "/images/profile/lucas-dark.webp",
+    photoLightUrl: "/images/profile/lucas-light.webp.png",
+    photoLightWebpUrl: "/images/profile/lucas-light.webp",
+    photoSrcSet: "",
+    photoAlt:
+      "Lucas Cecareli Ribeiro — Estudante de Ciência da Computação no Instituto Mauá de Tecnologia",
+    photoObjectPosition: "center top",
+    photoAspectRatio: "3 / 4",
   },
 
   about: {
     overview:
-      "Sou estudante de Ciência da Computação no Instituto Mauá de Tecnologia, tendo ingressado em fevereiro de 2025 com previsão de conclusão em 2029. Escolhi a área de tecnologia pelo interesse genuíno em compreender como sistemas funcionam e pela possibilidade de transformar ideias em software útil. Meu foco atual está no aprendizado sólido de desenvolvimento de software, aplicações web e inteligência artificial por meio de projetos práticos.",
+      "Sou Lucas Cecareli Ribeiro, estudante de Ciência da Computação no Instituto Mauá de Tecnologia (2025–2029). Gosto de transformar ideias em projetos reais, explorando desenvolvimento de software, aplicações web e inteligência artificial. Acredito que aprender tecnologia vai além da teoria: é experimentar, construir, enfrentar desafios e evoluir a cada projeto.",
     csFundamentals: [
       "Lógica de Programação, Algoritmos & Estruturas de Dados",
       "Desenvolvimento de Software & Aplicações Web",

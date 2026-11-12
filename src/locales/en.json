@@ -256,15 +256,24 @@
     ]
   },
   "about": {
+    "stageEyebrow": "01 / ABOUT ME",
     "eyebrow": "03 / ABOUT ME & TRAJECTORY",
-    "title": "Who I Am & My Path in Computer Science.",
-    "lead": "My name is Lucas Cecareli Ribeiro, and I am a Computer Science student at Instituto Mauá de Tecnologia (IMT) in São Paulo, Brazil. I started my degree in February 2025, with expected graduation in 2029.",
-    "storyParagraph1": "I chose technology out of genuine curiosity to understand how the systems we use every day are built, and the ability to create tools that solve real problems in a practical way.",
-    "storyParagraph2": "Beyond studying theory in isolation, I learn best by building: every project — whether in a hackathon, academic coursework, or personal initiatives like Velore — is an opportunity to turn programming concepts into working software.",
+    "title": "Far beyond code.",
+    "lead": "I'm Lucas Cecareli Ribeiro, a Computer Science student at Instituto Mauá de Tecnologia. I enjoy turning ideas into real projects, exploring software development, web applications, and artificial intelligence.",
+    "storyParagraph1": "I believe learning technology goes beyond theory. It means experimenting, building, facing challenges, and evolving with every project.",
+    "storyParagraph2": "Throughout my degree at Instituto Mauá de Tecnologia (2025–2029), I put this mindset into practice across academic software projects, the Health & Technology Hackathon with the ELO platform, and the ongoing development of Velore.",
     "photoFrame": {
-      "label": "PERSONAL IDENTITY",
-      "status": "PERSONAL PORTRAIT · IN SELECTION",
-      "caption": "Editorial space prepared for future personal black-and-white photograph."
+      "label": "01 / EDITORIAL PORTRAIT",
+      "status": "PERSONAL PORTRAIT · READY STRUCTURE",
+      "caption": "Lucas Cecareli Ribeiro · Computer Science · IMT (2025–2029)",
+      "apertureLabel": "SCROLL REVEAL",
+      "coordinates": "SÃO PAULO · IMT · B.SC. 2025—2029",
+      "acts": [
+        "01 · ENTRY",
+        "02 · REVEAL",
+        "03 · PRESENTATION",
+        "04 · COMPOSITION"
+      ]
     },
     "chapters": {
       "whyTech": {

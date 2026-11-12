@@ -256,15 +256,24 @@
     ]
   },
   "about": {
+    "stageEyebrow": "01 / SOBRE MIM",
     "eyebrow": "03 / SOBRE MIM & TRAJETÓRIA",
-    "title": "Quem Sou & Minha Caminhada na Computação.",
-    "lead": "Me chamo Lucas Cecareli Ribeiro e sou estudante de Ciência da Computação no Instituto Mauá de Tecnologia (IMT), em São Paulo. Ingressei na graduação em fevereiro de 2025, com conclusão prevista para 2029.",
-    "storyParagraph1": "Escolhi a área de tecnologia pela curiosidade em entender como os sistemas que usamos todos os dias são construídos e pela possibilidade de criar ferramentas que resolvam problemas reais de forma prática.",
-    "storyParagraph2": "Mais do que apenas estudar teoria de forma isolada, gosto de aprender construindo: cada projeto — seja em um hackathon, em atividades acadêmicas ou em iniciativas próprias como a Velore — é uma oportunidade de transformar conceitos de programação em software que realmente funciona.",
+    "title": "Muito além do código.",
+    "lead": "Sou Lucas Cecareli Ribeiro, estudante de Ciência da Computação no Instituto Mauá de Tecnologia. Gosto de transformar ideias em projetos reais, explorando desenvolvimento de software, aplicações web e inteligência artificial.",
+    "storyParagraph1": "Acredito que aprender tecnologia vai além da teoria. É experimentar, construir, enfrentar desafios e evoluir a cada projeto.",
+    "storyParagraph2": "Na graduação no Instituto Mauá de Tecnologia (2025–2029), levo essa visão para a prática em projetos acadêmicos de sistemas e aplicações interativas, na participação no Hackathon de Saúde e Tecnologia com a plataforma ELO e no desenvolvimento autoral da Velore.",
     "photoFrame": {
-      "label": "IDENTIDADE PESSOAL",
-      "status": "RETRATO PESSOAL · EM SELEÇÃO",
-      "caption": "Espaço editorial preparado para fotografia pessoal em preto e branco."
+      "label": "01 / RETRATO EDITORIAL",
+      "status": "RETRATO PESSOAL · ESTRUTURA PRONTA",
+      "caption": "Lucas Cecareli Ribeiro · Ciência da Computação · IMT (2025–2029)",
+      "apertureLabel": "REVELAÇÃO POR SCROLL",
+      "coordinates": "SÃO PAULO · IMT · BCC 2025—2029",
+      "acts": [
+        "01 · ENTRADA",
+        "02 · REVELAÇÃO",
+        "03 · APRESENTAÇÃO",
+        "04 · COMPOSIÇÃO"
+      ]
     },
     "chapters": {
       "whyTech": {
